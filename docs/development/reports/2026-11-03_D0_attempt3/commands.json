@@ -1,0 +1,228 @@
+[
+  {
+    "name": "version-python",
+    "command": [
+      "D:\\DevelopmentTools\\Anaconda\\python.exe",
+      "--version"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "version-node",
+    "command": [
+      "D:\\DevelopmentTools\\nvm\\nodejs\\node.EXE",
+      "--version"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "version-npm",
+    "command": [
+      "D:\\DevelopmentTools\\nvm\\nodejs\\npm.cmd",
+      "--version"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "version-uv",
+    "command": [
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\.tools\\bin\\uv.exe",
+      "--version"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "lock-check",
+    "command": [
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\.tools\\bin\\uv.exe",
+      "lock",
+      "--check"
+    ],
+    "cwd": "backend",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "backend-frozen-clean",
+    "command": [
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\.tools\\bin\\uv.exe",
+      "sync",
+      "--frozen",
+      "--group",
+      "dev",
+      "--group",
+      "prepare"
+    ],
+    "cwd": "backend",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "backend-tests",
+    "command": [
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\.tools\\bin\\uv.exe",
+      "run",
+      "--frozen",
+      "--no-sync",
+      "pytest",
+      "tests/unit",
+      "--junitxml=E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\docs\\development\\reports\\2026-11-03_D0_baseline\\pytest.xml"
+    ],
+    "cwd": "backend",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "frontend-frozen",
+    "command": [
+      "D:\\DevelopmentTools\\nvm\\nodejs\\npm.cmd",
+      "ci"
+    ],
+    "cwd": "frontend",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "frontend-typecheck",
+    "command": [
+      "D:\\DevelopmentTools\\nvm\\nodejs\\npm.cmd",
+      "run",
+      "typecheck"
+    ],
+    "cwd": "frontend",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "frontend-vitest",
+    "command": [
+      "D:\\DevelopmentTools\\nvm\\nodejs\\npm.cmd",
+      "run",
+      "test",
+      "--",
+      "--run"
+    ],
+    "cwd": "frontend",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "frontend-build",
+    "command": [
+      "D:\\DevelopmentTools\\nvm\\nodejs\\npm.cmd",
+      "run",
+      "build"
+    ],
+    "cwd": "frontend",
+    "exit_code": 3221226505,
+    "expected_exit_code": 0,
+    "passed": false
+  },
+  {
+    "name": "frontend-audit",
+    "command": [
+      "D:\\DevelopmentTools\\nvm\\nodejs\\npm.cmd",
+      "audit",
+      "--json"
+    ],
+    "cwd": "frontend",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "environment",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "scripts/check_environment.ps1"
+    ],
+    "cwd": ".",
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "passed": true
+  },
+  {
+    "name": "maintenance-unimplemented",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "scripts/manage.ps1",
+      "-Action",
+      "Init"
+    ],
+    "cwd": ".",
+    "exit_code": 3,
+    "expected_exit_code": 3,
+    "passed": true
+  },
+  {
+    "name": "maintenance-missing-config",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "scripts/manage.ps1",
+      "-Action",
+      "InspectConfig"
+    ],
+    "cwd": ".",
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "passed": true
+  },
+  {
+    "name": "maintenance-valid-config",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "scripts/manage.ps1",
+      "-Action",
+      "InspectConfig"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  },
+  {
+    "name": "source-scan",
+    "command": [
+      "D:\\DevelopmentTools\\Anaconda\\python.exe",
+      "scripts/verify_baseline.py"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true
+  }
+]

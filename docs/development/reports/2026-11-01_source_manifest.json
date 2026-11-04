@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-01",
+  "purpose": "复审前只读来源快照；不是软件验收",
+  "files": [
+    {
+      "path": "docs/requirements/01_赛题要求提取.md",
+      "sha256": "49e9b8b0e149407f0fcba4dced774d787465bf68da2c4838b4ff522ddf3fe67e"
+    },
+    {
+      "path": "docs/requirements/02_业务需求分析.md",
+      "sha256": "4b42ce3408bb48fc4c2ff79b222c0ba26d11960da474443686a083216804753c"
+    },
+    {
+      "path": "docs/requirements/03_软件需求分析说明书.md",
+      "sha256": "25b2d1244bd401a4ed654bdcce9b745ccb84649a1609dd436f06705a58cd103f"
+    },
+    {
+      "path": "docs/requirements/04_需求追踪矩阵.md",
+      "sha256": "46cbdf3e38348b3aa2e47a10c8469d9f91fcca60f5cee2e33611a4a42e80a64b"
+    },
+    {
+      "path": "docs/requirements/05_待确认问题与风险.md",
+      "sha256": "751bb2c341d498ae804bb52c52171dea8474bf487526cfef9805bcd60191cec6"
+    },
+    {
+      "path": "docs/architecture/01_架构需求与约束.md",
+      "sha256": "fe3b66cf82f7efc5ffeaff825a3552047c9fb00590ebe0df5e82cd50d97ef977"
+    },
+    {
+      "path": "docs/architecture/02_系统总体架构设计.md",
+      "sha256": "9b8bd671dcbf1b2e546f16ca029bfdb72484935e4134c773f8ee2b1aca41a779"
+    },
+    {
+      "path": "docs/architecture/03_技术选型与架构决策.md",
+      "sha256": "7c973708aac6aa1658756cd6413abcaeec88200f3485218a1f4049cd3b7271be"
+    },
+    {
+      "path": "docs/architecture/04_模块与分层架构设计.md",
+      "sha256": "f6eafadb78a8e7cd35174a8d63ee6abbcaa277eb7217ace2f5ed0811b5f5bdf4"
+    },
+    {
+      "path": "docs/architecture/05_数据库与数据架构设计.md",
+      "sha256": "bf6e464ea22f0f8b7ed7b9f333bab93eeef6df5522f8197140b345d3f0b5fb48"
+    },
+    {
+      "path": "docs/architecture/06_API接口设计.md",
+      "sha256": "d664923a78704e6cc91a0de717b0b5a68d39b12197f62709e7cc5c2f51f9ed72"
+    },
+    {
+      "path": "docs/architecture/07_关键业务流程设计.md",
+      "sha256": "47fd0ec69d5f7237c9063a9c525b1c4c9ae63cdda66f2febe4c7d4ae31e225d5"
+    },
+    {
+      "path": "docs/architecture/08_非功能架构设计.md",
+      "sha256": "94dc2083634f06824fb0cae8474a9a0223d60ef9c4346df979d0b434e13cdb1e"
+    },
+    {
+      "path": "docs/architecture/09_工程目录结构设计.md",
+      "sha256": "925c2f7c16d039e112b43e2e3f0939757936885f82f306dd6d93294509ceea8e"
+    },
+    {
+      "path": "docs/architecture/10_部署与运行架构设计.md",
+      "sha256": "c4956842bf907f77dad3bf4e0e5d1a81f15e80e0e742a6730bb620d0e88e3532"
+    },
+    {
+      "path": "docs/architecture/11_架构评审与开发交接.md",
+      "sha256": "e2b1353dad67b023530e45f727934fd744c9c4b235f02f33d03b064df09e7b76"
+    },
+    {
+      "path": "01_参赛说明.docx",
+      "sha256": "d49eb9fe53e0d41e200381275751c05f324f3d00d369e7a386b3d0ef9bf01fb0"
+    },
+    {
+      "path": "02_示例数据.xlsx",
+      "sha256": "edb13b2a52d2f875033258836e8fc23c3e1353c46d101184048bac289e52ed0f"
+    },
+    {
+      "path": "03_业务规则.docx",
+      "sha256": "93b580f83b94fca4b795ec8e1336e22d799f5a91d581895f0562d29be1b84aa0"
+    }
+  ]
+}

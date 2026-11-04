@@ -1,0 +1,28 @@
+[
+  {
+    "path": "/api/v1/health/live",
+    "status": 200,
+    "body": {
+      "data": {
+        "status": "alive",
+        "checks": {}
+      },
+      "request_id": "bcf65423-86df-4222-8f42-0522ca40f47c"
+    },
+    "request_id_header": "bcf65423-86df-4222-8f42-0522ca40f47c"
+  },
+  {
+    "path": "/api/v1/health/ready",
+    "status": 503,
+    "body": {
+      "data": {
+        "status": "not_ready",
+        "checks": {
+          "database_prepared": false
+        }
+      },
+      "request_id": "8ff18901-a106-4905-bb2a-f4ad6830022a"
+    },
+    "request_id_header": "8ff18901-a106-4905-bb2a-f4ad6830022a"
+  }
+]

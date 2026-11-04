@@ -1,0 +1,23 @@
+[project]
+name = "fiscal-harness"
+version = "0.1.0"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+  "fastapi>=0.160,<0.161",
+  "pydantic>=2,<3",
+  "pydantic-settings>=2,<3",
+  "uvicorn>=0.30,<1",
+  "sqlalchemy>=2.0,<2.1",
+  "psycopg[binary]>=3,<4",
+  "alembic>=1,<2",
+  "httpx>=0.28,<1",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "jsonschema[format]>=4,<5"]
+prepare = ["openpyxl>=3.1,<4"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra -p no:cacheprovider"

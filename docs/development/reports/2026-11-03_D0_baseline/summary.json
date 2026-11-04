@@ -1,0 +1,86 @@
+{
+  "run_id": "2026-11-03_D0_baseline",
+  "stage": "D0",
+  "requirements_version": "1.3",
+  "contract_version": "1.2",
+  "runtime_versions": {
+    "python": "Python 3.13.9",
+    "node": "v24.8.0",
+    "npm": "11.6.0",
+    "uv": "uv 0.13.7 (316c827e0 2026-11-03 x86_64-pc-windows-msvc)"
+  },
+  "fixture_id": "D0-no-business-data",
+  "seed_hash": null,
+  "model_mode": "none",
+  "model_profile_id": null,
+  "command": "python scripts/verify_d0.py",
+  "exit_code": 0,
+  "lock_hashes": {
+    "backend/uv.lock": "0ce87442ff858e9ec47dadfb5e8b66067cbfe6554f40795347a89bf49e7be0d7",
+    "frontend/package-lock.json": "c043a14f871776f3bb0c6d25a9c47354ce8fe8a6f2755aaa5dd3d58fa688735f"
+  },
+  "locks_unchanged_after_frozen_install": true,
+  "protected_input_hashes": {
+    "materials\\01_参赛说明.docx": "d49eb9fe53e0d41e200381275751c05f324f3d00d369e7a386b3d0ef9bf01fb0",
+    "materials\\02_示例数据.xlsx": "edb13b2a52d2f875033258836e8fc23c3e1353c46d101184048bac289e52ed0f",
+    "materials\\03_业务规则.docx": "93b580f83b94fca4b795ec8e1336e22d799f5a91d581895f0562d29be1b84aa0",
+    "docs\\requirements\\00_项目需求速览与决策清单.md": "c008b85a6888caf2f893112a22b2cffa72dad5a621dcd4c46e138a14c689bc13",
+    "docs\\requirements\\01_赛题要求提取.md": "49e9b8b0e149407f0fcba4dced774d787465bf68da2c4838b4ff522ddf3fe67e",
+    "docs\\requirements\\02_业务需求分析.md": "4b42ce3408bb48fc4c2ff79b222c0ba26d11960da474443686a083216804753c",
+    "docs\\requirements\\03_软件需求分析说明书.md": "25b2d1244bd401a4ed654bdcce9b745ccb84649a1609dd436f06705a58cd103f",
+    "docs\\requirements\\04_需求追踪矩阵.md": "46cbdf3e38348b3aa2e47a10c8469d9f91fcca60f5cee2e33611a4a42e80a64b",
+    "docs\\requirements\\05_待确认问题与风险.md": "751bb2c341d498ae804bb52c52171dea8474bf487526cfef9805bcd60191cec6",
+    "docs\\requirements\\新建文件夹\\01_赛题要求提取.md": "49e9b8b0e149407f0fcba4dced774d787465bf68da2c4838b4ff522ddf3fe67e",
+    "docs\\requirements\\新建文件夹\\02_业务需求分析.md": "4b42ce3408bb48fc4c2ff79b222c0ba26d11960da474443686a083216804753c",
+    "docs\\requirements\\新建文件夹\\03_软件需求分析说明书.md": "25b2d1244bd401a4ed654bdcce9b745ccb84649a1609dd436f06705a58cd103f",
+    "docs\\requirements\\新建文件夹\\04_需求追踪矩阵.md": "46cbdf3e38348b3aa2e47a10c8469d9f91fcca60f5cee2e33611a4a42e80a64b",
+    "docs\\requirements\\新建文件夹\\05_待确认问题与风险.md": "751bb2c341d498ae804bb52c52171dea8474bf487526cfef9805bcd60191cec6"
+  },
+  "protected_inputs_unchanged": true,
+  "case_results": [
+    {
+      "case_id": "TC061",
+      "ac_refs": [
+        "AC-036"
+      ],
+      "status": "passed",
+      "scope": "full D0 engineering case; not full deployment AC-036"
+    },
+    {
+      "case_id": "TC051",
+      "ac_refs": [
+        "AC-001",
+        "AC-004",
+        "AC-036"
+      ],
+      "status": "not_run",
+      "subitems": [
+        {
+          "name": "independent database and maintenance configuration, disabled startup, test_stub environment guard",
+          "status": "passed"
+        },
+        {
+          "name": "disabled chat returns 503 without a fake turn",
+          "status": "not_run",
+          "reason": "D2 chat/turn lifecycle not implemented in D0"
+        }
+      ]
+    }
+  ],
+  "evidence_paths": [
+    "commands.json",
+    "pytest.xml",
+    "health-http.json",
+    "openapi.json",
+    "source-scan.json",
+    "git-status.log"
+  ],
+  "source_tree_hash": "9774498363881f71ae31a6d8a18f64561adb19012d7f90a60c8859bea67b5d2c",
+  "handoff_validation": {
+    "local_links": "passed",
+    "git_initialized": false,
+    "protected_inputs_unchanged": true,
+    "lock_hashes_unchanged": true,
+    "next_stage_authorized": false
+  }
+}

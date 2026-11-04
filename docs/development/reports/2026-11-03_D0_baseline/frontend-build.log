@@ -1,0 +1,14 @@
+
+> fiscal-harness-web@0.1.0 build
+> node scripts/build.mjs
+
+Cleaning generated output: E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\frontend\dist
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 18 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.36 kB │ gzip:  0.28 kB
+dist/assets/index-DhOYLPeX.css   0.21 kB │ gzip:  0.18 kB
+dist/assets/index-DYa0TGTm.js   64.39 kB │ gzip: 25.59 kB
+✓ built in 337ms

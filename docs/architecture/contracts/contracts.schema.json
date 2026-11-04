@@ -1,0 +1,5975 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fiscal-harness:contracts:1.2",
+  "title": "财税Harness供应商无关开发契约1.2",
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "Uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "Month": {
+      "type": "string",
+      "pattern": "^(?!0000)[0-9]{4}-(0[1-9]|1[0-2])$"
+    },
+    "Time": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "Money": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{2}$"
+    },
+    "Version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "Revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "Company": {
+      "$ref": "#/$defs/Id"
+    },
+    "InvoiceKey": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "invoice_id": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "company_id",
+        "invoice_id"
+      ],
+      "additionalProperties": false
+    },
+    "Span": {
+      "type": "object",
+      "properties": {
+        "quote": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        },
+        "occurrence": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "quote",
+        "occurrence"
+      ],
+      "additionalProperties": false
+    },
+    "Changes": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 4000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 4000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "ContentEvidence": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "literal"
+            },
+            "span": {
+              "$ref": "#/$defs/Span"
+            }
+          },
+          "required": [
+            "kind",
+            "span"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "clear"
+            },
+            "span": {
+              "$ref": "#/$defs/Span"
+            }
+          },
+          "required": [
+            "kind",
+            "span"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Source": {
+      "type": "string",
+      "enum": [
+        "explicit_text",
+        "invoice_reference",
+        "explicit_reference",
+        "session_default"
+      ]
+    },
+    "Scope": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "business_month": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Month"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "source_message_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "company_id",
+        "business_month",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "RuleRef": {
+      "type": "object",
+      "properties": {
+        "rule_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "revision": {
+          "$ref": "#/$defs/Version"
+        }
+      },
+      "required": [
+        "rule_id",
+        "name",
+        "version",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "Policy": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "all"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "independent_totals"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "bank_readonly"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "amount_gte"
+            },
+            "threshold_cents": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9223372036854775807
+            }
+          },
+          "required": [
+            "kind",
+            "threshold_cents"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Rule": {
+      "type": "object",
+      "properties": {
+        "rule_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "topic": {
+          "type": "string",
+          "enum": [
+            "amount",
+            "purpose",
+            "bank"
+          ]
+        },
+        "company_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Company"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "effective_from": {
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "enabled",
+            "disabled"
+          ]
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        },
+        "policy": {
+          "$ref": "#/$defs/Policy"
+        },
+        "revision": {
+          "$ref": "#/$defs/Version"
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "rule_id",
+        "version",
+        "name",
+        "topic",
+        "company_ids",
+        "effective_from",
+        "status",
+        "body",
+        "policy",
+        "revision",
+        "source_ref"
+      ],
+      "additionalProperties": false
+    },
+    "RuleResolution": {
+      "type": "object",
+      "properties": {
+        "resolution_status": {
+          "type": "string",
+          "enum": [
+            "resolved",
+            "missing",
+            "conflict",
+            "unsupported"
+          ]
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Rule"
+          }
+        },
+        "rule_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RuleRef"
+          }
+        }
+      },
+      "required": [
+        "resolution_status",
+        "rules",
+        "rule_refs"
+      ],
+      "additionalProperties": false
+    },
+    "Invoice": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "company_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "invoice_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "invoice_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "seller": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "item_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "amount": {
+          "$ref": "#/$defs/Money"
+        },
+        "purpose": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 4000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 4000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "row_version": {
+          "$ref": "#/$defs/Version"
+        },
+        "updated_at": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [
+        "company_id",
+        "company_name",
+        "invoice_id",
+        "invoice_date",
+        "seller",
+        "item_name",
+        "amount",
+        "purpose",
+        "note",
+        "row_version",
+        "updated_at"
+      ],
+      "additionalProperties": false
+    },
+    "InvoiceSearchItem": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "company_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "invoice_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "invoice_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "seller": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "item_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "amount": {
+          "$ref": "#/$defs/Money"
+        },
+        "row_version": {
+          "$ref": "#/$defs/Version"
+        }
+      },
+      "required": [
+        "company_id",
+        "company_name",
+        "invoice_id",
+        "invoice_date",
+        "seller",
+        "item_name",
+        "amount",
+        "row_version"
+      ],
+      "additionalProperties": false
+    },
+    "BankTransaction": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "transaction_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "transaction_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "income",
+            "expense"
+          ]
+        },
+        "amount": {
+          "$ref": "#/$defs/Money"
+        },
+        "counterparty": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 4000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "company_id",
+        "transaction_id",
+        "transaction_date",
+        "direction",
+        "amount",
+        "counterparty",
+        "note"
+      ],
+      "additionalProperties": false
+    },
+    "Metric": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "$ref": "#/$defs/Money"
+        },
+        "record_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "empty": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "amount",
+        "record_count",
+        "empty"
+      ],
+      "additionalProperties": false
+    },
+    "Totals": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "business_month": {
+          "$ref": "#/$defs/Month"
+        },
+        "currency": {
+          "const": "CNY"
+        },
+        "invoice_total": {
+          "$ref": "#/$defs/Metric"
+        },
+        "bank_expense": {
+          "$ref": "#/$defs/Metric"
+        },
+        "bank_income": {
+          "$ref": "#/$defs/Metric"
+        },
+        "basis_status": {
+          "type": "string",
+          "enum": [
+            "resolved",
+            "insufficient_rules",
+            "rule_conflict"
+          ]
+        },
+        "rule_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RuleRef"
+          }
+        }
+      },
+      "required": [
+        "company_id",
+        "business_month",
+        "currency",
+        "basis_status",
+        "rule_refs"
+      ],
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "invoice_total"
+          ]
+        },
+        {
+          "required": [
+            "bank_expense"
+          ]
+        },
+        {
+          "required": [
+            "bank_income"
+          ]
+        }
+      ]
+    },
+    "MissingInvoice": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "invoice_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "amount": {
+          "$ref": "#/$defs/Money"
+        },
+        "purpose": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 4000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 4000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "company_id",
+        "invoice_id",
+        "amount",
+        "purpose",
+        "note"
+      ],
+      "additionalProperties": false
+    },
+    "Check": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "company_id": {
+              "$ref": "#/$defs/Company"
+            },
+            "business_month": {
+              "$ref": "#/$defs/Month"
+            },
+            "queried_at": {
+              "$ref": "#/$defs/Time"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "check_status": {
+              "const": "checked"
+            },
+            "missing": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/MissingInvoice"
+              }
+            },
+            "count": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "company_id",
+            "business_month",
+            "queried_at",
+            "rule_refs",
+            "check_status",
+            "missing",
+            "count"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "company_id": {
+              "$ref": "#/$defs/Company"
+            },
+            "business_month": {
+              "$ref": "#/$defs/Month"
+            },
+            "queried_at": {
+              "$ref": "#/$defs/Time"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "check_status": {
+              "type": "string",
+              "enum": [
+                "unsupported",
+                "insufficient_rules",
+                "rule_conflict"
+              ]
+            },
+            "missing": {
+              "type": "null"
+            },
+            "count": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "company_id",
+            "business_month",
+            "queried_at",
+            "rule_refs",
+            "check_status",
+            "missing",
+            "count"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "WriteResult": {
+      "type": "object",
+      "properties": {
+        "operation_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "invoice_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "prepared",
+            "committed",
+            "verified",
+            "already_current",
+            "failed",
+            "verify_pending"
+          ]
+        },
+        "actual": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Changes"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error_code": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "verified_at": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "operation_id",
+        "company_id",
+        "invoice_id",
+        "state",
+        "actual"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "verified",
+                  "already_current"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "verified_at"
+            ],
+            "properties": {
+              "actual": {
+                "$ref": "#/$defs/Changes"
+              },
+              "verified_at": {
+                "$ref": "#/$defs/Time"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Progress": {
+      "type": "object",
+      "properties": {
+        "completed_operation_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Uuid"
+          },
+          "uniqueItems": true
+        },
+        "pending_operation_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Uuid"
+          },
+          "uniqueItems": true
+        },
+        "remaining": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Check"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "missing_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "company_id",
+              "business_month",
+              "invoice_id",
+              "purpose",
+              "note"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "snapshot_stale": {
+          "type": "boolean"
+        },
+        "as_of": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "completed_operation_ids",
+        "pending_operation_ids",
+        "remaining",
+        "missing_fields",
+        "snapshot_stale",
+        "as_of"
+      ],
+      "additionalProperties": false
+    },
+    "Task": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "task"
+        },
+        "task_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "goal": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "business_month": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Month"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "awaiting_input",
+            "verify_pending",
+            "completed",
+            "cancelled"
+          ]
+        },
+        "progress": {
+          "$ref": "#/$defs/Progress"
+        },
+        "row_version": {
+          "$ref": "#/$defs/Version"
+        },
+        "updated_at": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [
+        "kind",
+        "task_id",
+        "company_id",
+        "goal",
+        "business_month",
+        "status",
+        "progress",
+        "row_version",
+        "updated_at"
+      ],
+      "additionalProperties": false
+    },
+    "Preference": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "preference"
+        },
+        "preference_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "preference_key": {
+          "type": "string",
+          "enum": [
+            "response_order",
+            "default_company",
+            "custom_style"
+          ]
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "row_version": {
+          "$ref": "#/$defs/Version"
+        },
+        "updated_at": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [
+        "kind",
+        "preference_id",
+        "company_id",
+        "preference_key",
+        "content",
+        "row_version",
+        "updated_at"
+      ],
+      "additionalProperties": false
+    },
+    "MemoryItem": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Task"
+        },
+        {
+          "$ref": "#/$defs/Preference"
+        }
+      ]
+    },
+    "MemoryWriteResult": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MemoryItem"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "deleted": {
+          "type": "boolean"
+        },
+        "memory_revision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "item",
+        "deleted",
+        "memory_revision"
+      ],
+      "additionalProperties": false
+    },
+    "TaskHint": {
+      "type": "object",
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "business_month": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Month"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "goal": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "task_id",
+        "company_id",
+        "business_month",
+        "goal"
+      ],
+      "additionalProperties": false
+    },
+    "MemoryPage": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MemoryItem"
+          }
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "memory_revision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor",
+        "memory_revision"
+      ],
+      "additionalProperties": false
+    },
+    "SessionState": {
+      "type": "object",
+      "properties": {
+        "default_company_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Company"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "row_version": {
+          "$ref": "#/$defs/Version"
+        }
+      },
+      "required": [
+        "default_company_id",
+        "row_version"
+      ],
+      "additionalProperties": false
+    },
+    "Session": {
+      "type": "object",
+      "properties": {
+        "session_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "default_company_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Company"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "row_version": {
+          "$ref": "#/$defs/Version"
+        },
+        "task_hints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TaskHint"
+          }
+        },
+        "preferred_company_suggestion": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Company"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "active_turn_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "result_focus": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Focus"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "created_at": {
+          "$ref": "#/$defs/Time"
+        },
+        "updated_at": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [
+        "session_id",
+        "default_company_id",
+        "row_version",
+        "task_hints",
+        "preferred_company_suggestion"
+      ],
+      "additionalProperties": false
+    },
+    "SessionCreate": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "scope_action": {
+              "const": "skip"
+            },
+            "default_company_id": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "scope_action",
+            "default_company_id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "scope_action": {
+              "const": "select"
+            },
+            "default_company_id": {
+              "$ref": "#/$defs/Company"
+            }
+          },
+          "required": [
+            "scope_action",
+            "default_company_id"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "DefaultPatch": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Company"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expected_version": {
+          "$ref": "#/$defs/Version"
+        }
+      },
+      "required": [
+        "company_id",
+        "expected_version"
+      ],
+      "additionalProperties": false
+    },
+    "TurnCreate": {
+      "type": "object",
+      "properties": {
+        "client_turn_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "session_version": {
+          "$ref": "#/$defs/Version"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 8000
+        },
+        "invoice_references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/InvoiceKey"
+          },
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "client_turn_id",
+        "session_version",
+        "text",
+        "invoice_references"
+      ],
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "properties": {
+            "text": {
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "properties": {
+            "invoice_references": {
+              "minItems": 1
+            }
+          }
+        }
+      ]
+    },
+    "ErrorBody": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/$defs/Id"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "details": {
+          "type": "object"
+        },
+        "retryable": {
+          "type": "boolean"
+        },
+        "turn_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "details",
+        "retryable",
+        "turn_id"
+      ],
+      "additionalProperties": false
+    },
+    "ErrorEnvelope": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/$defs/ErrorBody"
+        },
+        "request_id": {
+          "$ref": "#/$defs/Id"
+        }
+      },
+      "required": [
+        "error",
+        "request_id"
+      ],
+      "additionalProperties": false
+    },
+    "FinalPlan": {
+      "type": "object",
+      "properties": {
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "answered",
+            "needs_input",
+            "partial"
+          ]
+        },
+        "ordered_fact_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "uniqueItems": true
+        },
+        "question_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "company_id",
+              "business_month",
+              "invoice_id",
+              "purpose",
+              "note",
+              "task_choice",
+              "memory_scope",
+              "write_mapping"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "notice_codes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "NO_RECORDS",
+              "RULES_INSUFFICIENT",
+              "RULES_CONFLICT",
+              "UNSUPPORTED_MONTH",
+              "PARTIAL_COMPLETE",
+              "VERIFY_PENDING",
+              "NO_AUTOMATIC_WRITE",
+              "MODEL_UNAVAILABLE",
+              "TURN_LIMIT"
+            ]
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "outcome",
+        "ordered_fact_ids",
+        "question_fields",
+        "notice_codes"
+      ],
+      "additionalProperties": false
+    },
+    "Fact": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "fact_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "kind": {
+              "const": "totals"
+            },
+            "data": {
+              "$ref": "#/$defs/Totals"
+            },
+            "scope_company_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Company"
+              },
+              "uniqueItems": true
+            },
+            "evidence_event_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "fact_id",
+            "kind",
+            "data",
+            "scope_company_ids",
+            "evidence_event_ids"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "fact_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "kind": {
+              "const": "purpose_check"
+            },
+            "data": {
+              "$ref": "#/$defs/Check"
+            },
+            "scope_company_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Company"
+              },
+              "uniqueItems": true
+            },
+            "evidence_event_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "fact_id",
+            "kind",
+            "data",
+            "scope_company_ids",
+            "evidence_event_ids"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "fact_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "kind": {
+              "const": "write"
+            },
+            "data": {
+              "$ref": "#/$defs/WriteResult"
+            },
+            "scope_company_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Company"
+              },
+              "uniqueItems": true
+            },
+            "evidence_event_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "fact_id",
+            "kind",
+            "data",
+            "scope_company_ids",
+            "evidence_event_ids"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "fact_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "kind": {
+              "const": "rules"
+            },
+            "data": {
+              "$ref": "#/$defs/RuleResolution"
+            },
+            "scope_company_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Company"
+              },
+              "uniqueItems": true
+            },
+            "evidence_event_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "fact_id",
+            "kind",
+            "data",
+            "scope_company_ids",
+            "evidence_event_ids"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "fact_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "kind": {
+              "const": "invoice"
+            },
+            "data": {
+              "$ref": "#/$defs/Invoice"
+            },
+            "scope_company_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Company"
+              },
+              "uniqueItems": true
+            },
+            "evidence_event_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "fact_id",
+            "kind",
+            "data",
+            "scope_company_ids",
+            "evidence_event_ids"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "fact_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "kind": {
+              "const": "memory"
+            },
+            "data": {
+              "$ref": "#/$defs/MemoryWriteResult"
+            },
+            "scope_company_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Company"
+              },
+              "uniqueItems": true
+            },
+            "evidence_event_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "fact_id",
+            "kind",
+            "data",
+            "scope_company_ids",
+            "evidence_event_ids"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "fact_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "kind": {
+              "const": "default_company"
+            },
+            "data": {
+              "$ref": "#/$defs/SessionState"
+            },
+            "scope_company_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Company"
+              },
+              "uniqueItems": true
+            },
+            "evidence_event_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "fact_id",
+            "kind",
+            "data",
+            "scope_company_ids",
+            "evidence_event_ids"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "fact_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "kind": {
+              "const": "notice"
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ],
+              "additionalProperties": false
+            },
+            "scope_company_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Company"
+              },
+              "uniqueItems": true
+            },
+            "evidence_event_ids": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "fact_id",
+            "kind",
+            "data",
+            "scope_company_ids",
+            "evidence_event_ids"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Turn": {
+      "type": "object",
+      "properties": {
+        "turn_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "running",
+            "completed",
+            "failed",
+            "interrupted",
+            "cancelled"
+          ]
+        },
+        "outcome": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "answered",
+                "needs_input",
+                "partial",
+                "failed",
+                "cancelled"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cancel_requested": {
+          "type": "boolean"
+        },
+        "answer": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 20000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "session_state": {
+          "$ref": "#/$defs/SessionState"
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Scope"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Fact"
+          }
+        },
+        "writes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WriteResult"
+          }
+        },
+        "rule_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RuleRef"
+          }
+        },
+        "remaining": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Check"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ErrorBody"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_url": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "turn_id",
+        "status",
+        "outcome",
+        "answer",
+        "session_state",
+        "scope",
+        "facts",
+        "writes",
+        "rule_refs",
+        "remaining",
+        "error",
+        "evidence_url"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "running"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "outcome": {
+                "type": "null"
+              },
+              "answer": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "completed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "outcome": {
+                "enum": [
+                  "answered",
+                  "needs_input",
+                  "partial"
+                ]
+              },
+              "answer": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "failed",
+                  "interrupted"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "outcome": {
+                "enum": [
+                  "failed",
+                  "partial"
+                ]
+              },
+              "error": {
+                "$ref": "#/$defs/ErrorBody"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "cancelled"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "outcome": {
+                "enum": [
+                  "cancelled",
+                  "partial"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TurnAccepted": {
+      "type": "object",
+      "properties": {
+        "turn_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "status": {
+          "const": "running"
+        },
+        "status_url": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "turn_id",
+        "status",
+        "status_url"
+      ],
+      "additionalProperties": false
+    },
+    "CancelAck": {
+      "type": "object",
+      "properties": {
+        "turn_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "running",
+            "completed",
+            "failed",
+            "interrupted",
+            "cancelled"
+          ]
+        },
+        "cancel_requested": {
+          "type": "boolean"
+        },
+        "writes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WriteResult"
+          }
+        }
+      },
+      "required": [
+        "turn_id",
+        "status",
+        "cancel_requested",
+        "writes"
+      ],
+      "additionalProperties": false
+    },
+    "Reference": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "invoice_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "label_snapshot": {
+          "$ref": "#/$defs/InvoiceSearchItem"
+        }
+      },
+      "required": [
+        "company_id",
+        "invoice_id",
+        "label_snapshot"
+      ],
+      "additionalProperties": false
+    },
+    "Message": {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "turn_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "user",
+            "assistant"
+          ]
+        },
+        "content": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 20000
+        },
+        "invoice_references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Reference"
+          }
+        },
+        "created_at": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [
+        "message_id",
+        "turn_id",
+        "role",
+        "content",
+        "invoice_references",
+        "created_at"
+      ],
+      "additionalProperties": false
+    },
+    "EvidenceEvent": {
+      "type": "object",
+      "properties": {
+        "event_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "session_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "turn_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "user_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "actor_label": {
+          "$ref": "#/$defs/Id"
+        },
+        "scope_company_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Company"
+          },
+          "uniqueItems": true
+        },
+        "kind": {
+          "$ref": "#/$defs/Id"
+        },
+        "correlation_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "payload": {
+          "type": "object"
+        },
+        "payload_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "created_at": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [
+        "event_id",
+        "session_id",
+        "turn_id",
+        "user_id",
+        "actor_label",
+        "scope_company_ids",
+        "kind",
+        "correlation_id",
+        "payload",
+        "payload_hash",
+        "created_at"
+      ],
+      "additionalProperties": false
+    },
+    "InvoicePage": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/InvoiceSearchItem"
+          }
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ],
+      "additionalProperties": false
+    },
+    "BankPage": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BankTransaction"
+          }
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ],
+      "additionalProperties": false
+    },
+    "SessionPage": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Session"
+          }
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ],
+      "additionalProperties": false
+    },
+    "MessagePage": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Message"
+          }
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ],
+      "additionalProperties": false
+    },
+    "EvidencePage": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EvidenceEvent"
+          }
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ],
+      "additionalProperties": false
+    },
+    "TaskPatch": {
+      "type": "object",
+      "properties": {
+        "expected_version": {
+          "$ref": "#/$defs/Version"
+        },
+        "goal": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "business_month": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Month"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "awaiting_input",
+            "completed",
+            "cancelled"
+          ]
+        }
+      },
+      "required": [
+        "expected_version"
+      ],
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "goal"
+          ]
+        },
+        {
+          "required": [
+            "business_month"
+          ]
+        },
+        {
+          "required": [
+            "status"
+          ]
+        }
+      ]
+    },
+    "PreferencePatch": {
+      "type": "object",
+      "properties": {
+        "expected_version": {
+          "$ref": "#/$defs/Version"
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "expected_version",
+        "content"
+      ],
+      "additionalProperties": false
+    },
+    "Deleted": {
+      "type": "object",
+      "properties": {
+        "deleted": {
+          "const": true
+        },
+        "memory_revision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "deleted",
+        "memory_revision"
+      ],
+      "additionalProperties": false
+    },
+    "Principal": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "companies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "company_id": {
+                "$ref": "#/$defs/Company"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "can_write": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "company_id",
+              "name",
+              "can_write"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "user_id",
+        "name",
+        "companies"
+      ],
+      "additionalProperties": false
+    },
+    "Health": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "alive",
+            "ready",
+            "not_ready"
+          ]
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "ExecutionContext": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "session_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "turn_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "user_message_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "request_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "default_company_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Company"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "session_version": {
+          "$ref": "#/$defs/Version"
+        },
+        "memory_revision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "resolved_scope": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Scope"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "deadline_at": {
+          "$ref": "#/$defs/Time"
+        },
+        "model_mode": {
+          "type": "string",
+          "enum": [
+            "live",
+            "test_stub"
+          ]
+        },
+        "allowed_company_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Company"
+          },
+          "uniqueItems": true
+        },
+        "intent_plan": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/IntentPlan"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "user_id",
+        "session_id",
+        "turn_id",
+        "user_message_id",
+        "request_id",
+        "default_company_id",
+        "session_version",
+        "memory_revision",
+        "resolved_scope",
+        "deadline_at",
+        "model_mode",
+        "allowed_company_ids",
+        "intent_plan"
+      ],
+      "additionalProperties": false
+    },
+    "CurrentTurnEditIntent": {
+      "type": "object",
+      "properties": {
+        "intent_handle": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "operation_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "user_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "session_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "turn_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "user_message_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "invoice_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "expected_row_version": {
+          "$ref": "#/$defs/Version"
+        },
+        "memory_revision": {
+          "$ref": "#/$defs/Revision"
+        },
+        "changes": {
+          "$ref": "#/$defs/Changes"
+        },
+        "action_evidence": {
+          "$ref": "#/$defs/Span"
+        },
+        "content_evidence": {
+          "type": "object",
+          "properties": {
+            "purpose": {
+              "$ref": "#/$defs/ContentEvidence"
+            },
+            "note": {
+              "$ref": "#/$defs/ContentEvidence"
+            }
+          },
+          "required": [],
+          "additionalProperties": false,
+          "minProperties": 1
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "expires_at": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [
+        "intent_handle",
+        "operation_id",
+        "user_id",
+        "session_id",
+        "turn_id",
+        "user_message_id",
+        "company_id",
+        "invoice_id",
+        "expected_row_version",
+        "memory_revision",
+        "changes",
+        "action_evidence",
+        "content_evidence",
+        "source",
+        "expires_at"
+      ],
+      "additionalProperties": false
+    },
+    "IntentPrepared": {
+      "type": "object",
+      "properties": {
+        "intent_handle": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "invoice_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "changes": {
+          "$ref": "#/$defs/Changes"
+        }
+      },
+      "required": [
+        "intent_handle",
+        "company_id",
+        "invoice_id",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "ToolCall": {
+      "type": "object",
+      "properties": {
+        "call_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "$ref": "#/$defs/Id"
+        },
+        "arguments": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "call_id",
+        "name",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    "Usage": {
+      "type": "object",
+      "properties": {
+        "input_tokens": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "output_tokens": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "counting_method": {
+          "type": "string",
+          "enum": [
+            "provider",
+            "tokenizer",
+            "estimate",
+            "unavailable"
+          ]
+        }
+      },
+      "required": [
+        "input_tokens",
+        "output_tokens",
+        "counting_method"
+      ],
+      "additionalProperties": false
+    },
+    "ToolResultBase": {
+      "type": "object",
+      "properties": {
+        "call_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "$ref": "#/$defs/Id"
+        },
+        "ok": {
+          "type": "boolean"
+        },
+        "code": {
+          "$ref": "#/$defs/Id"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rule_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RuleRef"
+          }
+        },
+        "operation_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "call_id",
+        "name",
+        "ok",
+        "code",
+        "data",
+        "rule_refs",
+        "operation_id",
+        "error"
+      ],
+      "additionalProperties": false
+    },
+    "ModelMessage": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "role": {
+              "type": "string",
+              "enum": [
+                "system",
+                "user"
+              ]
+            },
+            "content": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 100000
+            }
+          },
+          "required": [
+            "role",
+            "content"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "role": {
+              "const": "assistant"
+            },
+            "tool_calls": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ToolCall"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "role",
+            "tool_calls"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "role": {
+              "const": "tool"
+            },
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "$ref": "#/$defs/Id"
+            },
+            "result": {
+              "$ref": "#/$defs/ToolResultBase"
+            }
+          },
+          "required": [
+            "role",
+            "call_id",
+            "name",
+            "result"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ModelRequest": {
+      "type": "object",
+      "properties": {
+        "invocation_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "profile_key": {
+          "$ref": "#/$defs/Id"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ModelMessage"
+          },
+          "minItems": 1
+        },
+        "tools": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "$ref": "#/$defs/Id"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000
+              },
+              "input_schema": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "name",
+              "description",
+              "input_schema"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "final_schema": {
+          "type": "object"
+        },
+        "max_output_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "deadline_at": {
+          "$ref": "#/$defs/Time"
+        }
+      },
+      "required": [
+        "invocation_id",
+        "profile_key",
+        "messages",
+        "tools",
+        "final_schema",
+        "max_output_tokens",
+        "deadline_at"
+      ],
+      "additionalProperties": false
+    },
+    "ModelResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "tool_calls"
+            },
+            "tool_calls": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ToolCall"
+              },
+              "minItems": 1
+            },
+            "usage": {
+              "$ref": "#/$defs/Usage"
+            },
+            "provider_request_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "tool_calls",
+            "usage",
+            "provider_request_id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "final"
+            },
+            "reply": {
+              "$ref": "#/$defs/FinalPlan"
+            },
+            "usage": {
+              "$ref": "#/$defs/Usage"
+            },
+            "provider_request_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "reply",
+            "usage",
+            "provider_request_id"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_resolve_scope": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Company"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "business_month": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Month"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "source_message_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Span"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "intent_plan": {
+          "$ref": "#/$defs/IntentPlan"
+        }
+      },
+      "required": [
+        "company_id",
+        "business_month",
+        "source",
+        "source_message_id",
+        "evidence",
+        "intent_plan"
+      ],
+      "additionalProperties": false
+    },
+    "Result_resolve_scope": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "resolve_scope"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/ScopeResolution"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "resolve_scope"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_get_totals": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "business_month": {
+          "$ref": "#/$defs/Month"
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "invoice_total",
+              "bank_expense",
+              "bank_income"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "company_id",
+        "business_month",
+        "metrics"
+      ],
+      "additionalProperties": false
+    },
+    "Result_get_totals": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "get_totals"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/Totals"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "get_totals"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_find_invoices": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "q": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "company_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Company"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "business_month": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Month"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "cursor",
+        "limit",
+        "q",
+        "company_id",
+        "business_month"
+      ],
+      "additionalProperties": false
+    },
+    "Result_find_invoices": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "find_invoices"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/InvoicePage"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "find_invoices"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_get_invoice": {
+      "$ref": "#/$defs/InvoiceKey"
+    },
+    "Result_get_invoice": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "get_invoice"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/Invoice"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "get_invoice"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_list_bank_transactions": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "business_month": {
+          "$ref": "#/$defs/Month"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        }
+      },
+      "required": [
+        "company_id",
+        "business_month",
+        "cursor",
+        "limit"
+      ],
+      "additionalProperties": false
+    },
+    "Result_list_bank_transactions": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "list_bank_transactions"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/BankPage"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "list_bank_transactions"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_get_rules": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "business_month": {
+          "$ref": "#/$defs/Month"
+        },
+        "topic": {
+          "type": "string",
+          "enum": [
+            "amount",
+            "purpose",
+            "bank"
+          ]
+        }
+      },
+      "required": [
+        "company_id",
+        "business_month",
+        "topic"
+      ],
+      "additionalProperties": false
+    },
+    "Result_get_rules": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "get_rules"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/RuleResolution"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "get_rules"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_check_purpose": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "business_month": {
+          "$ref": "#/$defs/Month"
+        }
+      },
+      "required": [
+        "company_id",
+        "business_month"
+      ],
+      "additionalProperties": false
+    },
+    "Result_check_purpose": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "check_purpose"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/Check"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "check_purpose"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_propose_invoice_edit": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "invoice_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "changes": {
+          "$ref": "#/$defs/Changes"
+        },
+        "action_evidence": {
+          "$ref": "#/$defs/Span"
+        },
+        "content_evidence": {
+          "type": "object",
+          "properties": {
+            "purpose": {
+              "$ref": "#/$defs/ContentEvidence"
+            },
+            "note": {
+              "$ref": "#/$defs/ContentEvidence"
+            }
+          },
+          "required": [],
+          "additionalProperties": false,
+          "minProperties": 1
+        }
+      },
+      "required": [
+        "company_id",
+        "invoice_id",
+        "changes",
+        "action_evidence",
+        "content_evidence"
+      ],
+      "additionalProperties": false
+    },
+    "Result_propose_invoice_edit": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "propose_invoice_edit"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/IntentPrepared"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "propose_invoice_edit"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_save_invoice_fields": {
+      "type": "object",
+      "properties": {
+        "intent_handle": {
+          "$ref": "#/$defs/Uuid"
+        }
+      },
+      "required": [
+        "intent_handle"
+      ],
+      "additionalProperties": false
+    },
+    "Result_save_invoice_fields": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "save_invoice_fields"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/WriteResult"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "save_invoice_fields"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/WriteResult"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_verify_write": {
+      "type": "object",
+      "properties": {
+        "operation_id": {
+          "$ref": "#/$defs/Uuid"
+        }
+      },
+      "required": [
+        "operation_id"
+      ],
+      "additionalProperties": false
+    },
+    "Result_verify_write": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "verify_write"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/WriteResult"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "verify_write"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_get_memories": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "kind": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "task",
+                "preference"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "cursor",
+        "limit",
+        "company_id",
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "Result_get_memories": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "get_memories"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/MemoryPage"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "get_memories"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_remember_task": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "goal": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "business_month": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Month"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "create",
+            "continue",
+            "replace"
+          ]
+        },
+        "expected_version": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Version"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "intent_evidence": {
+          "$ref": "#/$defs/Span"
+        }
+      },
+      "required": [
+        "company_id",
+        "goal",
+        "business_month",
+        "mode",
+        "expected_version",
+        "intent_evidence"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "create"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "expected_version": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "expected_version": {
+                "$ref": "#/$defs/Version"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Result_remember_task": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "remember_task"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/MemoryWriteResult"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "remember_task"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_remember_preference": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "preference_key": {
+          "type": "string",
+          "enum": [
+            "response_order",
+            "default_company",
+            "custom_style"
+          ]
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "expected_version": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Version"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "intent_evidence": {
+          "$ref": "#/$defs/Span"
+        }
+      },
+      "required": [
+        "company_id",
+        "preference_key",
+        "content",
+        "expected_version",
+        "intent_evidence"
+      ],
+      "additionalProperties": false
+    },
+    "Result_remember_preference": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "remember_preference"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/MemoryWriteResult"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "remember_preference"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_correct_memory": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "company_id": {
+              "$ref": "#/$defs/Company"
+            },
+            "kind": {
+              "const": "task"
+            },
+            "id": {
+              "$ref": "#/$defs/Uuid"
+            },
+            "patch": {
+              "$ref": "#/$defs/TaskPatch"
+            },
+            "intent_evidence": {
+              "$ref": "#/$defs/Span"
+            }
+          },
+          "required": [
+            "company_id",
+            "kind",
+            "id",
+            "patch",
+            "intent_evidence"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "company_id": {
+              "$ref": "#/$defs/Company"
+            },
+            "kind": {
+              "const": "preference"
+            },
+            "id": {
+              "$ref": "#/$defs/Uuid"
+            },
+            "patch": {
+              "$ref": "#/$defs/PreferencePatch"
+            },
+            "intent_evidence": {
+              "$ref": "#/$defs/Span"
+            }
+          },
+          "required": [
+            "company_id",
+            "kind",
+            "id",
+            "patch",
+            "intent_evidence"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Result_correct_memory": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "correct_memory"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/MemoryWriteResult"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "correct_memory"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_delete_memory": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "task",
+            "preference"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "expected_version": {
+          "$ref": "#/$defs/Version"
+        },
+        "intent_evidence": {
+          "$ref": "#/$defs/Span"
+        }
+      },
+      "required": [
+        "company_id",
+        "kind",
+        "id",
+        "expected_version",
+        "intent_evidence"
+      ],
+      "additionalProperties": false
+    },
+    "Result_delete_memory": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "delete_memory"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/MemoryWriteResult"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "delete_memory"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Args_set_default_company": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Company"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "intent_evidence": {
+          "$ref": "#/$defs/Span"
+        }
+      },
+      "required": [
+        "company_id",
+        "intent_evidence"
+      ],
+      "additionalProperties": false
+    },
+    "Result_set_default_company": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "set_default_company"
+            },
+            "ok": {
+              "const": true
+            },
+            "code": {
+              "const": "OK"
+            },
+            "data": {
+              "$ref": "#/$defs/SessionState"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call_id": {
+              "$ref": "#/$defs/Id"
+            },
+            "name": {
+              "const": "set_default_company"
+            },
+            "ok": {
+              "const": false
+            },
+            "code": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/Id"
+                },
+                {
+                  "not": {
+                    "const": "OK"
+                  }
+                }
+              ]
+            },
+            "data": {
+              "type": "null"
+            },
+            "rule_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RuleRef"
+              }
+            },
+            "operation_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "$ref": "#/$defs/Id"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "retryable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "call_id",
+            "name",
+            "ok",
+            "code",
+            "data",
+            "rule_refs",
+            "operation_id",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ToolResult": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Result_resolve_scope"
+        },
+        {
+          "$ref": "#/$defs/Result_get_totals"
+        },
+        {
+          "$ref": "#/$defs/Result_find_invoices"
+        },
+        {
+          "$ref": "#/$defs/Result_get_invoice"
+        },
+        {
+          "$ref": "#/$defs/Result_list_bank_transactions"
+        },
+        {
+          "$ref": "#/$defs/Result_get_rules"
+        },
+        {
+          "$ref": "#/$defs/Result_check_purpose"
+        },
+        {
+          "$ref": "#/$defs/Result_propose_invoice_edit"
+        },
+        {
+          "$ref": "#/$defs/Result_save_invoice_fields"
+        },
+        {
+          "$ref": "#/$defs/Result_verify_write"
+        },
+        {
+          "$ref": "#/$defs/Result_get_memories"
+        },
+        {
+          "$ref": "#/$defs/Result_remember_task"
+        },
+        {
+          "$ref": "#/$defs/Result_remember_preference"
+        },
+        {
+          "$ref": "#/$defs/Result_correct_memory"
+        },
+        {
+          "$ref": "#/$defs/Result_delete_memory"
+        },
+        {
+          "$ref": "#/$defs/Result_set_default_company"
+        }
+      ]
+    },
+    "Focus": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "business_month": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Month"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "source_message_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "origin": {
+          "enum": [
+            "explicit_user",
+            "tool_result",
+            "task_memory"
+          ]
+        },
+        "source_turn_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "task_id": {
+          "$ref": "#/$defs/Uuid"
+        },
+        "task_row_version": {
+          "$ref": "#/$defs/Version"
+        },
+        "memory_revision": {
+          "$ref": "#/$defs/Revision"
+        }
+      },
+      "required": [
+        "company_id",
+        "business_month",
+        "source",
+        "origin",
+        "source_turn_id"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "task_memory"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "task_id",
+              "task_row_version",
+              "memory_revision"
+            ]
+          }
+        }
+      ]
+    },
+    "IntentPlan": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "enum": [
+            "read",
+            "edit",
+            "memory",
+            "default",
+            "clarify"
+          ]
+        },
+        "company_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Company"
+          },
+          "uniqueItems": true
+        },
+        "invoice_keys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/InvoiceKey"
+          },
+          "uniqueItems": true,
+          "maxItems": 20
+        },
+        "content_mapping": {
+          "enum": [
+            "single",
+            "same_value_all",
+            "per_invoice",
+            "not_applicable",
+            "ambiguous"
+          ]
+        },
+        "action_evidence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Span"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "operation",
+        "company_ids",
+        "invoice_keys",
+        "content_mapping",
+        "action_evidence"
+      ],
+      "additionalProperties": false
+    },
+    "ScopeResolution": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "resolved",
+            "needs_input"
+          ]
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Scope"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "intent_plan": {
+          "$ref": "#/$defs/IntentPlan"
+        },
+        "missing_fields": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "company_id",
+              "business_month",
+              "invoice_id",
+              "purpose",
+              "note",
+              "task_choice",
+              "memory_scope",
+              "write_mapping"
+            ]
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "status",
+        "scope",
+        "intent_plan",
+        "missing_fields"
+      ],
+      "additionalProperties": false
+    },
+    "GatewayError": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "enum": [
+            "MODEL_NOT_CONFIGURED",
+            "MODEL_UNAVAILABLE",
+            "MODEL_TIMEOUT",
+            "MODEL_RATE_LIMITED",
+            "MODEL_AUTH_ERROR",
+            "MODEL_PROTOCOL_ERROR",
+            "MODEL_TRUNCATED",
+            "CONTEXT_BUDGET_EXCEEDED"
+          ]
+        },
+        "retryable": {
+          "type": "boolean"
+        },
+        "provider_request_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "retry_after_seconds": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "retryable",
+        "provider_request_id",
+        "retry_after_seconds"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

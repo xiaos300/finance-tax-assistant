@@ -1,0 +1,12 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.9, pytest-9.2.0, pluggy-1.7.0
+rootdir: E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend
+configfile: pyproject.toml
+plugins: anyio-4.16.0
+collected 18 items
+
+tests\unit\test_config.py .............                                  [ 72%]
+tests\unit\test_contracts.py .....                                       [100%]
+
+- generated xml file: E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\docs\development\reports\2026-11-03_D0_baseline\pytest.xml -
+============================= 18 passed in 1.12s ==============================

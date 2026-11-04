@@ -1,0 +1,658 @@
+{
+  "version": "1.2",
+  "success_envelope": "{data: <data_schema>, request_id: string}",
+  "error_schema": "contracts.schema.json#/$defs/ErrorEnvelope",
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/api/v1/me",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/Principal",
+      "requirements": [
+        "FR-001"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {},
+      "required_query": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/sessions",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/SessionPage",
+      "requirements": [
+        "FR-001",
+        "FR-011"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {
+        "cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        }
+      },
+      "required_query": []
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/sessions",
+      "body_schema": "contracts.schema.json#/$defs/SessionCreate",
+      "data_schema": "contracts.schema.json#/$defs/Session",
+      "requirements": [
+        "FR-001",
+        "FR-011"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {},
+      "required_query": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/sessions/{session_id}",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/Session",
+      "requirements": [
+        "FR-001"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {},
+      "required_query": []
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/sessions/{session_id}/default-company",
+      "body_schema": "contracts.schema.json#/$defs/DefaultPatch",
+      "data_schema": "contracts.schema.json#/$defs/SessionState",
+      "requirements": [
+        "FR-001"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        409,
+        422,
+        503
+      ],
+      "query": {},
+      "required_query": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/sessions/{session_id}/messages",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/MessagePage",
+      "requirements": [
+        "FR-002",
+        "FR-004"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {
+        "cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        }
+      },
+      "required_query": []
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/sessions/{session_id}/turns",
+      "body_schema": "contracts.schema.json#/$defs/TurnCreate",
+      "data_schema": "contracts.schema.json#/$defs/Turn",
+      "requirements": [
+        "FR-002",
+        "FR-006",
+        "FR-007",
+        "FR-016"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        400,
+        401,
+        403,
+        404,
+        409,
+        413,
+        422,
+        429,
+        502,
+        503,
+        504
+      ],
+      "query": {},
+      "alternate_data_schemas": {
+        "202": "contracts.schema.json#/$defs/TurnAccepted"
+      },
+      "required_query": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/sessions/{session_id}/turns/{turn_id}",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/Turn",
+      "requirements": [
+        "FR-007",
+        "FR-015"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {},
+      "required_query": []
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/sessions/{session_id}/turns/{turn_id}/cancel",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/CancelAck",
+      "requirements": [
+        "FR-007"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {},
+      "required_query": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/sessions/{session_id}/turns/{turn_id}/evidence",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/EvidencePage",
+      "requirements": [
+        "FR-015"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {
+        "cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        }
+      },
+      "required_query": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/write-operations/{operation_id}",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/WriteResult",
+      "requirements": [
+        "FR-007"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {},
+      "required_query": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/invoices/search",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/InvoicePage",
+      "requirements": [
+        "FR-004"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {
+        "cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "q": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "company_id": {
+          "$ref": "#/$defs/Company"
+        },
+        "business_month": {
+          "$ref": "#/$defs/Month"
+        }
+      },
+      "required_query": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/companies/{company_id}/invoices/{invoice_id}",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/Invoice",
+      "requirements": [
+        "FR-004"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {},
+      "required_query": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/companies/{company_id}/bank-transactions",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/BankPage",
+      "requirements": [
+        "FR-004"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {
+        "cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "business_month": {
+          "$ref": "#/$defs/Month"
+        }
+      },
+      "required_query": [
+        "business_month"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/companies/{company_id}/totals",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/Totals",
+      "requirements": [
+        "FR-003"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {
+        "business_month": {
+          "$ref": "#/$defs/Month"
+        },
+        "metrics": {
+          "type": "string",
+          "description": "逗号分隔invoice_total,bank_expense,bank_income；省略返回三项"
+        }
+      },
+      "required_query": [
+        "business_month"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/companies/{company_id}/purpose-check",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/Check",
+      "requirements": [
+        "FR-005",
+        "FR-013"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {
+        "business_month": {
+          "$ref": "#/$defs/Month"
+        }
+      },
+      "required_query": [
+        "business_month"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/companies/{company_id}/rules",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/RuleResolution",
+      "requirements": [
+        "FR-013"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {
+        "business_month": {
+          "$ref": "#/$defs/Month"
+        },
+        "topic": {
+          "type": "string",
+          "enum": [
+            "amount",
+            "purpose",
+            "bank"
+          ]
+        }
+      },
+      "required_query": [
+        "business_month",
+        "topic"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/companies/{company_id}/memories",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/MemoryPage",
+      "requirements": [
+        "FR-010",
+        "FR-011"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        422,
+        503
+      ],
+      "query": {
+        "cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "task",
+            "preference"
+          ]
+        }
+      },
+      "required_query": []
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/companies/{company_id}/tasks/{task_id}",
+      "body_schema": "contracts.schema.json#/$defs/TaskPatch",
+      "data_schema": "contracts.schema.json#/$defs/MemoryWriteResult",
+      "requirements": [
+        "FR-010"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        409,
+        422,
+        503
+      ],
+      "query": {},
+      "required_query": []
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/companies/{company_id}/tasks/{task_id}",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/Deleted",
+      "requirements": [
+        "FR-010"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        409,
+        422,
+        503
+      ],
+      "query": {
+        "expected_version": {
+          "$ref": "#/$defs/Version"
+        }
+      },
+      "required_query": [
+        "expected_version"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/companies/{company_id}/preferences/{preference_id}",
+      "body_schema": "contracts.schema.json#/$defs/PreferencePatch",
+      "data_schema": "contracts.schema.json#/$defs/MemoryWriteResult",
+      "requirements": [
+        "FR-009",
+        "FR-010"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        409,
+        422,
+        503
+      ],
+      "query": {},
+      "required_query": []
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/companies/{company_id}/preferences/{preference_id}",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/Deleted",
+      "requirements": [
+        "FR-010"
+      ],
+      "auth": "bearer",
+      "error_statuses": [
+        401,
+        403,
+        404,
+        409,
+        422,
+        503
+      ],
+      "query": {
+        "expected_version": {
+          "$ref": "#/$defs/Version"
+        }
+      },
+      "required_query": [
+        "expected_version"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/health/live",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/Health",
+      "requirements": [
+        "NFR-006"
+      ],
+      "auth": "public",
+      "error_statuses": [],
+      "query": {},
+      "required_query": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/health/ready",
+      "body_schema": null,
+      "data_schema": "contracts.schema.json#/$defs/Health",
+      "requirements": [
+        "NFR-006",
+        "NFR-009"
+      ],
+      "auth": "public",
+      "error_statuses": [
+        503
+      ],
+      "query": {},
+      "required_query": []
+    }
+  ]
+}

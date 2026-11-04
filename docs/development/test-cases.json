@@ -1,0 +1,1973 @@
+{
+  "version": "1.0",
+  "date": "2026-11-01",
+  "scope": "测试实施定义，全部not_run，不是测试通过记录",
+  "cases": [
+    {
+      "id": "TC001",
+      "ac_refs": [
+        "AC-001"
+      ],
+      "name": "首次装载与类型",
+      "stage": "D1",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0空库；两企业两用户原始明细",
+      "steps": [
+        "执行迁移、seed、grant-runtime",
+        "按表/企业/月计数并查类型"
+      ],
+      "expected": [
+        "2企业2用户40票48流水5规则版本",
+        "每企业月10票/8支出4收入",
+        "日期/编号/金额/权限准确"
+      ],
+      "test_type": "postgresql",
+      "model": "none",
+      "evidence": [
+        "seed报告",
+        "计数SQL",
+        "schema及原文件hash"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC002",
+      "ac_refs": [
+        "AC-002"
+      ],
+      "name": "重启与seed保护",
+      "stage": "D1",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B1：C001/F002已改用途，另有合法任务",
+      "steps": [
+        "保存当前hash",
+        "重启",
+        "同hash重复seed",
+        "以不同hash再seed",
+        "在独立测试库重建"
+      ],
+      "expected": [
+        "保存/任务保持",
+        "同hash只验证",
+        "不同hash或部分库拒绝且无覆盖",
+        "原文件不变"
+      ],
+      "test_type": "postgresql",
+      "model": "none",
+      "evidence": [
+        "重启前后行",
+        "seed退出码",
+        "hash"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC003",
+      "ac_refs": [
+        "AC-003"
+      ],
+      "name": "缺项追问与更正",
+      "stage": "D2",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；U001默认C001，年月未定",
+      "steps": [
+        "发送查金额",
+        "补9月",
+        "补2026年后更正为2026-08",
+        "另测跳过后明确甲企业年月"
+      ],
+      "expected": [
+        "只问实际缺项",
+        "无年份不默认当前",
+        "更正后仅8月参数",
+        "跳过可直接处理"
+      ],
+      "test_type": "model_contract",
+      "model": "real_and_stub",
+      "evidence": [
+        "每轮模型输入/工具参数/答复"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC004",
+      "ac_refs": [
+        "AC-004"
+      ],
+      "name": "真实模型统一决策",
+      "stage": "D2",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；配置模型能力探针；至少3组未预置同义表达",
+      "steps": [
+        "发送资料查询、组合金额+用途检查、缺项请求",
+        "检查工具选择和调用ID"
+      ],
+      "expected": [
+        "真实模型选择步骤，三个场景共享runner",
+        "替身不能单独关闭真实模型验收"
+      ],
+      "test_type": "model_contract",
+      "model": "real_and_stub",
+      "evidence": [
+        "真实wire输入/可见响应/工具链",
+        "模型配置与费用"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC005",
+      "ac_refs": [
+        "AC-005"
+      ],
+      "name": "四组金额口径",
+      "stage": "D1",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；U001；四企业月及查询前后用途变化",
+      "steps": [
+        "分别查C001/C002的2026-08/09三口径",
+        "改用途后重查"
+      ],
+      "expected": [
+        "四组三项与需求01完全一致，元两位字符串",
+        "支出不净额",
+        "用途不影响金额"
+      ],
+      "test_type": "postgresql",
+      "model": "none",
+      "evidence": [
+        "参数化金额断言",
+        "当前SQL结果"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC006",
+      "ac_refs": [
+        "AC-006"
+      ],
+      "name": "年月日期边界",
+      "stage": "D1",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B2：B0加DATE-2025-09=10分、DATE-2026-08-31=20分、DATE-2026-09-01=30分、DATE-2026-09-30=40分、DATE-2026-10-01=50分，均C001",
+      "steps": [
+        "查2026-09",
+        "查另年同月",
+        "提交月份00/13和年份0000"
+      ],
+      "expected": [
+        "目标9月仅加70分，C001发票9622.76",
+        "边界行集合准确",
+        "非法月/年份422"
+      ],
+      "test_type": "postgresql",
+      "model": "none",
+      "evidence": [
+        "边界行查询",
+        "参数错误和金额断言"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC007",
+      "ac_refs": [
+        "AC-007"
+      ],
+      "name": "零记录拒绝故障区别",
+      "stage": "D1",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；U001/U002；存储故障注入开关只在test",
+      "steps": [
+        "查U001甲2026-07",
+        "U002乙",
+        "模拟查询连接失败"
+      ],
+      "expected": [
+        "成功无数据0.00和empty",
+        "拒绝403、故障503均无伪零和受限金额"
+      ],
+      "test_type": "api",
+      "model": "none",
+      "evidence": [
+        "三类HTTP响应及无泄露断言"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC008",
+      "ac_refs": [
+        "AC-008"
+      ],
+      "name": "复合键与对象指代",
+      "stage": "D2",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0，两企业均有F002",
+      "steps": [
+        "分别测默认甲查F002、引用乙、无范围同号、多销售方候选"
+      ],
+      "expected": [
+        "明确对象只返回对应复合键",
+        "歧义追问",
+        "不猜用途或付款"
+      ],
+      "test_type": "model_contract",
+      "model": "real_and_stub",
+      "evidence": [
+        "模型/解析来源",
+        "目标行与拒绝写次数"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC009",
+      "ac_refs": [
+        "AC-009"
+      ],
+      "name": "甲用途空白检查",
+      "stage": "D2",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；另独立变体将C001/F001用途设为Unicode空白",
+      "steps": [
+        "查甲9月",
+        "空白变体重查",
+        "仅给F002补备注后再查"
+      ],
+      "expected": [
+        "初始F002/F003/F004/F006/F009",
+        "空白变体增加F001",
+        "备注不消除缺填",
+        "R002 2.0"
+      ],
+      "test_type": "postgresql",
+      "model": "none",
+      "evidence": [
+        "Check DTO",
+        "当前行",
+        "RuleRef"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC010",
+      "ac_refs": [
+        "AC-010"
+      ],
+      "name": "乙门槛与低额主动补填",
+      "stage": "D3",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；乙F004=99999分、F002=100000分、F005=100001分",
+      "steps": [
+        "先检查乙9月",
+        "U001明确给乙低额F001补用途并回读"
+      ],
+      "expected": [
+        "初始仅F002/F005/F006",
+        "1000边界正确",
+        "低额允许主动写且核验"
+      ],
+      "test_type": "integration",
+      "model": "real_and_stub",
+      "evidence": [
+        "阈值结果",
+        "写后独立读",
+        "原金额未变"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC011",
+      "ac_refs": [
+        "AC-011"
+      ],
+      "name": "8月检查边界",
+      "stage": "D2",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；U001甲8月",
+      "steps": [
+        "请求8月用途检查并另查8月金额"
+      ],
+      "expected": [
+        "检查unsupported且missing/count为null，不套停用版",
+        "8月金额正常"
+      ],
+      "test_type": "api",
+      "model": "none",
+      "evidence": [
+        "两个DTO",
+        "未用停用依据的证据"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC012",
+      "ac_refs": [
+        "AC-012"
+      ],
+      "name": "单票受控写",
+      "stage": "D3",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；U001；C001/F002用途null，金额80000分",
+      "steps": [
+        "明确补用途为客户方案资料打印",
+        "独立连接读两企业同号与所有字段"
+      ],
+      "expected": [
+        "仅甲F002 purpose改变",
+        "row_version增1",
+        "乙同号及所有不可写字段不变",
+        "verified"
+      ],
+      "test_type": "model_contract",
+      "model": "real_and_stub",
+      "evidence": [
+        "前后字段差异",
+        "授权来源",
+        "账本与回读事件"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC013",
+      "ac_refs": [
+        "AC-013"
+      ],
+      "name": "身份与权限反例",
+      "stage": "D3",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；两份独立演示token",
+      "steps": [
+        "查me",
+        "U002构造乙读/甲写",
+        "伪造X-User-ID及自然语言身份字段"
+      ],
+      "expected": [
+        "U001仅显示两授权企业，U002仅甲",
+        "程序身份不变",
+        "受限请求拒绝且无泄露/修改"
+      ],
+      "test_type": "api",
+      "model": "none",
+      "evidence": [
+        "API响应",
+        "权限查询",
+        "零有效写断言"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC014",
+      "ac_refs": [
+        "AC-014"
+      ],
+      "name": "不可写字段与银行只读",
+      "stage": "D3",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；U001；参数化amount/date/company/id/seller/item及银行增删改",
+      "steps": [
+        "向Dispatcher构造越界字段，并以应用DB角色直接执行禁写SQL"
+      ],
+      "expected": [
+        "schema/Guard拒绝",
+        "数据库列/表权限拒绝",
+        "所有相关数据不变"
+      ],
+      "test_type": "integration",
+      "model": "stub",
+      "evidence": [
+        "工具拒绝",
+        "SQLSTATE权限拒绝",
+        "前后对照"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC015",
+      "ac_refs": [
+        "AC-015"
+      ],
+      "name": "备注清空及内容不足",
+      "stage": "D3",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0的三个独立副本",
+      "steps": [
+        "只补备注",
+        "明确清空用途",
+        "请求补用途但不提供内容"
+      ],
+      "expected": [
+        "只改指定字段",
+        "清空合法但仍缺填",
+        "无内容追问且不取票面项目"
+      ],
+      "test_type": "integration",
+      "model": "real_and_stub",
+      "evidence": [
+        "changes/null与省略断言",
+        "Check",
+        "无越界差异"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC016",
+      "ac_refs": [
+        "AC-016"
+      ],
+      "name": "回读后刷新待办",
+      "stage": "D3",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；U001甲9月明确持续补齐任务",
+      "steps": [
+        "补甲F002用途后独立回读，再查当前剩余"
+      ],
+      "expected": [
+        "verified且剩F003/F004/F006/F009共4，不称整月已齐"
+      ],
+      "test_type": "integration",
+      "model": "real_and_stub",
+      "evidence": [
+        "独立连接回读",
+        "当前Check",
+        "任务进度与回复"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC017",
+      "ac_refs": [
+        "AC-017"
+      ],
+      "name": "提交后丢响应与重复",
+      "stage": "D3",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；固定turn_id/operation_id；故障点after_commit_before_response",
+      "steps": [
+        "使提交后HTTP响应丢失",
+        "同ID同payload重发",
+        "新轮同值再请求",
+        "模拟只读不可用"
+      ],
+      "expected": [
+        "原轮不重跑",
+        "有效票据UPDATE总数1",
+        "新轮already_current",
+        "无法读则待核验不重写"
+      ],
+      "test_type": "fault_injection",
+      "model": "stub",
+      "evidence": [
+        "账本",
+        "row_version",
+        "故障点",
+        "有效UPDATE计数",
+        "重试链"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC018",
+      "ac_refs": [
+        "AC-018"
+      ],
+      "name": "写入与核验故障分层",
+      "stage": "D3",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0三个独立副本：before_commit、readback_error、readback_mismatch",
+      "steps": [
+        "分别执行同一授权写",
+        "检查数据库、任务与终态"
+      ],
+      "expected": [
+        "确定回滚才failed",
+        "提交后读错/不一致均verify_pending，不报核实成功、不完成任务"
+      ],
+      "test_type": "fault_injection",
+      "model": "stub",
+      "evidence": [
+        "三类操作状态/错误",
+        "独立SQL",
+        "最终回复"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC019",
+      "ac_refs": [
+        "AC-019"
+      ],
+      "name": "任务更正和现状重算",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；U001/C001；持续补齐任务",
+      "steps": [
+        "分轮指定企业月",
+        "补F002/F003后剩3",
+        "清空其中1张后继续",
+        "另更正月份"
+      ],
+      "expected": [
+        "任务归属/月正确",
+        "清空后剩4",
+        "更正清旧快照",
+        "历史补过不当现状"
+      ],
+      "test_type": "integration",
+      "model": "real_and_stub",
+      "evidence": [
+        "任务版本/历史",
+        "当前Check",
+        "模型上下文"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC020",
+      "ac_refs": [
+        "AC-020"
+      ],
+      "name": "单未完成与替换",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；U001甲已有active任务，乙无任务",
+      "steps": [
+        "提出甲不兼容目标",
+        "未确认时拒建",
+        "确认替换",
+        "并发尝试新建",
+        "乙另建"
+      ],
+      "expected": [
+        "先澄清",
+        "替换同事务取消旧任务",
+        "每用户企业最多1未完，verify_pending也占名额",
+        "乙独立"
+      ],
+      "test_type": "postgresql",
+      "model": "stub",
+      "evidence": [
+        "唯一索引冲突",
+        "事务前后任务集",
+        "澄清证据"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC021",
+      "ac_refs": [
+        "AC-021"
+      ],
+      "name": "明确长期偏好",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；无偏好",
+      "steps": [
+        "分别说以后甲先报总额、这次简短、切换清除",
+        "保存以后默认甲，再明确请求乙"
+      ],
+      "expected": [
+        "只保存明确长期意愿",
+        "default_company只建议且不覆盖乙、不改变权限"
+      ],
+      "test_type": "model_contract",
+      "model": "real_and_stub",
+      "evidence": [
+        "偏好行",
+        "source/变更来源",
+        "实际模型输入与会话状态"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC022",
+      "ac_refs": [
+        "AC-022"
+      ],
+      "name": "两类记忆管理与失效",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B1；本人有任务和偏好；旧输入含相应材料",
+      "steps": [
+        "分别查看/更正/删除任务和偏好",
+        "新轮/新会话检查输入",
+        "查原票据"
+      ],
+      "expected": [
+        "新值生效",
+        "旧记忆/摘要/任务派生焦点不复活",
+        "票据不回滚",
+        "他人管理拒绝"
+      ],
+      "test_type": "integration",
+      "model": "real_and_stub",
+      "evidence": [
+        "来源事件",
+        "revision",
+        "实际新输入扫描",
+        "票据值"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC023",
+      "ac_refs": [
+        "AC-023"
+      ],
+      "name": "跨会话明确恢复隔离",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；U001甲乙各有未完；U002甲有独立记忆",
+      "steps": [
+        "新会话选甲只提示",
+        "明确继续",
+        "跳过后指定甲",
+        "仅说继续",
+        "切用户/企业"
+      ],
+      "expected": [
+        "选择不执行",
+        "明确继续重查",
+        "多候选澄清",
+        "无跨用户/企业材料泄露"
+      ],
+      "test_type": "model_contract",
+      "model": "real_and_stub",
+      "evidence": [
+        "候选提示",
+        "恢复后规则/数据查询",
+        "四范围输入"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC024",
+      "ac_refs": [
+        "AC-024"
+      ],
+      "name": "旧授权不重放",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B1；旧任务含曾补F002历史",
+      "steps": [
+        "选/切/清默认",
+        "恢复任务",
+        "仅问规则",
+        "仅发引用"
+      ],
+      "expected": [
+        "全部无本轮明确写意图时有效UPDATE为0",
+        "任务不迁移或取消"
+      ],
+      "test_type": "model_contract",
+      "model": "real_and_stub",
+      "evidence": [
+        "会话事件",
+        "账本计数",
+        "无写工具证据"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC025",
+      "ac_refs": [
+        "AC-025"
+      ],
+      "name": "知识CLI维护",
+      "stage": "D2",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；维护账号；独立规则试验库",
+      "steps": [
+        "list五版本",
+        "导入相同/冲突版本",
+        "revise正文策略",
+        "disable",
+        "缺元数据导入"
+      ],
+      "expected": [
+        "五版本保留",
+        "同hash幂等、异hash冲突",
+        "修订/停用与事件原子",
+        "缺项整体拒绝"
+      ],
+      "test_type": "cli",
+      "model": "none",
+      "evidence": [
+        "CLI退出码",
+        "规则revision/hash/状态",
+        "后续resolve"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC026",
+      "ac_refs": [
+        "AC-026"
+      ],
+      "name": "按实际企业选规则",
+      "stage": "D2",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；默认甲，上一轮明确查乙9月",
+      "steps": [
+        "金额选R001",
+        "甲检查选R002 2.0",
+        "乙/明确指代选R003 1.0",
+        "银行规则选R004"
+      ],
+      "expected": [
+        "企业/月/状态/主题准确，正文与策略同快照",
+        "RuleRef名称版本可查"
+      ],
+      "test_type": "integration",
+      "model": "real_and_stub",
+      "evidence": [
+        "查询条件",
+        "规则DTO",
+        "同事务标识",
+        "输入与回复"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC027",
+      "ac_refs": [
+        "AC-027"
+      ],
+      "name": "规则缺失冲突与月中变更",
+      "stage": "D2",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0独立副本：停用用途规则；加同主题启用冲突；加月中生效规则",
+      "steps": [
+        "分别resolve/check",
+        "保留R001后独立查金额"
+      ],
+      "expected": [
+        "不足/冲突不判全部已齐，不回退停用版",
+        "月中范围不擅判",
+        "金额查询独立可用"
+      ],
+      "test_type": "postgresql",
+      "model": "none",
+      "evidence": [
+        "规则集",
+        "Check null结果",
+        "金额事实"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC028",
+      "ac_refs": [
+        "AC-028"
+      ],
+      "name": "输入预算与必要信息",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；fake profile输入1000输出256安全余128；真实分支用probe已核实预算",
+      "steps": [
+        "加入无关历史、相关规则/引用、最新更正和待办",
+        "使必要材料超预算"
+      ],
+      "expected": [
+        "预算计工具schema/结果",
+        "保留身份/默认与实际/月/更正",
+        "无关材料裁剪",
+        "必要超限显式失败/分步"
+      ],
+      "test_type": "model_contract",
+      "model": "real_and_stub",
+      "evidence": [
+        "各次实际payload",
+        "计数方法",
+        "预算数值",
+        "超限行为"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC029",
+      "ac_refs": [
+        "AC-029"
+      ],
+      "name": "实际证据与秘密",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；成功/拒绝/失败/UI事件；设置仅用于测试的秘密标记",
+      "steps": [
+        "完成各类轮",
+        "查看wire输入、记忆规则/工具/回读",
+        "扫描全部正文/证据/导出材料"
+      ],
+      "expected": [
+        "发送前落实际wire正文",
+        "未调用模型的事件不伪造",
+        "已知秘密不入模型正文/日志"
+      ],
+      "test_type": "integration",
+      "model": "real_and_stub",
+      "evidence": [
+        "wire hash",
+        "invocation/call/operation关联",
+        "秘密扫描结果"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC030",
+      "ac_refs": [
+        "AC-030"
+      ],
+      "name": "事实约束与自然答复",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；构造模型未知fact_id/错误成功/重复追问输出变体",
+      "steps": [
+        "生成成功、部分、待核验、不足及非法FinalPlan"
+      ],
+      "expected": [
+        "Guard只取实际事实",
+        "无假金额/成功",
+        "仅问缺项",
+        "纠正一次仍错显示程序事实并标生成失败"
+      ],
+      "test_type": "model_contract",
+      "model": "real_and_stub",
+      "evidence": [
+        "FinalPlan校验",
+        "可见答复",
+        "Fact/evidence对照"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC031",
+      "ac_refs": [
+        "AC-031"
+      ],
+      "name": "真实耗时与演示计时",
+      "stage": "D6",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "已完成D0—D5、真实模型可用、干净演示副本",
+      "steps": [
+        "记录本地/模型/端到端耗时",
+        "按需求提纲实际演练"
+      ],
+      "expected": [
+        "总演示不超过5分钟",
+        "不以纸面timeout作通过",
+        "单轮无自行虚构SLA"
+      ],
+      "test_type": "release",
+      "model": "real",
+      "evidence": [
+        "环境/模型标识",
+        "各段计时",
+        "实际演示记录"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC032",
+      "ac_refs": [
+        "AC-032"
+      ],
+      "name": "安全综合",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0/B1；U002、其他用户会话、假秘密、非法字段",
+      "steps": [
+        "依次测身份注入、跨企业读写/记忆/日志、秘密扫描和DB列级禁写"
+      ],
+      "expected": [
+        "无越权读取/有效修改，token/数据库URL/模型密钥不泄露"
+      ],
+      "test_type": "security",
+      "model": "real_and_stub",
+      "evidence": [
+        "参数化安全报告",
+        "前后数据库差异",
+        "秘密扫描"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC033",
+      "ac_refs": [
+        "AC-033"
+      ],
+      "name": "故障后重启保持",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B1；准备running轮与prepared/committed变体",
+      "steps": [
+        "终止进程并重启",
+        "核对数据库、任务、原轮与只读核验"
+      ],
+      "expected": [
+        "用途/任务保留",
+        "running变interrupted",
+        "无自动续写",
+        "账本与当前值一致/待核验"
+      ],
+      "test_type": "fault_injection",
+      "model": "stub",
+      "evidence": [
+        "重启前后SQL",
+        "原轮状态",
+        "UPDATE计数"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC034",
+      "ac_refs": [
+        "AC-034"
+      ],
+      "name": "完整交互可操作",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；网页、凭证、用户操作说明",
+      "steps": [
+        "按说明走选择/跳过、切清、普通文本、引用、记忆及知识管理"
+      ],
+      "expected": [
+        "Must路径均可操作",
+        "已明确不重复问",
+        "错误/空/加载状态可区分"
+      ],
+      "test_type": "e2e",
+      "model": "real_and_stub",
+      "evidence": [
+        "Playwright轨迹",
+        "实际数据/工具",
+        "操作记录"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC035",
+      "ac_refs": [
+        "AC-035"
+      ],
+      "name": "规则维护与设计说明",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0规则试验库；已有源代码与短设计草稿",
+      "steps": [
+        "改规则不改对话脚本",
+        "核对实现/未实现说明与自主设计"
+      ],
+      "expected": [
+        "规则更新检索生效",
+        "说明分工、记忆知识、当前不足与改进方向",
+        "不虚构评分"
+      ],
+      "test_type": "cli",
+      "model": "none",
+      "evidence": [
+        "代码差异",
+        "CLI记录",
+        "短设计核对清单"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC036",
+      "ac_refs": [
+        "AC-036"
+      ],
+      "name": "干净启动与作品包",
+      "stage": "D6",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "独立干净工作目录、可访问PostgreSQL/模型、正式包清单",
+      "steps": [
+        "按README准备依赖/角色/seed或恢复，启动并三场景",
+        "扫描包"
+      ],
+      "expected": [
+        "无未声明服务",
+        "实际能查改回读",
+        "无真实秘密/个人数据/.venv/node_modules",
+        "说明与实际一致"
+      ],
+      "test_type": "release",
+      "model": "real",
+      "evidence": [
+        "干净环境完整命令/退出码",
+        "当前数据/证据",
+        "包扫描"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC037",
+      "ac_refs": [
+        "AC-037"
+      ],
+      "name": "模型语义及注入反例",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；备注含忽略权限；当前文字参数化否定/转述/条件/缺内容",
+      "steps": [
+        "用新表达/组合需求并查真实工具",
+        "发送别改、如果改、他说要改",
+        "尝试让备注提升权限"
+      ],
+      "expected": [
+        "真实模型参与决策",
+        "程序权限/金额不信模型",
+        "所有无明确授权反例零有效写",
+        "不足直说"
+      ],
+      "test_type": "security",
+      "model": "real_and_stub",
+      "evidence": [
+        "真实wire和工具链",
+        "每个反例授权证据",
+        "UPDATE计数"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC038",
+      "ac_refs": [
+        "AC-038"
+      ],
+      "name": "原始当前与删除政策",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B1；记录原文件hash；记忆正文唯一标记",
+      "steps": [
+        "重启",
+        "删除记忆",
+        "新调用",
+        "读取历史政策/历史证据"
+      ],
+      "expected": [
+        "原始文件不变",
+        "合法保存保持",
+        "新输入无旧记忆/摘要",
+        "历史保留如实说明"
+      ],
+      "test_type": "integration",
+      "model": "real_and_stub",
+      "evidence": [
+        "原始hash",
+        "当前行",
+        "新输入扫描",
+        "保留政策"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC039",
+      "ac_refs": [
+        "AC-039"
+      ],
+      "name": "成功失败证据可追溯",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；一成功写轮与一读后失败轮",
+      "steps": [
+        "从最终结果进入evidence，追到输入/RuleRef/MemoryRef/工具/回读"
+      ],
+      "expected": [
+        "关联ID贯通",
+        "失败阶段可定位",
+        "无手写伪造输入或隐藏推理要求"
+      ],
+      "test_type": "integration",
+      "model": "real_and_stub",
+      "evidence": [
+        "turn→invocation→call→operation→readback完整索引"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC040",
+      "ac_refs": [
+        "AC-040"
+      ],
+      "name": "可选受控恢复",
+      "stage": "D7",
+      "priority": "optional",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "显式启用FR-017，原待核验操作存在",
+      "steps": [
+        "请求恢复，先读当前状态再决定必要后续",
+        "无读权限/不可读变体"
+      ],
+      "expected": [
+        "不重复已生效写",
+        "新写仍须本轮意愿",
+        "不可读继续待核验"
+      ],
+      "test_type": "optional",
+      "model": "real_and_stub",
+      "evidence": [
+        "可选恢复链与有效写次数"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC041",
+      "ac_refs": [
+        "AC-041"
+      ],
+      "name": "可选证据导出",
+      "stage": "D7",
+      "priority": "optional",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "显式启用FR-018；本人授权会话及其他范围数据",
+      "steps": [
+        "导出选定范围并与源事件逐项比对"
+      ],
+      "expected": [
+        "内容可关联且一致",
+        "无其他用户/企业/秘密",
+        "未启用时not_in_scope"
+      ],
+      "test_type": "optional",
+      "model": "none",
+      "evidence": [
+        "导出hash",
+        "事件对照",
+        "范围/秘密扫描"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC042",
+      "ac_refs": [
+        "AC-042"
+      ],
+      "name": "授权搜索",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；U001/U002；默认企业可空",
+      "steps": [
+        "＋添加发票以F002、销售方、项目搜索",
+        "U002构造乙请求",
+        "无结果/故障变体"
+      ],
+      "expected": [
+        "结果显企业/票号/日期/金额",
+        "U002不能取乙",
+        "无结果与故障不同",
+        "普通聊天仍可用"
+      ],
+      "test_type": "e2e",
+      "model": "none",
+      "evidence": [
+        "搜索HTTP/界面轨迹/权限拒绝"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC043",
+      "ac_refs": [
+        "AC-043"
+      ],
+      "name": "引用草稿与发送生命周期",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；草稿初始无引用",
+      "steps": [
+        "添加/重复/移除/关闭搜索",
+        "只发引用",
+        "下一条发普通文字",
+        "刷新观察原轮"
+      ],
+      "expected": [
+        "复合去重",
+        "草稿操作不写不建任务",
+        "只引用不写",
+        "发送关联当前消息不自动带下条"
+      ],
+      "test_type": "e2e",
+      "model": "stub",
+      "evidence": [
+        "草稿store",
+        "消息持久引用",
+        "账本/任务零变化",
+        "恢复指针"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC044",
+      "ac_refs": [
+        "AC-044"
+      ],
+      "name": "引用乙与多票映射",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0独立变体；默认甲，引用乙F002；另同企业两票",
+      "steps": [
+        "明确补乙",
+        "测文字甲引用乙冲突",
+        "多票映射不明",
+        "明确同企业两票同内容"
+      ],
+      "expected": [
+        "明确乙只改乙且默认甲",
+        "冲突/不明不写",
+        "同企业逐票回读/部分报告",
+        "不做跨企业批量写"
+      ],
+      "test_type": "e2e",
+      "model": "real_and_stub",
+      "evidence": [
+        "解析来源",
+        "逐票账本/回读",
+        "甲乙差异",
+        "默认状态"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC045",
+      "ac_refs": [
+        "AC-045"
+      ],
+      "name": "引用后数据规则权限变化",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；已搜索引用，未发送",
+      "steps": [
+        "分别改变当前用途、停用规则、收回读/写权限、注入查询失败后再发送"
+      ],
+      "expected": [
+        "重新读与验权",
+        "不用旧快照",
+        "有权限的明确合法字段可保存回读",
+        "检查依据不足直说"
+      ],
+      "test_type": "fault_injection",
+      "model": "real_and_stub",
+      "evidence": [
+        "搜索快照与重查对照",
+        "变更/拒绝/核验事件"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC046",
+      "ac_refs": [
+        "AC-046"
+      ],
+      "name": "欢迎单选与跳过",
+      "stage": "D2",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；U001/U002；新会话",
+      "steps": [
+        "检查企业选项/单选",
+        "跳过直接明确甲年月",
+        "仅选企业不提供月份"
+      ],
+      "expected": [
+        "U001甲乙/U002仅甲",
+        "可跳过且默认空，不等于全部",
+        "明确请求直接处理",
+        "缺月追问"
+      ],
+      "test_type": "e2e",
+      "model": "real_and_stub",
+      "evidence": [
+        "界面轨迹",
+        "Session DTO与工具参数"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC047",
+      "ac_refs": [
+        "AC-047"
+      ],
+      "name": "默认管理与任务隔离",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B1；甲有未完、乙独立；本人偏好存在",
+      "steps": [
+        "UI及明确指令切换/清除",
+        "模拟状态保存失败",
+        "默认空管理明确企业记忆",
+        "新会话继续"
+      ],
+      "expected": [
+        "界面与后端一致",
+        "失败保留旧状态",
+        "权限/任务归属/偏好不自动变",
+        "明确继续才恢复"
+      ],
+      "test_type": "e2e",
+      "model": "real_and_stub",
+      "evidence": [
+        "会话版本事件",
+        "任务/偏好差异",
+        "恢复输入"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC048",
+      "ac_refs": [
+        "AC-048"
+      ],
+      "name": "单次乙查询与明确指代",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；默认甲",
+      "steps": [
+        "查乙2026-09",
+        "再问这些发票哪些缺用途",
+        "最后明确切换乙"
+      ],
+      "expected": [
+        "前两轮实际乙/默认甲，R003 1.0初始3票",
+        "最后才切默认",
+        "无甲专属材料误注入"
+      ],
+      "test_type": "model_contract",
+      "model": "real_and_stub",
+      "evidence": [
+        "范围source",
+        "Context",
+        "Check及Session DTO"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC049",
+      "ac_refs": [
+        "AC-049"
+      ],
+      "name": "纯文本连续闭环",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "B0；默认甲，无引用路径",
+      "steps": [
+        "查2026-09金额",
+        "问缺用途",
+        "明确补F002客户资料打印",
+        "继续检查"
+      ],
+      "expected": [
+        "承接企业月不重复问",
+        "保存独立回读",
+        "剩4票，单票完成不称整月已齐"
+      ],
+      "test_type": "e2e",
+      "model": "real",
+      "evidence": [
+        "真实连续对话/工具/规则/回读/当前清单"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC050",
+      "ac_refs": [
+        "AC-050"
+      ],
+      "name": "可选跨企业金额",
+      "stage": "D7",
+      "priority": "optional",
+      "preconditions": [
+        "对应阶段最小实现存在；使用独立测试数据；每个变体重置fixture",
+        "真实模型分支另需已通过probe与显式ALLOW_REAL_MODEL_TESTS"
+      ],
+      "initial_data": "显式启用FR-003 Should，B0",
+      "steps": [
+        "U001明确查甲乙9月",
+        "U002请求含乙",
+        "跳过但无跨企意图"
+      ],
+      "expected": [
+        "逐企校验并分别返回预期三金额",
+        "不自动合并",
+        "受限部分不泄露",
+        "跳过不查全部"
+      ],
+      "test_type": "optional",
+      "model": "real_and_stub",
+      "evidence": [
+        "可选查询与权限/金额对照"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC051",
+      "ac_refs": [
+        "AC-001",
+        "AC-004",
+        "AC-036"
+      ],
+      "name": "无模型配置仍可准备工程",
+      "stage": "D0",
+      "priority": "must",
+      "preconditions": [
+        "对应模块已实现；独立PostgreSQL测试库；故障开关仅test",
+        "按步骤用屏障控制交错，不靠随机sleep"
+      ],
+      "initial_data": "无MODEL_*和token；数据库设置单独可用",
+      "steps": [
+        "只构造DatabaseSettings",
+        "启动disabled诊断",
+        "调用聊天",
+        "APP_ENV非test尝试test_stub"
+      ],
+      "expected": [
+        "数据库命令/构建不被模型参数拦截",
+        "disabled聊天503且无伪轮",
+        "非test拒绝test_stub"
+      ],
+      "test_type": "configuration",
+      "model": "none",
+      "evidence": [
+        "配置分层测试",
+        "退出码",
+        "未调用模型断言"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC052",
+      "ac_refs": [
+        "AC-001",
+        "AC-014",
+        "AC-032",
+        "AC-036"
+      ],
+      "name": "PostgreSQL角色schema权限",
+      "stage": "D1",
+      "priority": "must",
+      "preconditions": [
+        "对应模块已实现；独立PostgreSQL测试库；故障开关仅test",
+        "按步骤用屏障控制交错，不靠随机sleep"
+      ],
+      "initial_data": "新建独立harness_test_库，bootstrap角色与schema，未有业务表",
+      "steps": [
+        "维护账号迁移/seed/grant-runtime",
+        "app逐表读及按列写",
+        "先制造过宽UPDATE再重授权",
+        "恢复副本后授权"
+      ],
+      "expected": [
+        "app无DDL/建库/改金额/银行/权限",
+        "memory_revision可更新",
+        "schema/alembic/序列可用",
+        "过宽权限被撤销"
+      ],
+      "test_type": "postgresql",
+      "model": "none",
+      "evidence": [
+        "角色/权限SQL",
+        "拒绝SQLSTATE",
+        "迁移/恢复/列级测试"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC053",
+      "ac_refs": [
+        "AC-013",
+        "AC-017",
+        "AC-032"
+      ],
+      "name": "跨用户重复轮ID",
+      "stage": "D2",
+      "priority": "must",
+      "preconditions": [
+        "对应模块已实现；独立PostgreSQL测试库；故障开关仅test",
+        "按步骤用屏障控制交错，不靠随机sleep"
+      ],
+      "initial_data": "U001已运行/完成轮T；U002和U001另会话可用",
+      "steps": [
+        "用他人T重发不同/相同内容",
+        "同会话同T同payload再发",
+        "同T异payload再发",
+        "本人同T重排invoice_references顺序再次提交"
+      ],
+      "expected": [
+        "他人/另会话404不回状态或hash",
+        "本人同内容202/200",
+        "异内容409且不执行第二轮",
+        "引用顺序影响第一张等指代，重排为异payload返回409，不复用旧执行"
+      ],
+      "test_type": "api",
+      "model": "stub",
+      "evidence": [
+        "HTTP",
+        "轮/消息/操作数量与无泄露断言"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC054",
+      "ac_refs": [
+        "AC-022",
+        "AC-024",
+        "AC-028",
+        "AC-038"
+      ],
+      "name": "并发删除与旧模型结果",
+      "stage": "D4",
+      "priority": "must",
+      "preconditions": [
+        "对应模块已实现；独立PostgreSQL测试库；故障开关仅test",
+        "按步骤用屏障控制交错，不靠随机sleep"
+      ],
+      "initial_data": "B1；任务派生焦点；FakeModel在返回前暂停",
+      "steps": [
+        "在模型返回前或返回与写事务间以UI删/改记忆",
+        "释放返回",
+        "另测本轮合法记忆工具更新revision"
+      ],
+      "expected": [
+        "外部变更后旧结果/句柄失效且无后续旧记忆写",
+        "本轮自身记忆更新可重建ctx继续",
+        "焦点不复活"
+      ],
+      "test_type": "concurrency",
+      "model": "stub",
+      "evidence": [
+        "屏障时间线",
+        "users行锁/revision",
+        "实际输入",
+        "UPDATE计数"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC055",
+      "ac_refs": [
+        "AC-013",
+        "AC-032",
+        "AC-045"
+      ],
+      "name": "历史结果授权变化",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应模块已实现；独立PostgreSQL测试库；故障开关仅test",
+        "按步骤用屏障控制交错，不靠随机sleep"
+      ],
+      "initial_data": "U001已有乙查询与引用/证据，随后维护收回乙read",
+      "steps": [
+        "调用GET消息/轮结果/证据/焦点/原引用",
+        "用旧cursor继续读"
+      ],
+      "expected": [
+        "owner不能替代当前企业权限",
+        "受限消息占位/轮结果403/证据不回正文",
+        "无乙数据泄露"
+      ],
+      "test_type": "security",
+      "model": "none",
+      "evidence": [
+        "各端点响应",
+        "权限前后",
+        "敏感内容扫描"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC056",
+      "ac_refs": [
+        "AC-017",
+        "AC-033",
+        "AC-036"
+      ],
+      "name": "单实例与启动恢复",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应模块已实现；独立PostgreSQL测试库；故障开关仅test",
+        "按步骤用屏障控制交错，不靠随机sleep"
+      ],
+      "initial_data": "同一测试库A进程持单实例锁且有running轮；另留上次崩溃轮副本",
+      "steps": [
+        "启动B进程",
+        "释放/终止A后再启动",
+        "断开锁专用连接"
+      ],
+      "expected": [
+        "B拿不到锁即退出且不改A轮",
+        "获锁后才恢复遗留轮",
+        "丢锁停止新轮/not_ready"
+      ],
+      "test_type": "concurrency",
+      "model": "none",
+      "evidence": [
+        "advisory锁/进程日志",
+        "轮状态差异"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC057",
+      "ac_refs": [
+        "AC-008",
+        "AC-029",
+        "AC-032",
+        "AC-034"
+      ],
+      "name": "HTTP DTO与游标契约",
+      "stage": "D2",
+      "priority": "must",
+      "preconditions": [
+        "对应模块已实现；独立PostgreSQL测试库；故障开关仅test",
+        "按步骤用屏障控制交错，不靠随机sleep"
+      ],
+      "initial_data": "B0；至少两页消息/票据/记忆/证据",
+      "steps": [
+        "逐接口验证body/data/error schema",
+        "测试空patch、null、省略、未知字段",
+        "游标篡改筛选/用户/非法值",
+        "202/取消变体"
+      ],
+      "expected": [
+        "契约一致",
+        "无空patch或越字段写",
+        "分页排序/next_cursor稳定，游标不扩大权限",
+        "错误不泄露堆栈"
+      ],
+      "test_type": "api",
+      "model": "none",
+      "evidence": [
+        "契约快照",
+        "OpenAPI/TS差异",
+        "响应schema断言"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC058",
+      "ac_refs": [
+        "AC-017",
+        "AC-018",
+        "AC-033"
+      ],
+      "name": "deadline与提交线程交错",
+      "stage": "D3",
+      "priority": "must",
+      "preconditions": [
+        "对应模块已实现；独立PostgreSQL测试库；故障开关仅test",
+        "按步骤用屏障控制交错，不靠随机sleep"
+      ],
+      "initial_data": "B0；固定T/O；提交线程在COMMIT附近屏障，短轮deadline",
+      "steps": [
+        "deadline/请求取消同时发生于提交",
+        "等数据库有界结算",
+        "查询同T与O"
+      ],
+      "expected": [
+        "不把线程取消当回滚",
+        "截止后无新工具",
+        "已提交有账本并回读/待核验，重复无第二次写",
+        "不永久running"
+      ],
+      "test_type": "fault_injection",
+      "model": "stub",
+      "evidence": [
+        "线程/取消时间线",
+        "DB状态",
+        "终态和有效UPDATE计数"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC059",
+      "ac_refs": [
+        "AC-014",
+        "AC-024",
+        "AC-044",
+        "AC-045"
+      ],
+      "name": "工具批次预检",
+      "stage": "D3",
+      "priority": "must",
+      "preconditions": [
+        "对应模块已实现；独立PostgreSQL测试库；故障开关仅test",
+        "按步骤用屏障控制交错，不靠随机sleep"
+      ],
+      "initial_data": "B0；同响应构造甲写+乙写、合法调用+非法工具、同票异内容、伪句柄",
+      "steps": [
+        "将参数化batch交Dispatcher",
+        "在第一票更新点计数"
+      ],
+      "expected": [
+        "整体预检先于任何副作用",
+        "跨企业写计划拒绝",
+        "未知工具/无效schema不先执行合法项",
+        "句柄绑定与版本生效"
+      ],
+      "test_type": "security",
+      "model": "stub",
+      "evidence": [
+        "batch校验结果",
+        "零有效写/部分合法计划对照"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC060",
+      "ac_refs": [
+        "AC-016",
+        "AC-018",
+        "AC-029",
+        "AC-039"
+      ],
+      "name": "证据和进度后写失败",
+      "stage": "D5",
+      "priority": "must",
+      "preconditions": [
+        "对应模块已实现；独立PostgreSQL测试库；故障开关仅test",
+        "按步骤用屏障控制交错，不靠随机sleep"
+      ],
+      "initial_data": "B0；分别在写前Evidence、提交后Evidence、任务刷新注入故障",
+      "steps": [
+        "执行相同明确写",
+        "重查票据/账本/结果"
+      ],
+      "expected": [
+        "写前证据不可用阻止写",
+        "写后证据失败不重写，保留committed/verified与证据缺口",
+        "任务更新失败不否定已保存事实"
+      ],
+      "test_type": "fault_injection",
+      "model": "stub",
+      "evidence": [
+        "各阶段故障",
+        "账本和有效UPDATE计数",
+        "事实卡片"
+      ],
+      "status": "not_run"
+    },
+    {
+      "id": "TC061",
+      "ac_refs": [
+        "AC-036"
+      ],
+      "name": "工程基线与冻结安装",
+      "stage": "D0",
+      "priority": "must",
+      "preconditions": [
+        "D0最小工程已创建；可用本地Python/Node与依赖安装工具"
+      ],
+      "initial_data": "无数据库业务数据、无MODEL_*；仅本地非敏感配置",
+      "steps": [
+        "首次生成依赖锁并记录解析版本",
+        "从冻结锁重新安装；运行配置/DTO单元测试",
+        "前端typecheck/Vitest/build；启动最小后端访问live/ready",
+        "检查源码/构建上下文不包含秘密和大依赖提交"
+      ],
+      "expected": [
+        "冻结安装与构建成功，不靠启动自动更新依赖",
+        "live=200；尚未迁移的数据库ready=503，不假报可用",
+        "无需模型配置即可完成本阶段；无真实模型网络请求",
+        "报告区分实际安装/构建与未验证数据库/AI业务"
+      ],
+      "test_type": "engineering",
+      "model": "none",
+      "evidence": [
+        "锁文件hash与版本",
+        "实际命令/退出码",
+        "健康响应",
+        "秘密和包边界检查"
+      ],
+      "status": "passed"
+    }
+  ]
+}

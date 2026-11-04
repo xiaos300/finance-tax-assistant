@@ -1,0 +1,14 @@
+
+> fiscal-harness-web@0.1.0 build
+> vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 19 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.36 kB │ gzip:  0.27 kB
+dist/assets/index-stwEHiew.css   0.20 kB │ gzip:  0.18 kB
+dist/assets/index-X9NVwv2C.js   65.15 kB │ gzip: 25.82 kB
+
+✓ built in 66ms

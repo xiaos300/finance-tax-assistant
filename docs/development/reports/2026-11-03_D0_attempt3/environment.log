@@ -1,0 +1,9 @@
+python: Python 3.13.9
+node: v24.8.0
+npm.cmd: 11.6.0
+uv 0.13.7 (316c827e0 2026-11-03 x86_64-pc-windows-msvc)
+docker: Docker version 29.5.2, build 79eb04c
+psql: unavailable
+pwsh: unavailable
+PowerShell host: 5.1.26100.9711
+No environment values or credentials inspected. Database/server connectivity not tested.

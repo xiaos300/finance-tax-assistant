@@ -1,0 +1,11 @@
+python: Python 3.13.9
+node: v24.8.0
+npm.cmd: 11.6.0
+uv 0.13.7 (316c827e0 2026-11-03 x86_64-pc-windows-msvc)
+docker.exe : WARNING: Error loading config file: open C:\Users\PC-9700X\.docker\config.json: Access is denied.
+At E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\scripts\check_environment.ps1:6 char:20
++         $version = & $command.Source --version 2>&1
++                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING: Error ...cess is denied.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

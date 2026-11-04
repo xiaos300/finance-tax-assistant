@@ -1,0 +1,13 @@
+
+> fiscal-harness-web@0.1.0 test
+> vitest --run
+
+
+ RUN  v5.1.0 E:/Desktop/赛题二：财税Harness初赛材料包-v1.1.0/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  20:23:36
+   Duration  459ms (environment 67%, import 21%, transform 9%, tests 2%, worker 1%)
+

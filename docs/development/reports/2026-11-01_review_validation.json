@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-01",
+  "scope": "文档/契约校验，不是软件测试",
+  "status": "passed",
+  "counts": {
+    "markdown": 34,
+    "local_links": 202,
+    "json": 6,
+    "yaml_fences": 1,
+    "json_fences": 6,
+    "mermaid": 14,
+    "schema_definitions": 104,
+    "schema_smoke_checks": 63
+  },
+  "tools": 16,
+  "http_operations": 24,
+  "test_definitions": 61,
+  "ac_coverage": 50,
+  "must_ac_coverage": 47,
+  "independent_task_cards": 8,
+  "protected_source_hashes_unchanged": true,
+  "architecture_modified": [
+    "docs/architecture/04_模块与分层架构设计.md",
+    "docs/architecture/05_数据库与数据架构设计.md",
+    "docs/architecture/06_API接口设计.md",
+    "docs/architecture/07_关键业务流程设计.md",
+    "docs/architecture/08_非功能架构设计.md",
+    "docs/architecture/09_工程目录结构设计.md",
+    "docs/architecture/10_部署与运行架构设计.md",
+    "docs/architecture/11_架构评审与开发交接.md"
+  ],
+  "errors": [],
+  "software_tests": "not_run",
+  "mermaid_render": {
+    "status": "passed",
+    "total": 14,
+    "rendered": [
+      {
+        "file": "docs\\architecture\\02_系统总体架构设计.md",
+        "index": 1,
+        "svg_bytes": 54680
+      },
+      {
+        "file": "docs\\architecture\\04_模块与分层架构设计.md",
+        "index": 2,
+        "svg_bytes": 45596
+      },
+      {
+        "file": "docs\\architecture\\05_数据库与数据架构设计.md",
+        "index": 3,
+        "svg_bytes": 36453
+      },
+      {
+        "file": "docs\\architecture\\07_关键业务流程设计.md",
+        "index": 4,
+        "svg_bytes": 39591
+      },
+      {
+        "file": "docs\\architecture\\07_关键业务流程设计.md",
+        "index": 5,
+        "svg_bytes": 36043
+      },
+      {
+        "file": "docs\\architecture\\07_关键业务流程设计.md",
+        "index": 6,
+        "svg_bytes": 41461
+      },
+      {
+        "file": "docs\\architecture\\07_关键业务流程设计.md",
+        "index": 7,
+        "svg_bytes": 33530
+      },
+      {
+        "file": "docs\\architecture\\07_关键业务流程设计.md",
+        "index": 8,
+        "svg_bytes": 36430
+      },
+      {
+        "file": "docs\\architecture\\07_关键业务流程设计.md",
+        "index": 9,
+        "svg_bytes": 31205
+      },
+      {
+        "file": "docs\\architecture\\10_部署与运行架构设计.md",
+        "index": 10,
+        "svg_bytes": 22279
+      },
+      {
+        "file": "docs\\development\\03_模块依赖与阶段划分.md",
+        "index": 11,
+        "svg_bytes": 44793
+      },
+      {
+        "file": "docs\\development\\03_模块依赖与阶段划分.md",
+        "index": 12,
+        "svg_bytes": 25976
+      },
+      {
+        "file": "docs\\requirements\\02_业务需求分析.md",
+        "index": 13,
+        "svg_bytes": 42672
+      },
+      {
+        "file": "docs\\requirements\\03_软件需求分析说明书.md",
+        "index": 14,
+        "svg_bytes": 26611
+      }
+    ],
+    "failures": []
+  },
+  "stage_dependency_check": {
+    "status": "passed",
+    "edges": {
+      "D0": [],
+      "D1": [
+        "D0"
+      ],
+      "D2": [
+        "D1"
+      ],
+      "D3": [
+        "D1",
+        "D2"
+      ],
+      "D4": [
+        "D3"
+      ],
+      "D5": [
+        "D4"
+      ],
+      "D6": [
+        "D5"
+      ],
+      "D7": [
+        "D6"
+      ]
+    }
+  },
+  "severity_counts": {
+    "P0": 4,
+    "P1": 10,
+    "P2": 2,
+    "P3": 1
+  },
+  "source_boundaries": {
+    "requirements_and_original_materials": "hash_unchanged",
+    "business_engineering": "not_created",
+    "git": "not_initialized"
+  }
+}

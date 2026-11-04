@@ -1,0 +1,171 @@
+{
+  "version": "1.2",
+  "tools": [
+    {
+      "name": "resolve_scope",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_resolve_scope",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_resolve_scope",
+      "requirements": [
+        "FR-001",
+        "FR-002",
+        "FR-014"
+      ],
+      "side_effect": "read",
+      "phase": "scope"
+    },
+    {
+      "name": "get_totals",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_get_totals",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_get_totals",
+      "requirements": [
+        "FR-003"
+      ],
+      "side_effect": "read",
+      "phase": "business"
+    },
+    {
+      "name": "find_invoices",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_find_invoices",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_find_invoices",
+      "requirements": [
+        "FR-004"
+      ],
+      "side_effect": "read",
+      "phase": "business"
+    },
+    {
+      "name": "get_invoice",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_get_invoice",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_get_invoice",
+      "requirements": [
+        "FR-004"
+      ],
+      "side_effect": "read",
+      "phase": "business"
+    },
+    {
+      "name": "list_bank_transactions",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_list_bank_transactions",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_list_bank_transactions",
+      "requirements": [
+        "FR-004"
+      ],
+      "side_effect": "read",
+      "phase": "business"
+    },
+    {
+      "name": "get_rules",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_get_rules",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_get_rules",
+      "requirements": [
+        "FR-013"
+      ],
+      "side_effect": "read",
+      "phase": "business"
+    },
+    {
+      "name": "check_purpose",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_check_purpose",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_check_purpose",
+      "requirements": [
+        "FR-005",
+        "FR-013"
+      ],
+      "side_effect": "read",
+      "phase": "business"
+    },
+    {
+      "name": "propose_invoice_edit",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_propose_invoice_edit",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_propose_invoice_edit",
+      "requirements": [
+        "FR-006"
+      ],
+      "side_effect": "prepare",
+      "phase": "intent"
+    },
+    {
+      "name": "save_invoice_fields",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_save_invoice_fields",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_save_invoice_fields",
+      "requirements": [
+        "FR-006",
+        "FR-007"
+      ],
+      "side_effect": "invoice_write",
+      "phase": "business"
+    },
+    {
+      "name": "verify_write",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_verify_write",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_verify_write",
+      "requirements": [
+        "FR-007"
+      ],
+      "side_effect": "verification",
+      "phase": "business"
+    },
+    {
+      "name": "get_memories",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_get_memories",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_get_memories",
+      "requirements": [
+        "FR-010",
+        "FR-011"
+      ],
+      "side_effect": "read",
+      "phase": "business"
+    },
+    {
+      "name": "remember_task",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_remember_task",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_remember_task",
+      "requirements": [
+        "FR-008",
+        "FR-011"
+      ],
+      "side_effect": "memory_write",
+      "phase": "business"
+    },
+    {
+      "name": "remember_preference",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_remember_preference",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_remember_preference",
+      "requirements": [
+        "FR-009"
+      ],
+      "side_effect": "memory_write",
+      "phase": "business"
+    },
+    {
+      "name": "correct_memory",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_correct_memory",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_correct_memory",
+      "requirements": [
+        "FR-010"
+      ],
+      "side_effect": "memory_write",
+      "phase": "business"
+    },
+    {
+      "name": "delete_memory",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_delete_memory",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_delete_memory",
+      "requirements": [
+        "FR-010"
+      ],
+      "side_effect": "memory_write",
+      "phase": "business"
+    },
+    {
+      "name": "set_default_company",
+      "input_schema_ref": "contracts.schema.json#/$defs/Args_set_default_company",
+      "result_schema_ref": "contracts.schema.json#/$defs/Result_set_default_company",
+      "requirements": [
+        "FR-001"
+      ],
+      "side_effect": "session_write",
+      "phase": "business"
+    }
+  ]
+}

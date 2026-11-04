@@ -1,0 +1,14 @@
+.git
+.env
+.env.*
+!.env.example
+.tools
+.cache
+**/.venv
+**/node_modules
+**/dist
+**/__pycache__
+**/.pytest_cache
+var
+materials
+docs/development/reports
