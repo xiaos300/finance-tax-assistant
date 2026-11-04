@@ -1,5 +1,9 @@
 # 项目执行记录
 
+## GitHub 上传交接 · 2026-11-03
+
+按用户要求将现有 D0 项目整理为本地 Git 仓库，`main` 指向 `https://github.com/xiaos300/finance-tax-assistant.git`；远端查询为空仓库。已按 `.gitignore` 排除环境文件、虚拟环境、依赖和缓存，完成初始提交；本地提交身份设为 `xiaos300 <xiaos300@users.noreply.github.com>`。HTTPS 推送和 Windows 凭据管理器非交互重试均因缺少 GitHub 认证失败，SSH 也无有效公钥；**远端尚未上传**。下一动作：用户在本机完成有仓库写权限的 GitHub 登录后运行 `git push -u origin main`，再以 `git ls-remote origin refs/heads/main` 核对提交哈希。没有推进 D1 或改变 D0 验收状态。
+
 ## 当前交接 · 2026-11-03 · D0 完成后停止
 
 用户明确授权仅实施 D0，并要求验收交接后停止。已建立 FastAPI/Pydantic 2 与 Vue 3/TypeScript/Vite/Pinia 最小工程，实际解析依赖锁并冻结安装；数据库/维护设置独立于模型，test_stub 仅 test 可配，健康接口、最小严格 DTO、错误封装和安全脚本已实现。最终验收退出 0：后端18项、Vitest 1项、typecheck/build、live=200/ready=503、源码与构建秘密扫描通过。TC061 完整 passed；TC051 仅配置子项通过，整项留 D2。详情见 [D0报告](docs/development/reports/2026-11-03_D0_baseline.md)、[progress](docs/development/progress.md)及 [启动说明](README.md)。
