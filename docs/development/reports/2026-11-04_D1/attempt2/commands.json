@@ -1,0 +1,115 @@
+[
+  {
+    "label": "frozen-install",
+    "command": [
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\.tools\\bin\\uv.exe",
+      "sync",
+      "--frozen",
+      "--offline",
+      "--group",
+      "dev",
+      "--group",
+      "prepare"
+    ],
+    "cwd": "backend",
+    "exit_code": 0,
+    "expected_exit_codes": [
+      0
+    ],
+    "log": "attempt2\\frozen-install.log"
+  },
+  {
+    "label": "backend-tests",
+    "command": [
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\.tools\\bin\\uv.exe",
+      "run",
+      "--frozen",
+      "--no-sync",
+      "pytest",
+      "tests/unit",
+      "tests/integration",
+      "tests/api",
+      "--junitxml=E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\docs\\development\\reports\\2026-11-04_D1\\attempt2\\pytest.xml",
+      "-q"
+    ],
+    "cwd": "backend",
+    "exit_code": 0,
+    "expected_exit_codes": [
+      0
+    ],
+    "log": "attempt2\\backend-tests.log"
+  },
+  {
+    "label": "admin-preflight",
+    "command": [
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\backend\\.venv\\Scripts\\python.exe",
+      "-m",
+      "app.cli",
+      "inspect-admin"
+    ],
+    "cwd": "backend",
+    "exit_code": 2,
+    "expected_exit_codes": [
+      0,
+      2
+    ],
+    "log": "attempt2\\admin-preflight.log"
+  },
+  {
+    "label": "test-maintenance-config",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\scripts\\manage.ps1",
+      "-Action",
+      "InspectConfig",
+      "-TestTarget"
+    ],
+    "cwd": ".",
+    "exit_code": 2,
+    "expected_exit_codes": [
+      0,
+      2
+    ],
+    "log": "attempt2\\test-maintenance-config.log"
+  },
+  {
+    "label": "test-maintenance-init",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\scripts\\manage.ps1",
+      "-Action",
+      "Init",
+      "-TestTarget"
+    ],
+    "cwd": ".",
+    "exit_code": 2,
+    "expected_exit_codes": [
+      0,
+      2
+    ],
+    "log": "attempt2\\test-maintenance-init.log"
+  },
+  {
+    "label": "source-scan",
+    "command": [
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\backend\\.venv\\Scripts\\python.exe",
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\scripts\\verify_baseline.py",
+      "--output-dir",
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\docs\\development\\reports\\2026-11-04_D1"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "expected_exit_codes": [
+      0
+    ],
+    "log": "attempt2\\source-scan.log"
+  }
+]

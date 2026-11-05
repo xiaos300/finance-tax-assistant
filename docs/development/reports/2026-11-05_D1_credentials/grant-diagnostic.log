@@ -1,0 +1,150 @@
+Traceback (most recent call last):
+  File "E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1976, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 964, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend\.venv\Lib\site-packages\psycopg\cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: only '%s', '%b', '%t' are allowed as placeholders, got '%I'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\.cache\d1_grant_debug.py", line 20, in <module>
+    with e.begin() as c:grant_runtime(c)
+                        ~~~~~~~~~~~~~^^^
+  File "E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend\app\infrastructure\database\maintenance.py", line 36, in grant_runtime
+    connection.exec_driver_sql(Path(__file__).with_name('grant_runtime.sql').read_text(encoding='utf-8'))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1788, in exec_driver_sql
+    ret = self._execute_context(
+        dialect,
+    ...<5 lines>...
+        distilled_parameters,
+    )
+  File "E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1855, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1995, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2372, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1976, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 964, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend\.venv\Lib\site-packages\psycopg\cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+sqlalchemy.exc.ProgrammingError: (psycopg.ProgrammingError) only '%s', '%b', '%t' are allowed as placeholders, got '%I'
+[SQL: DO $grant_guard$
+DECLARE
+  expected text[] := ARRAY[
+    'companies','users','user_company_permissions','invoices','bank_transactions',
+    'sessions','turns','messages','rules','rule_companies','tasks','preferences',
+    'write_operations','evidence_events','seed_meta','alembic_version'
+  ];
+  entry record;
+BEGIN
+  IF current_database() NOT IN ('finance_tax_dev','finance_tax_test')
+     OR session_user <> 'finance_tax_migrator'
+     OR current_user <> 'finance_tax_migrator' THEN
+    RAISE EXCEPTION 'STOP: expected explicit project maintenance connection';
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_catalog.pg_database d
+                 WHERE d.datname = current_database()
+                   AND d.datdba = current_user::regrole
+                   AND pg_catalog.pg_encoding_to_char(d.encoding) = 'UTF8')
+     OR NOT pg_catalog.has_database_privilege('finance_tax_app', current_database(), 'CONNECT')
+     OR pg_catalog.has_database_privilege('finance_tax_app', current_database(), 'CREATE')
+     OR pg_catalog.has_database_privilege('finance_tax_app', current_database(), 'TEMP')
+     OR NOT pg_catalog.has_schema_privilege('finance_tax_app', 'harness', 'USAGE')
+     OR pg_catalog.has_schema_privilege('finance_tax_app', 'harness', 'CREATE')
+     OR pg_catalog.has_schema_privilege('finance_tax_app', 'public', 'CREATE') THEN
+    RAISE EXCEPTION 'STOP: database owner or schema/database privileges differ';
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_catalog.pg_namespace
+                 WHERE nspname = 'harness' AND nspowner = current_user::regrole)
+     OR (SELECT count(*) FROM pg_catalog.pg_class c
+         JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+         WHERE n.nspname = 'harness' AND c.relkind IN ('r','p')
+           AND c.relname = ANY(expected) AND c.relowner = current_user::regrole) <> 16
+     OR EXISTS (SELECT 1 FROM pg_catalog.pg_class c
+                JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+                WHERE n.nspname = 'harness' AND c.relkind IN ('r','p','v','m','f')
+                  AND NOT (c.relname = ANY(expected))) THEN
+    RAISE EXCEPTION 'STOP: schema/table ownership or table set differs';
+  END IF;
+  IF (SELECT count(*) FROM pg_catalog.pg_roles
+      WHERE rolname IN ('finance_tax_app','finance_tax_migrator')
+        AND rolcanlogin AND NOT rolsuper AND NOT rolcreatedb AND NOT rolcreaterole
+        AND NOT rolreplication AND NOT rolbypassrls) <> 2
+     OR EXISTS (SELECT 1 FROM pg_catalog.pg_auth_members m
+                JOIN pg_catalog.pg_roles r ON r.oid = m.member
+                WHERE r.rolname IN ('finance_tax_app','finance_tax_migrator')) THEN
+    RAISE EXCEPTION 'STOP: unexpected role attributes or memberships';
+  END IF;
+  FOR entry IN
+    SELECT c.relname, a.attname FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+    JOIN pg_catalog.pg_attribute a ON a.attrelid = c.oid
+    WHERE n.nspname = 'harness' AND c.relkind IN ('r','p')
+      AND a.attnum > 0 AND NOT a.attisdropped
+  LOOP
+    EXECUTE format('REVOKE ALL PRIVILEGES (%I) ON TABLE harness.%I FROM finance_tax_app',
+                   entry.attname, entry.relname);
+    EXECUTE format('REVOKE ALL PRIVILEGES (%I) ON TABLE harness.%I FROM PUBLIC',
+                   entry.attname, entry.relname);
+  END LOOP;
+END;
+$grant_guard$;
+REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA harness FROM finance_tax_app, PUBLIC;
+REVOKE ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA harness FROM finance_tax_app, PUBLIC;
+GRANT SELECT ON harness.companies, harness.users, harness.user_company_permissions,
+  harness.invoices, harness.bank_transactions, harness.sessions, harness.turns,
+  harness.messages, harness.rules, harness.rule_companies, harness.tasks,
+  harness.preferences, harness.write_operations, harness.evidence_events,
+  harness.seed_meta, harness.alembic_version TO finance_tax_app;
+GRANT UPDATE (memory_revision) ON harness.users TO finance_tax_app;
+GRANT UPDATE (purpose, note, row_version, updated_at) ON harness.invoices TO finance_tax_app;
+GRANT INSERT, UPDATE ON harness.sessions, harness.turns, harness.messages,
+  harness.write_operations TO finance_tax_app;
+GRANT INSERT, UPDATE, DELETE ON harness.tasks, harness.preferences TO finance_tax_app;
+GRANT INSERT ON harness.evidence_events TO finance_tax_app;
+DO $sequence_grant$
+DECLARE
+  seq_name text;
+BEGIN
+  SELECT c.relname INTO seq_name FROM pg_catalog.pg_class c
+  JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+  WHERE c.oid = pg_catalog.pg_get_serial_sequence('harness.evidence_events','event_id')::regclass
+    AND c.relkind = 'S' AND n.nspname = 'harness'
+    AND c.relowner = current_user::regrole;
+  IF seq_name IS NULL THEN
+    RAISE EXCEPTION 'STOP: evidence identity sequence missing or owner differs';
+  END IF;
+  EXECUTE format('GRANT USAGE, SELECT ON SEQUENCE harness.%I TO finance_tax_app', seq_name);
+END;
+$sequence_grant$;
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)

@@ -1,0 +1,54 @@
+[
+  {
+    "command": "backend/.venv/Scripts/python.exe scripts/prepare_seed.py",
+    "cwd": "root",
+    "exit_code": 0,
+    "normalized_hash": "45d72fa8fda1725be0c56571f2edd819f99b3df50ec50f57b983f2b85484b022",
+    "result": "Source conversion, not database load",
+    "evidence": "../../../data/seed/manifest.json"
+  },
+  {
+    "command": "backend/.venv/Scripts/python.exe -m pytest backend/tests/unit -q",
+    "cwd": "root",
+    "exit_code": 1,
+    "result": "collection failed",
+    "captured_excerpt": "SchemaError: regex parse error: ^(?!0000)[0-9]{4}-(0[1-9]|1[0-2])$; look-around is not supported",
+    "fix": "Use Python compiled regex for Month DTO and FastAPI query adapter."
+  },
+  {
+    "command": "backend/.venv/Scripts/python.exe -m pytest backend/tests/unit -q",
+    "cwd": "root",
+    "exit_code": 1,
+    "result": "2 failed, 89 passed, 1 warning",
+    "failures": [
+      "test_TC051_maintenance_does_not_import_model",
+      "test_TC061_http_contract"
+    ],
+    "fix": "Run from backend as documented; explicit subprocess UTF-8; compiled regex also used by query adapter."
+  },
+  {
+    "command": ".venv/Scripts/python.exe -m pytest tests/unit -q",
+    "cwd": "backend",
+    "exit_code": 1,
+    "result": "1 failed, 90 passed",
+    "failures": [
+      "test_TC061_http_contract: expected health-only route set"
+    ],
+    "fix": "Update D0 route inventory assertion to implemented D1 HTTP mapping; business machine contract unchanged."
+  },
+  {
+    "command": ".venv/Scripts/python.exe -m pytest tests/unit tests/integration tests/api -q",
+    "cwd": "backend",
+    "exit_code": 0,
+    "result": "91 passed, 47 skipped, 1 warning",
+    "interpretation": "Skipped real PG mapped to blocked, not acceptance success."
+  },
+  {
+    "command": "backend/.venv/Scripts/python.exe scripts/verify_d1.py",
+    "cwd": "root",
+    "shell_exit_code": 1,
+    "program_summary_exit_code": 2,
+    "result": "attempt1: 104 passed, 47 blocked; program exits 2, PowerShell host normalized nonzero launcher to 1",
+    "evidence": "attempt1/commands.json"
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-04",
+  "scope": "Read-only connection diagnosis; no database, schema, role or business-data mutation",
+  "application": {
+    "authenticated": true,
+    "database": "finance_tax_dev",
+    "session_user": "finance_tax_app",
+    "current_user": "finance_tax_app",
+    "server_version": "18.6",
+    "transaction_read_only": "on",
+    "server_address_text": "127.0.0.1/32",
+    "server_port": 5432,
+    "database_owner": "finance_tax_migrator",
+    "encoding": "UTF8",
+    "superuser": false,
+    "create_database": false,
+    "create_role": false,
+    "replication": false,
+    "bypass_rls": false,
+    "role_memberships_exist": false,
+    "harness_schema_owner": null,
+    "harness_tables": [],
+    "project_guard": "rejected: address text includes a network mask while configured host does not; harness schema is also absent"
+  },
+  "administrator": {
+    "configuration_present": true,
+    "authenticated": false,
+    "error_type": "OperationalError",
+    "sqlstate": null,
+    "category": "connection_or_startup_error",
+    "cause_not_established": true
+  },
+  "test_connections": {
+    "TEST_DATABASE_URL_present": false,
+    "TEST_MIGRATION_DATABASE_URL_present": false
+  },
+  "commands": [
+    {"command": "backend/.venv/Scripts/python.exe .cache/check_pg_readonly.py", "exit_code": 0},
+    {"command": "backend/.venv/Scripts/python.exe .cache/check_pg_metadata.py", "exit_code": 0},
+    {"command": "backend/.venv/Scripts/python.exe .cache/check_pg_admin_readonly.py", "exit_code": 0},
+    {"command": "backend/.venv/Scripts/python.exe .cache/check_pg_admin_auth.py", "exit_code": 0}
+  ],
+  "interpretation": "Diagnostic scripts report connection outcomes as JSON; process exit 0 is not PostgreSQL acceptance. Application login succeeded, administrator login did not, and D1 remains blocked.",
+  "next_action": "Keep the working application connection. Address comparison needs canonical IP normalization; missing schema and explicit test connections remain preparation requirements. Existing objects require provenance review before any mutation. No code or database changes performed in this diagnosis."
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "command": [
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\backend\\.venv\\Scripts\\python.exe",
+      "-m",
+      "compileall",
+      "-q",
+      "backend/app",
+      "backend/tests/unit"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "log": "compile-python.log"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "log": "git-diff-check.log"
+  },
+  {
+    "command": [
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\backend\\.venv\\Scripts\\python.exe",
+      "scripts/verify_baseline.py",
+      "--output-dir",
+      "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\docs\\development\\reports\\2026-11-04_D1_live"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "log": "source-scan.log"
+  }
+]

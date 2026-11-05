@@ -1,0 +1,31 @@
+........................................................................ [ 47%]
+..................................ssssssssssssssssssssssssssssssssssssss [ 94%]
+sssssssss                                                                [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  E:\Desktop\赛题二：财税Harness初赛材料包-v1.1.0\backend\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+SKIPPED [16] tests\integration\test_roles.py:26: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\integration\test_roles.py:36: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\integration\test_roles.py:51: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\integration\test_rules.py:6: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\integration\test_rules.py:17: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\integration\test_rules.py:27: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\integration\test_schema.py:8: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\integration\test_schema.py:34: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\integration\test_seed.py:12: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\integration\test_seed.py:39: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\integration\test_seed.py:59: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [4] tests\integration\test_totals.py:7: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\integration\test_totals.py:20: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\integration\test_totals.py:32: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [8] tests\api\test_read_acl.py:30: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\api\test_read_acl.py:44: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\api\test_read_acl.py:61: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [3] tests\api\test_read_acl.py:77: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\api\test_read_acl.py:84: blocked: explicit PostgreSQL test credentials unavailable
+SKIPPED [1] tests\api\test_read_acl.py:91: blocked: explicit PostgreSQL test credentials unavailable
+106 passed, 47 skipped, 1 warning in 1.44s

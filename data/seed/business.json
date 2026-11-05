@@ -1,0 +1,983 @@
+{
+  "dataset_id": "official-1.1.0",
+  "companies": [
+    {
+      "company_id": "C001",
+      "name": "甲企业（比赛模拟）",
+      "short_name": "甲企业",
+      "source_ref": "企业与用户!6"
+    },
+    {
+      "company_id": "C002",
+      "name": "乙企业（比赛模拟）",
+      "short_name": "乙企业",
+      "source_ref": "企业与用户!7"
+    }
+  ],
+  "users": [
+    {
+      "user_id": "U001",
+      "name": "测试用户一",
+      "source_ref": "企业与用户!12"
+    },
+    {
+      "user_id": "U002",
+      "name": "测试用户二",
+      "source_ref": "企业与用户!13"
+    }
+  ],
+  "permissions": [
+    {
+      "user_id": "U002",
+      "company_id": "C002",
+      "can_read": false,
+      "can_write": false,
+      "source_ref": "企业与用户!13"
+    },
+    {
+      "user_id": "U002",
+      "company_id": "C001",
+      "can_read": true,
+      "can_write": false,
+      "source_ref": "企业与用户!13"
+    },
+    {
+      "user_id": "U001",
+      "company_id": "C001",
+      "can_read": true,
+      "can_write": true,
+      "source_ref": "企业与用户!12"
+    },
+    {
+      "user_id": "U001",
+      "company_id": "C002",
+      "can_read": true,
+      "can_write": true,
+      "source_ref": "企业与用户!12"
+    }
+  ],
+  "invoices": [
+    {
+      "company_id": "C001",
+      "invoice_id": "F015",
+      "invoice_date": "2026-08-12",
+      "seller": "云桥信息服务（模拟）",
+      "item_name": "系统维护服务",
+      "amount_cents": 100000,
+      "purpose": "年度系统维护",
+      "note": null,
+      "source_ref": "发票!10"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F005",
+      "invoice_date": "2026-09-12",
+      "seller": "山海物业（模拟）",
+      "item_name": "保洁服务",
+      "amount_cents": 100000,
+      "purpose": "办公场地清洁",
+      "note": null,
+      "source_ref": "发票!19"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F012",
+      "invoice_date": "2026-08-03",
+      "seller": "星河印刷（模拟）",
+      "item_name": "资料印刷",
+      "amount_cents": 100000,
+      "purpose": "项目资料印刷",
+      "note": "八月项目资料",
+      "source_ref": "发票!27"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F002",
+      "invoice_date": "2026-09-08",
+      "seller": "星河印刷（模拟）",
+      "item_name": "宣传资料印刷",
+      "amount_cents": 100000,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!37"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F016",
+      "invoice_date": "2026-08-16",
+      "seller": "平川物流（模拟）",
+      "item_name": "运输服务",
+      "amount_cents": 100001,
+      "purpose": null,
+      "note": "物品已签收",
+      "source_ref": "发票!11"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F006",
+      "invoice_date": "2026-09-20",
+      "seller": "云桥信息服务（模拟）",
+      "item_name": "信息技术服务",
+      "amount_cents": 100001,
+      "purpose": null,
+      "note": "按月结算",
+      "source_ref": "发票!21"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F016",
+      "invoice_date": "2026-08-16",
+      "seller": "云桥信息服务（模拟）",
+      "item_name": "系统维护服务",
+      "amount_cents": 100001,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!31"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F005",
+      "invoice_date": "2026-09-12",
+      "seller": "云桥信息服务（模拟）",
+      "item_name": "运维服务",
+      "amount_cents": 100001,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!39"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F012",
+      "invoice_date": "2026-08-03",
+      "seller": "澄宇设备（模拟）",
+      "item_name": "便携投影设备",
+      "amount_cents": 120000,
+      "purpose": "采购演示用设备",
+      "note": null,
+      "source_ref": "发票!7"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F020",
+      "invoice_date": "2026-08-31",
+      "seller": "锦程会务（模拟）",
+      "item_name": "培训资料服务",
+      "amount_cents": 126040,
+      "purpose": "员工培训资料",
+      "note": "月底培训",
+      "source_ref": "发票!35"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F007",
+      "invoice_date": "2026-09-24",
+      "seller": "锦程会务（模拟）",
+      "item_name": "会议场地服务",
+      "amount_cents": 128050,
+      "purpose": "客户演示场地租用",
+      "note": null,
+      "source_ref": "发票!22"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F006",
+      "invoice_date": "2026-09-20",
+      "seller": "栖山酒店（模拟）",
+      "item_name": "住宿服务",
+      "amount_cents": 128050,
+      "purpose": null,
+      "note": "两日住宿",
+      "source_ref": "发票!41"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F003",
+      "invoice_date": "2026-09-16",
+      "seller": "澄宇设备（模拟）",
+      "item_name": "展示用品",
+      "amount_cents": 150000,
+      "purpose": "购买展示用品",
+      "note": null,
+      "source_ref": "发票!40"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F015",
+      "invoice_date": "2026-08-12",
+      "seller": "栖山酒店（模拟）",
+      "item_name": "住宿服务",
+      "amount_cents": 158025,
+      "purpose": "客户展会住宿",
+      "note": "两日住宿",
+      "source_ref": "发票!30"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F018",
+      "invoice_date": "2026-08-24",
+      "seller": "晓风快递（模拟）",
+      "item_name": "快递服务",
+      "amount_cents": 18560,
+      "purpose": "业务资料快递",
+      "note": null,
+      "source_ref": "发票!13"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F010",
+      "invoice_date": "2026-09-30",
+      "seller": "衡川设备维护（模拟）",
+      "item_name": "设备维护服务",
+      "amount_cents": 199999,
+      "purpose": "设备例行维护",
+      "note": "月底维护",
+      "source_ref": "发票!45"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F013",
+      "invoice_date": "2026-08-06",
+      "seller": "澄宇设备（模拟）",
+      "item_name": "办公设备",
+      "amount_cents": 220001,
+      "purpose": "办公设备采购",
+      "note": null,
+      "source_ref": "发票!28"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F019",
+      "invoice_date": "2026-08-28",
+      "seller": "平川物流（模拟）",
+      "item_name": "运输服务",
+      "amount_cents": 24580,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!34"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F008",
+      "invoice_date": "2026-09-28",
+      "seller": "栖山酒店（模拟）",
+      "item_name": "住宿服务",
+      "amount_cents": 256088,
+      "purpose": "员工出差住宿",
+      "note": "项目交流出差",
+      "source_ref": "发票!23"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F017",
+      "invoice_date": "2026-08-20",
+      "seller": "栖山酒店（模拟）",
+      "item_name": "住宿服务",
+      "amount_cents": 268000,
+      "purpose": "员工异地培训住宿",
+      "note": "培训人员两名",
+      "source_ref": "发票!12"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F003",
+      "invoice_date": "2026-09-16",
+      "seller": "晓风快递（模拟）",
+      "item_name": "快递服务",
+      "amount_cents": 30000,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!20"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F007",
+      "invoice_date": "2026-09-24",
+      "seller": "锦程会务（模拟）",
+      "item_name": "会议场地服务",
+      "amount_cents": 320000,
+      "purpose": "客户交流会议场地",
+      "note": null,
+      "source_ref": "发票!42"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F013",
+      "invoice_date": "2026-08-06",
+      "seller": "星河印刷（模拟）",
+      "item_name": "宣传页印制",
+      "amount_cents": 33950,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!8"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F017",
+      "invoice_date": "2026-08-20",
+      "seller": "衡川咨询（模拟）",
+      "item_name": "管理咨询服务",
+      "amount_cents": 360000,
+      "purpose": "项目咨询服务",
+      "note": null,
+      "source_ref": "发票!32"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F011",
+      "invoice_date": "2026-08-01",
+      "seller": "青禾办公用品（模拟）",
+      "item_name": "复印纸、文件夹",
+      "amount_cents": 46050,
+      "purpose": null,
+      "note": "八月办公采购",
+      "source_ref": "发票!6"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F019",
+      "invoice_date": "2026-08-28",
+      "seller": "山海物业（模拟）",
+      "item_name": "保洁服务",
+      "amount_cents": 46050,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!14"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F009",
+      "invoice_date": "2026-09-29",
+      "seller": "书林图文（模拟）",
+      "item_name": "打印、装订服务",
+      "amount_cents": 48675,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!44"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F001",
+      "invoice_date": "2026-09-01",
+      "seller": "青禾办公用品（模拟）",
+      "item_name": "办公文具",
+      "amount_cents": 50000,
+      "purpose": "购买办公文具",
+      "note": "日常办公采购",
+      "source_ref": "发票!16"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F010",
+      "invoice_date": "2026-09-30",
+      "seller": "星河印刷（模拟）",
+      "item_name": "打印服务",
+      "amount_cents": 50000,
+      "purpose": "日常文件打印",
+      "note": "月底资料整理",
+      "source_ref": "发票!25"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F001",
+      "invoice_date": "2026-09-01",
+      "seller": "青禾办公用品（模拟）",
+      "item_name": "办公耗材",
+      "amount_cents": 60000,
+      "purpose": null,
+      "note": "部门采购",
+      "source_ref": "发票!36"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F008",
+      "invoice_date": "2026-09-28",
+      "seller": "晓风快递（模拟）",
+      "item_name": "快递服务",
+      "amount_cents": 60000,
+      "purpose": "会议资料邮寄",
+      "note": null,
+      "source_ref": "发票!43"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F009",
+      "invoice_date": "2026-09-29",
+      "seller": "澄宇设备（模拟）",
+      "item_name": "设备配件",
+      "amount_cents": 68068,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!24"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F020",
+      "invoice_date": "2026-08-31",
+      "seller": "书林图文（模拟）",
+      "item_name": "装订、打印服务",
+      "amount_cents": 72025,
+      "purpose": "客户资料打印",
+      "note": "月底资料整理",
+      "source_ref": "发票!15"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F014",
+      "invoice_date": "2026-08-09",
+      "seller": "晓风快递（模拟）",
+      "item_name": "快递服务",
+      "amount_cents": 78060,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!29"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F002",
+      "invoice_date": "2026-09-08",
+      "seller": "书林图文（模拟）",
+      "item_name": "复印纸、打印服务",
+      "amount_cents": 80000,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!17"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F014",
+      "invoice_date": "2026-08-09",
+      "seller": "岭南商旅（模拟）",
+      "item_name": "住宿服务",
+      "amount_cents": 99999,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!9"
+    },
+    {
+      "company_id": "C001",
+      "invoice_id": "F004",
+      "invoice_date": "2026-09-10",
+      "seller": "岭南商旅（模拟）",
+      "item_name": "住宿服务",
+      "amount_cents": 99999,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!18"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F011",
+      "invoice_date": "2026-08-01",
+      "seller": "书林图文（模拟）",
+      "item_name": "宣传册印刷",
+      "amount_cents": 99999,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!26"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F018",
+      "invoice_date": "2026-08-24",
+      "seller": "青禾办公用品（模拟）",
+      "item_name": "办公耗材",
+      "amount_cents": 99999,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!33"
+    },
+    {
+      "company_id": "C002",
+      "invoice_id": "F004",
+      "invoice_date": "2026-09-10",
+      "seller": "岭南商旅（模拟）",
+      "item_name": "住宿服务",
+      "amount_cents": 99999,
+      "purpose": null,
+      "note": null,
+      "source_ref": "发票!38"
+    }
+  ],
+  "bank_transactions": [
+    {
+      "company_id": "C001",
+      "transaction_id": "T015",
+      "transaction_date": "2026-08-05",
+      "direction": "expense",
+      "amount_cents": 10000,
+      "counterparty": "禾川通信（模拟）",
+      "note": "通信服务支出",
+      "source_ref": "银行流水!9"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T005",
+      "transaction_date": "2026-09-12",
+      "direction": "expense",
+      "amount_cents": 100000,
+      "counterparty": "云桥信息服务（模拟）",
+      "note": "系统服务支出",
+      "source_ref": "银行流水!23"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T019",
+      "transaction_date": "2026-08-22",
+      "direction": "expense",
+      "amount_cents": 100000,
+      "counterparty": "星河印刷（模拟）",
+      "note": "资料印刷支出",
+      "source_ref": "银行流水!14"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T004",
+      "transaction_date": "2026-09-08",
+      "direction": "expense",
+      "amount_cents": 100000,
+      "counterparty": "岭南商旅（模拟）",
+      "note": "差旅服务支出",
+      "source_ref": "银行流水!46"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T014",
+      "transaction_date": "2026-08-03",
+      "direction": "expense",
+      "amount_cents": 100000,
+      "counterparty": "平川物流（模拟）",
+      "note": "物流服务支出",
+      "source_ref": "银行流水!31"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T001",
+      "transaction_date": "2026-09-01",
+      "direction": "expense",
+      "amount_cents": 100000,
+      "counterparty": "青禾办公用品（模拟）",
+      "note": "办公用品采购",
+      "source_ref": "银行流水!42"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T017",
+      "transaction_date": "2026-08-12",
+      "direction": "expense",
+      "amount_cents": 100001,
+      "counterparty": "云桥信息服务（模拟）",
+      "note": "系统服务支出",
+      "source_ref": "银行流水!35"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T017",
+      "transaction_date": "2026-08-12",
+      "direction": "expense",
+      "amount_cents": 120000,
+      "counterparty": "云桥信息服务（模拟）",
+      "note": "系统服务支出",
+      "source_ref": "银行流水!11"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T023",
+      "transaction_date": "2026-08-25",
+      "direction": "income",
+      "amount_cents": 125075,
+      "counterparty": "栖木项目客户（模拟）",
+      "note": "项目服务收入",
+      "source_ref": "银行流水!15"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T015",
+      "transaction_date": "2026-08-05",
+      "direction": "expense",
+      "amount_cents": 130000,
+      "counterparty": "禾川通信（模拟）",
+      "note": "通信服务支出",
+      "source_ref": "银行流水!33"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T005",
+      "transaction_date": "2026-09-12",
+      "direction": "expense",
+      "amount_cents": 150050,
+      "counterparty": "云桥信息服务（模拟）",
+      "note": "系统服务支出",
+      "source_ref": "银行流水!47"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T011",
+      "transaction_date": "2026-09-25",
+      "direction": "income",
+      "amount_cents": 150075,
+      "counterparty": "栖木项目客户（模拟）",
+      "note": "项目服务收入",
+      "source_ref": "银行流水!51"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T011",
+      "transaction_date": "2026-09-25",
+      "direction": "income",
+      "amount_cents": 180000,
+      "counterparty": "栖木项目客户（模拟）",
+      "note": "项目服务收入",
+      "source_ref": "银行流水!27"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T023",
+      "transaction_date": "2026-08-25",
+      "direction": "income",
+      "amount_cents": 200000,
+      "counterparty": "栖木项目客户（模拟）",
+      "note": "项目服务收入",
+      "source_ref": "银行流水!39"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T008",
+      "transaction_date": "2026-09-30",
+      "direction": "expense",
+      "amount_cents": 210000,
+      "counterparty": "澄宇设备（模拟）",
+      "note": "设备采购支出",
+      "source_ref": "银行流水!52"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T020",
+      "transaction_date": "2026-08-31",
+      "direction": "expense",
+      "amount_cents": 236050,
+      "counterparty": "澄宇设备（模拟）",
+      "note": "设备采购支出",
+      "source_ref": "银行流水!40"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T008",
+      "transaction_date": "2026-09-30",
+      "direction": "expense",
+      "amount_cents": 268050,
+      "counterparty": "澄宇设备（模拟）",
+      "note": "设备采购支出",
+      "source_ref": "银行流水!28"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T003",
+      "transaction_date": "2026-09-05",
+      "direction": "expense",
+      "amount_cents": 30000,
+      "counterparty": "禾川通信（模拟）",
+      "note": "通信服务支出",
+      "source_ref": "银行流水!21"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T009",
+      "transaction_date": "2026-09-04",
+      "direction": "income",
+      "amount_cents": 300000,
+      "counterparty": "晨星项目客户（模拟）",
+      "note": "项目服务收入",
+      "source_ref": "银行流水!20"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T012",
+      "transaction_date": "2026-09-30",
+      "direction": "income",
+      "amount_cents": 300000,
+      "counterparty": "清泉项目客户（模拟）",
+      "note": "项目服务收入",
+      "source_ref": "银行流水!29"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T010",
+      "transaction_date": "2026-09-14",
+      "direction": "income",
+      "amount_cents": 320000,
+      "counterparty": "远帆项目客户（模拟）",
+      "note": "阶段服务收入",
+      "source_ref": "银行流水!48"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T022",
+      "transaction_date": "2026-08-14",
+      "direction": "income",
+      "amount_cents": 360000,
+      "counterparty": "远帆项目客户（模拟）",
+      "note": "阶段服务收入",
+      "source_ref": "银行流水!12"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T001",
+      "transaction_date": "2026-09-01",
+      "direction": "expense",
+      "amount_cents": 40000,
+      "counterparty": "青禾办公用品（模拟）",
+      "note": "办公用品采购",
+      "source_ref": "银行流水!18"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T003",
+      "transaction_date": "2026-09-05",
+      "direction": "expense",
+      "amount_cents": 40000,
+      "counterparty": "禾川通信（模拟）",
+      "note": "通信服务支出",
+      "source_ref": "银行流水!45"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T009",
+      "transaction_date": "2026-09-04",
+      "direction": "income",
+      "amount_cents": 450000,
+      "counterparty": "晨星项目客户（模拟）",
+      "note": "项目服务收入",
+      "source_ref": "银行流水!44"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T012",
+      "transaction_date": "2026-09-30",
+      "direction": "income",
+      "amount_cents": 450000,
+      "counterparty": "清泉项目客户（模拟）",
+      "note": "项目服务收入",
+      "source_ref": "银行流水!53"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T016",
+      "transaction_date": "2026-08-08",
+      "direction": "expense",
+      "amount_cents": 46050,
+      "counterparty": "岭南商旅（模拟）",
+      "note": "差旅服务支出",
+      "source_ref": "银行流水!10"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T020",
+      "transaction_date": "2026-08-31",
+      "direction": "expense",
+      "amount_cents": 46050,
+      "counterparty": "澄宇设备（模拟）",
+      "note": "设备采购支出",
+      "source_ref": "银行流水!16"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T022",
+      "transaction_date": "2026-08-14",
+      "direction": "income",
+      "amount_cents": 480025,
+      "counterparty": "远帆项目客户（模拟）",
+      "note": "阶段服务收入",
+      "source_ref": "银行流水!36"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T007",
+      "transaction_date": "2026-09-22",
+      "direction": "expense",
+      "amount_cents": 48675,
+      "counterparty": "星河印刷（模拟）",
+      "note": "资料印刷支出",
+      "source_ref": "银行流水!50"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T002",
+      "transaction_date": "2026-09-03",
+      "direction": "expense",
+      "amount_cents": 50000,
+      "counterparty": "平川物流（模拟）",
+      "note": "物流服务支出",
+      "source_ref": "银行流水!19"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T007",
+      "transaction_date": "2026-09-22",
+      "direction": "expense",
+      "amount_cents": 50000,
+      "counterparty": "星河印刷（模拟）",
+      "note": "资料印刷支出",
+      "source_ref": "银行流水!26"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T021",
+      "transaction_date": "2026-08-04",
+      "direction": "income",
+      "amount_cents": 500000,
+      "counterparty": "晨星项目客户（模拟）",
+      "note": "项目服务收入",
+      "source_ref": "银行流水!8"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T024",
+      "transaction_date": "2026-08-31",
+      "direction": "income",
+      "amount_cents": 500000,
+      "counterparty": "清泉项目客户（模拟）",
+      "note": "项目服务收入",
+      "source_ref": "银行流水!17"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T010",
+      "transaction_date": "2026-09-14",
+      "direction": "income",
+      "amount_cents": 520050,
+      "counterparty": "远帆项目客户（模拟）",
+      "note": "阶段服务收入",
+      "source_ref": "银行流水!24"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T013",
+      "transaction_date": "2026-08-01",
+      "direction": "expense",
+      "amount_cents": 60000,
+      "counterparty": "青禾办公用品（模拟）",
+      "note": "办公用品采购",
+      "source_ref": "银行流水!6"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T002",
+      "transaction_date": "2026-09-03",
+      "direction": "expense",
+      "amount_cents": 60000,
+      "counterparty": "平川物流（模拟）",
+      "note": "物流服务支出",
+      "source_ref": "银行流水!43"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T021",
+      "transaction_date": "2026-08-04",
+      "direction": "income",
+      "amount_cents": 600000,
+      "counterparty": "晨星项目客户（模拟）",
+      "note": "项目服务收入",
+      "source_ref": "银行流水!32"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T024",
+      "transaction_date": "2026-08-31",
+      "direction": "income",
+      "amount_cents": 600000,
+      "counterparty": "清泉项目客户（模拟）",
+      "note": "项目服务收入",
+      "source_ref": "银行流水!41"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T016",
+      "transaction_date": "2026-08-08",
+      "direction": "expense",
+      "amount_cents": 78060,
+      "counterparty": "岭南商旅（模拟）",
+      "note": "差旅服务支出",
+      "source_ref": "银行流水!34"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T004",
+      "transaction_date": "2026-09-08",
+      "direction": "expense",
+      "amount_cents": 80025,
+      "counterparty": "岭南商旅（模拟）",
+      "note": "差旅服务支出",
+      "source_ref": "银行流水!22"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T014",
+      "transaction_date": "2026-08-03",
+      "direction": "expense",
+      "amount_cents": 90000,
+      "counterparty": "平川物流（模拟）",
+      "note": "物流服务支出",
+      "source_ref": "银行流水!7"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T019",
+      "transaction_date": "2026-08-22",
+      "direction": "expense",
+      "amount_cents": 95000,
+      "counterparty": "星河印刷（模拟）",
+      "note": "资料印刷支出",
+      "source_ref": "银行流水!38"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T013",
+      "transaction_date": "2026-08-01",
+      "direction": "expense",
+      "amount_cents": 95000,
+      "counterparty": "青禾办公用品（模拟）",
+      "note": "办公用品采购",
+      "source_ref": "银行流水!30"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T018",
+      "transaction_date": "2026-08-17",
+      "direction": "expense",
+      "amount_cents": 99999,
+      "counterparty": "山海物业（模拟）",
+      "note": "物业服务支出",
+      "source_ref": "银行流水!13"
+    },
+    {
+      "company_id": "C001",
+      "transaction_id": "T006",
+      "transaction_date": "2026-09-17",
+      "direction": "expense",
+      "amount_cents": 99999,
+      "counterparty": "山海物业（模拟）",
+      "note": "物业服务支出",
+      "source_ref": "银行流水!25"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T018",
+      "transaction_date": "2026-08-17",
+      "direction": "expense",
+      "amount_cents": 99999,
+      "counterparty": "山海物业（模拟）",
+      "note": "物业服务支出",
+      "source_ref": "银行流水!37"
+    },
+    {
+      "company_id": "C002",
+      "transaction_id": "T006",
+      "transaction_date": "2026-09-17",
+      "direction": "expense",
+      "amount_cents": 99999,
+      "counterparty": "山海物业（模拟）",
+      "note": "物业服务支出",
+      "source_ref": "银行流水!49"
+    }
+  ]
+}

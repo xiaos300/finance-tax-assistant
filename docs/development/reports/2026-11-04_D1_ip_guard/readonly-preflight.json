@@ -1,0 +1,89 @@
+{
+  "scope": "read-only catalog inspection; no project object changes and no tax_db connection",
+  "application": {
+    "database": "finance_tax_dev",
+    "session_user": "finance_tax_app",
+    "current_user": "finance_tax_app",
+    "server_version": "18.6",
+    "server_address": "127.0.0.1/32",
+    "server_port": 5432,
+    "transaction_read_only": "on",
+    "authenticated": true,
+    "exact_instance_match_after_fix": true,
+    "different_loopback_rejected": true,
+    "different_port_rejected": true,
+    "full_project_guard": "rejected: remaining schema/identity prerequisite",
+    "project_databases": [
+      {
+        "name": "finance_tax_dev",
+        "owner": "finance_tax_migrator",
+        "encoding": "UTF8",
+        "app_connect": true,
+        "app_create": false,
+        "app_temp": true
+      },
+      {
+        "name": "finance_tax_test",
+        "owner": "finance_tax_migrator",
+        "encoding": "UTF8",
+        "app_connect": true,
+        "app_create": false,
+        "app_temp": true
+      }
+    ],
+    "project_roles": [
+      {
+        "name": "finance_tax_app",
+        "login": true,
+        "superuser": false,
+        "create_db": false,
+        "create_role": false,
+        "replication": false,
+        "bypass_rls": false,
+        "membership_count": 0
+      },
+      {
+        "name": "finance_tax_migrator",
+        "login": true,
+        "superuser": false,
+        "create_db": false,
+        "create_role": false,
+        "replication": false,
+        "bypass_rls": false,
+        "membership_count": 0
+      }
+    ],
+    "harness_schema": [],
+    "harness_tables": []
+  },
+  "administrator": {
+    "authenticated": false,
+    "category": "authentication_rejected",
+    "command": [
+      "E:\\developmentEnvs\\postgreSQL\\bin\\psql.exe",
+      "-X",
+      "-w",
+      "-h",
+      "127.0.0.1",
+      "-p",
+      "5432",
+      "-U",
+      "postgres",
+      "-d",
+      "postgres",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-c",
+      "SELECT current_database(),session_user,current_user,inet_server_addr(),inet_server_port();"
+    ],
+    "exit_code": 2,
+    "output_decoding": "gb18030",
+    "redacted_detail": "psql: error: connection to server at \"127.0.0.1\", port 5432 failed: 致命错误:  用户 \"postgres\" Password 认证失败\r\n"
+  },
+  "missing_connections": [
+    "MIGRATION_DATABASE_URL",
+    "TEST_DATABASE_URL",
+    "TEST_MIGRATION_DATABASE_URL"
+  ],
+  "creation_receipt_present": false
+}

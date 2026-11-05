@@ -1,12 +1,12 @@
 # 财税 Harness 项目开发规则
 
-适用本目录及子目录。项目为模拟财税竞赛助手：查询当前数据、按本轮明确意愿补发票用途/备注、保存后独立回读、多轮检查及记忆/规则管理。当前为开发准备完成状态，尚无正式前后端工程；复审指令本身不等于要求立即编码。
+适用本目录及子目录。项目为模拟财税竞赛助手：查询当前数据、按本轮明确意愿补发票用途/备注、保存后独立回读、多轮检查及记忆/规则管理。D0 工程已建立；当前正式实施仅授权 D1，状态以 [progress](docs/development/progress.md) 为准，收尾后停止，不推进 D2。复审指令本身不等于立即编码。
 
 ## 开始工作
 
 1. 先读[开发导航](docs/development/00_开发导航.md)、[Plan.md](Plan.md)和[Documentation.md](Documentation.md)，确认授权范围、阶段依赖和最近决策。
 2. 读[progress](docs/development/progress.md)、当前阶段任务卡和前一阶段报告，确认本地门、外部门、已运行验证和下一动作。
-3. 读[需求说明书](docs/requirements/03_软件需求分析说明书.md)、[追踪矩阵](docs/requirements/04_需求追踪矩阵.md)、相关架构章节及[实施契约](docs/architecture/12_开发实施契约补充.md)。接口按 schema、工具和 HTTP 映射执行。碰到矛盾时，区分正式需求、实施补充及历史记录，定位到编号和来源后再处理。
+3. 读[需求说明书](docs/requirements/03_软件需求分析说明书.md)、[追踪矩阵](docs/requirements/04_需求追踪矩阵.md)、相关架构章节及[实施契约](docs/architecture/12_开发实施契约补充.md)。接口按 [JSON Schema](docs/architecture/contracts/contracts.schema.json)、[Tools 定义](docs/architecture/contracts/tools.json)和 [HTTP 映射](docs/architecture/contracts/http-operations.json)执行，校验规则见[契约入口与优先关系](docs/architecture/12_开发实施契约补充.md#1-契约入口与优先关系)。碰到矛盾时，区分正式需求、实施补充及历史记录，定位到编号和来源后再处理。
 
 用户授权开发后从D0开始；持续开发授权内完成当前本地门再推进依赖就绪的任务，不为常规实现选择重复询问。外部账号、设备、赛事通知缺失单独记录，继续不依赖它们的工作。阶段状态/真实模型门规则见[总计划](docs/development/02_开发实施总计划.md)。不要把仅替身通过称为真实AI验收完成。
 
@@ -25,13 +25,21 @@
 
 Router→Service→Repository；纯规则不含I/O；模块间DTO/TransactionPort，不传FastAPI Request/ORM Session到模型或Router。Evidence为叶子，Memory不反调Ledger；ConversationStatePort不回调runner。模型/正文不能执行SQL、shell或任意URL。
 
-目录按[09](docs/architecture/09_工程目录结构设计.md)与任务卡随实际功能创建，不批量建空占位文件。规范DTO放backend/app/core/contracts.py并与JSON Schema回归；runtime工具注册表是tools.json契约的实现。供应商字段留在适配器，wire正文由Gateway发送前记录，秘密与鉴权头不入正文/证据。
+目录按[09](docs/architecture/09_工程目录结构设计.md)与任务卡随实际功能创建，不批量建空占位文件。规范 DTO 放 [contracts.py](backend/app/core/contracts.py)，按[契约校验要求](docs/architecture/12_开发实施契约补充.md#1-契约入口与优先关系)与 [JSON Schema](docs/architecture/contracts/contracts.schema.json)回归；runtime 工具注册表按 [tools.json](docs/architecture/contracts/tools.json)实现。供应商字段留在适配器，wire正文由Gateway发送前记录，秘密与鉴权头不入正文/证据。
 
-官方docx/xlsx、五份requirements为保护输入；需要改需求必须记录来源和影响，不为方便实现静默缩范围。正常启动不seed；迁移/seed/grant-runtime需维护角色，常驻app无DDL/超级用户凭证。测试仅harness_test_专属库且不等于演示连接目标，禁止测试夹具回落DATABASE_URL。
+官方docx/xlsx、五份requirements为保护输入；需要改需求必须记录来源和影响，不为方便实现静默缩范围。正常启动不seed；迁移/seed/grant-runtime需维护角色，常驻app无DDL/超级用户凭证。测试仅 finance_tax_test 精确允许名单，首轮串行、禁止 worker 后缀；须 APP_ENV=test，核验实例、连接目标、角色及认证后目标，且不等于开发/演示目标，禁止测试夹具回落 DATABASE_URL。tax_db 在项目连接入口拒绝，不连接其业务库。
 
 涉及 Must、业务权限、写入授权、数据生命周期、公开部署、核心选型或 D7 范围的变更，先在 Documentation 登记待批准项，列出来源、选项、受影响的 FR/DR/NFR/AC、契约及验收影响。暂停受影响实施，继续已授权且无依赖的工作。获得明确批准后记录日期和依据，再同步需求、追踪、架构契约、测试及计划中受影响的条目。
 
-已有用户改动不覆盖；动手前查看目录和可用Git状态。当前不是Git仓库，记录事实，不为本轮文档任务擅自初始化。Git提交/推送遵循当前用户授权；禁止丢弃用户改动、force push、reset --hard或无必要删除。数据库/卷/备份重置必须校验明确目标，不能用删除pg_data或down -v当正常重启。
+已有用户改动不覆盖；动手前查看目录和可用Git状态。当前已有 Git 仓库，历史非仓库记录保留；不擅自初始化或覆盖已有改动。Git提交/推送遵循当前用户授权；禁止丢弃用户改动、force push、reset --hard或无必要删除。数据库/卷/备份重置必须校验明确目标，不能用删除pg_data或down -v当正常重启。
+
+## 自动提交代码
+
+用户已于 2026-11-05 授权 AI 在合适的时候自动创建本地 Git 提交，无需逐次询问。完成一个独立、可审阅的任务或里程碑，相关检查通过、必要文档与交接记录同步后，应主动提交；纯文档改动执行相应文档检查即可。不得为提交而推进未授权阶段，也不在实现未完成或相关检查失败时提交。
+
+提交前检查工作区、暂存区及待提交 diff，只暂存本轮任务中归属明确的改动；同一文件混有既有改动时按差异块选择，不得直接整文件带入。禁止盲目使用 `git add .` 或 `git add -A`，不得混入无关改动、密钥、受控 .env、数据库备份或临时产物。既有改动归属不明、暂存区有他人内容或无法安全拆分时，保留现场并说明未提交原因，继续可独立工作。
+
+提交说明应简洁描述实际变化；提交后核对提交内容及剩余工作区状态，在交接中报告 commit hash、检查结果与未提交事项。自动提交仅限本地；push、改写历史、amend 和 force push 不在本授权内，仍按用户明确授权执行。历史记录中的“不提交/推送”保留为当时事实；本条生效后，本地提交按本条执行，用户后续明确要求不提交时以该要求为准。
 
 ## 测试与阶段报告
 
@@ -41,30 +49,22 @@ Router→Service→Repository；纯规则不含I/O；模块间DTO/TransactionPor
 
 每个里程碑按「确认范围 → 实施 → 运行检查 → 修复并复验 → 记录交接」推进。检查失败时保留失败证据并修复，外部条件缺失时标记对应分支 blocked。阶段收尾或中断前，在 Documentation 记录决定、变化和可恢复的下一动作，阶段状态与详细输出分别链接 progress 和报告。
 
-## 启动与测试命令
+## Markdown 文档引用、锚点与可追溯性规范
 
-以下为**待创建工程后的命令约定，本轮未验证应用运行**。D0首次生成锁需实际解析依赖并记录，锁存在后才运行冻结命令。数据库与模型环境由操作者受控提供，不把密码写入命令历史。
+本节适用于本目录及子目录的全部后续 Markdown 生成和修改，D0～D6 阶段交付必须执行。
 
-```text
-# backend目录
-uv sync --frozen --group dev --group prepare
-uv run --frozen --no-sync pytest tests/unit
-uv run --frozen --no-sync pytest tests/integration tests/api
-uv run --frozen --no-sync pytest tests/model_contract -m live
-uv run --frozen --no-sync uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
+1. **跨文档引用必须可点击。** 引用需求、架构、接口契约、工具定义、测试用例、设计决策或验收证据，必须使用 Markdown 相对路径链接，优先采用 `[引用名称](相对路径/文件.md#准确章节锚点)`。不得仅写“详见需求文档”“参照实施契约”“保持原版”等无法定位的表述；本条语法模板不是实际目标链接。
+2. **优先精确到章节。** 引用特定要求时，尽可能定位到原文对应章节。JSON Schema、Tools、HTTP 映射必须分别链接其真实定义文件，并在涉及实施约束时补充对应章节，不得一律链接契约首页。JSON、代码和日志没有 Markdown 章节时采用文件级链接，标注对象名、字段、case_id 或用途；不得用只在部分平台有效的行号或 JSON Pointer 冒充通用章节锚点。
+3. **锚点必须真实有效。** 创建链接前必须读取目标文件，确认实际标题、相对路径和渲染锚点规则，验证目标可定位，不得猜测。优先使用兼容 GitHub 与 VS Code Markdown 预览的标题锚点：字母小写、空格转连字符、移除标题中的标点（保留连字符及下划线），保留中文；同名标题须按实际渲染顺序核对数字后缀。特殊符号、内联格式、显式 HTML 锚点或平台规则差异须单独核验，不能套用简化算法。没有可用锚点时先找最近的有效章节，仍不能精确定位则用文件级链接并说明限制。不得为造锚点擅自修改受保护或冻结原文。
+4. **开发结论必须可追溯。** “已实现”“已验证”“已通过”“保持原版”“符合契约”“未发生变更”等结论，须根据实际情况链接原始规范、实现代码、测试用例或验收证据。原始规范仅证明依据，不能代替验证证据；版本/未变更结论应附实际哈希、差异或运行记录，历史证据与当前状态须区分。
+5. **内部链接使用相对路径。** 从引用文档所在目录计算路径，避免本机绝对路径；尽可能兼容 VS Code 预览和 GitHub 渲染。不要把聊天回复所需的绝对路径格式写进项目文档。
+6. **避免无意义重复。** 仅对有导航或追溯价值的引用建链接；同一段落反复引用同一来源可合并，编号范围可统一链接对应清单或章节，不为每次出现重复加链。
+7. **阶段交付前验证。** D0～D6 每阶段结束前，必须检查本阶段所有新增/修改 Markdown 的文件存在性、相对路径、章节锚点及关键结论的依据/证据。记录检查范围、方法、实际命令/退出码、结果及无法精确定位的限制，纳入阶段验收记录；静态链接检查与人工追溯核对分别说明，不以链接存在证明业务通过。发现失效引用须修复并复验，不能把未检查写为通过。
 
-# frontend目录
-npm ci
-npm run typecheck
-npm run test -- --run
-npm run build
-npm run dev
+## 统一启动说明与阶段命令
 
-# 根目录，D1后才有维护封装；D4后才有根E2E工程
-pwsh -File scripts/manage.ps1 -Action Init
-npm run test:e2e
-docker compose up -d --wait db
-docker compose up -d app
-```
+从 D0 起以根目录 [README.md](README.md) 作为面向开发者的统一启动说明。安装、配置、首次准备、日常启动、访问、停止及启动排障集中维护于此；阶段任务卡、报告和交接记录链接该入口，不复制通用启动步骤。后续任一阶段改变启动方式，必须在同次变更中同步更新 README、替换失效步骤并核对相关引用，不得保留互相冲突的现行指引。未实现或未验证的方式必须明确标识，不能冒充可用步骤。
 
-live测试需ALLOW_REAL_MODEL_TESTS=true和已通过probe的profile。无模型可MODEL_MODE=disabled做只读诊断，不能冒充AI成功；seed/迁移只加载数据库配置。实际部署、恢复、依赖和阶段验收命令以已实现runbook与报告更新，遇到不可行处修订对应设计/契约并记录原因。
+每阶段报告只记录该阶段特有的执行、测试和验收命令、工作目录、退出码及证据。验收中实际使用的启动命令属于历史证据，须标明阶段和用途，不作为另一套当前启动说明；原始日志保留，不为统一文档改写历史结果。阶段收尾必须检查 README 与工程、配置示例、脚本一致。
+
+D0 首次生成锁需实际解析依赖并记录，锁存在后才运行冻结命令。数据库与模型环境由操作者受控提供，不把密码写入命令历史。live 测试需 ALLOW_REAL_MODEL_TESTS=true 和已通过 probe 的 profile；无模型可 MODEL_MODE=disabled 做只读诊断，不能冒充 AI 成功；seed/迁移只加载数据库配置。阶段测试与验收要求见[任务卡](docs/development/02_开发实施总计划.md)和[报告规范](docs/development/reports/README.md)。

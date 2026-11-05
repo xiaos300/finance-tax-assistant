@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import argparse
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDED = {".git", ".tools", ".cache", ".venv", "node_modules", "__pycache__", ".pytest_cache", "var"}
@@ -18,10 +19,13 @@ PATTERNS = {
 
 
 def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--output-dir',type=Path,default=ROOT/'docs/development/reports/2026-11-03_D0_baseline')
+    args=parser.parse_args()
     findings = []
     manifest = {}
     scanned = 0
-    for base in [ROOT / "backend", ROOT / "frontend", ROOT / "scripts", ROOT]:
+    for base in [ROOT / "backend", ROOT / "frontend", ROOT / "scripts", ROOT/'data/seed', ROOT/'deploy', ROOT]:
         candidates = base.glob("*") if base == ROOT else base.rglob("*")
         for path in sorted(candidates):
             relative = path.relative_to(ROOT)
@@ -29,7 +33,7 @@ def main():
                 continue
             if "dist" not in relative.parts:
                 manifest[relative.as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
-            if path.suffix not in {".py", ".ts", ".vue", ".js", ".mjs", ".json", ".toml", ".html", ".css", ".ps1", ".md", ".lock"} and path.name not in {".env.example", ".gitignore", ".dockerignore"}:
+            if path.suffix not in {".py", ".ts", ".vue", ".js", ".mjs", ".json", ".toml", ".html", ".css", ".ps1", ".md", ".lock",'.sql','.sh'} and path.name not in {".env.example", ".gitignore", ".dockerignore"}:
                 continue
             scanned += 1
             for line_no, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
@@ -50,7 +54,7 @@ def main():
     result = {"source_tree_hash": hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest(),
               "files": manifest, "scanned_files_including_dist": scanned,
               "findings": findings, "ignore_boundaries_passed": boundaries, "canary_detected": canary_detected}
-    target = ROOT / "docs/development/reports/2026-11-03_D0_baseline"
+    target = args.output_dir
     target.mkdir(parents=True, exist_ok=True)
     (target / "source-scan.json").write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
     print(json.dumps({k: v for k, v in result.items() if k != "files"}, ensure_ascii=False))

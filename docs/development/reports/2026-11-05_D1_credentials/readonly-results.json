@@ -1,0 +1,188 @@
+{
+  "scope": "read-only recheck after operator reports local credentials supplied",
+  "connections": {
+    "DATABASE_URL": {
+      "configured": true,
+      "target": {
+        "host": "127.0.0.1",
+        "port": 5432,
+        "database": "finance_tax_dev",
+        "role": "finance_tax_app"
+      },
+      "authenticated": true,
+      "identity": [
+        "finance_tax_dev",
+        "finance_tax_app",
+        "finance_tax_app",
+        "18.6",
+        "127.0.0.1/32",
+        5432,
+        "on"
+      ],
+      "full_project_identity_guard": "rejected",
+      "database_owner": "finance_tax_migrator",
+      "encoding": "UTF8",
+      "harness_schema": [],
+      "harness_tables": [],
+      "public_table_count": 0,
+      "app_database_privileges": {
+        "connect": true,
+        "create": false,
+        "temp": true
+      }
+    },
+    "MIGRATION_DATABASE_URL": {
+      "configured": true,
+      "target": {
+        "host": "127.0.0.1",
+        "port": 5432,
+        "database": "finance_tax_dev",
+        "role": "finance_tax_migrator"
+      },
+      "authenticated": true,
+      "identity": [
+        "finance_tax_dev",
+        "finance_tax_migrator",
+        "finance_tax_migrator",
+        "18.6",
+        "127.0.0.1/32",
+        5432,
+        "on"
+      ],
+      "full_project_identity_guard": "rejected",
+      "database_owner": "finance_tax_migrator",
+      "encoding": "UTF8",
+      "harness_schema": [],
+      "harness_tables": [],
+      "public_table_count": 0,
+      "app_database_privileges": {
+        "connect": true,
+        "create": false,
+        "temp": true
+      }
+    },
+    "TEST_DATABASE_URL": {
+      "configured": true,
+      "target": {
+        "host": "127.0.0.1",
+        "port": 5432,
+        "database": "finance_tax_test",
+        "role": "finance_tax_app"
+      },
+      "authenticated": true,
+      "identity": [
+        "finance_tax_test",
+        "finance_tax_app",
+        "finance_tax_app",
+        "18.6",
+        "127.0.0.1/32",
+        5432,
+        "on"
+      ],
+      "full_project_identity_guard": "rejected",
+      "database_owner": "finance_tax_migrator",
+      "encoding": "UTF8",
+      "harness_schema": [],
+      "harness_tables": [],
+      "public_table_count": 0,
+      "app_database_privileges": {
+        "connect": true,
+        "create": false,
+        "temp": true
+      }
+    },
+    "TEST_MIGRATION_DATABASE_URL": {
+      "configured": true,
+      "target": {
+        "host": "127.0.0.1",
+        "port": 5432,
+        "database": "finance_tax_test",
+        "role": "finance_tax_migrator"
+      },
+      "authenticated": true,
+      "identity": [
+        "finance_tax_test",
+        "finance_tax_migrator",
+        "finance_tax_migrator",
+        "18.6",
+        "127.0.0.1/32",
+        5432,
+        "on"
+      ],
+      "full_project_identity_guard": "rejected",
+      "database_owner": "finance_tax_migrator",
+      "encoding": "UTF8",
+      "harness_schema": [],
+      "harness_tables": [],
+      "public_table_count": 0,
+      "app_database_privileges": {
+        "connect": true,
+        "create": false,
+        "temp": true
+      }
+    },
+    "ADMIN_DATABASE_URL": {
+      "configured": true,
+      "authenticated": true,
+      "inspection": "passed",
+      "identity": [
+        "postgres",
+        "postgres",
+        "postgres",
+        180006,
+        "127.0.0.1/32",
+        5432,
+        true
+      ],
+      "system_identifier": "7703037722715629828",
+      "project_databases": [
+        [
+          "finance_tax_dev",
+          "finance_tax_migrator",
+          "UTF8",
+          null
+        ],
+        [
+          "finance_tax_test",
+          "finance_tax_migrator",
+          "UTF8",
+          null
+        ]
+      ],
+      "project_roles": [
+        [
+          "finance_tax_app",
+          false,
+          false,
+          false,
+          true,
+          false,
+          false
+        ],
+        [
+          "finance_tax_migrator",
+          false,
+          false,
+          false,
+          true,
+          false,
+          false
+        ]
+      ],
+      "role_memberships": [],
+      "database_oids": {
+        "finance_tax_dev": "16391",
+        "finance_tax_test": "16392"
+      },
+      "role_oids": {
+        "finance_tax_migrator": "16390",
+        "finance_tax_app": "16389"
+      }
+    }
+  },
+  "test_pair_configuration": "passed: exact test target, roles, same instance, no fallback",
+  "creation_receipt_present": false,
+  "mutations_executed": false,
+  "complete_business_acceptance": "not_run",
+  "d1_status": "blocked"
+}

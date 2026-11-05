@@ -1,0 +1,17 @@
+{
+  "git_status": " M AGENTS.md\n M Documentation.md\n M Plan.md\n M README.md\n M \"docs/development/00_\\345\\274\\200\\345\\217\\221\\345\\257\\274\\350\\210\\252.md\"\n M \"docs/development/02_\\345\\274\\200\\345\\217\\221\\345\\256\\236\\346\\226\\275\\346\\200\\273\\350\\256\\241\\345\\210\\222.md\"\n M docs/development/progress.md\n M docs/development/reports/2026-11-03_D0_baseline.md\n M docs/development/reports/README.md\n M \"docs/development/tasks/D0_\\345\\267\\245\\347\\250\\213\\344\\270\\216\\351\\205\\215\\347\\275\\256\\345\\237\\272\\347\\272\\277.md\"\n M \"docs/development/tasks/D6_\\351\\203\\250\\347\\275\\262\\344\\270\\216\\347\\253\\236\\350\\265\\233\\344\\272\\244\\344\\273\\230.md\"\n?? docs/development/reports/2026-11-04_D1_naming_review/\n?? docs/development/reports/2026-11-04_D1_preflight/\n?? docs/development/reports/2026-11-04_markdown_navigation.md\n?? docs/development/reports/2026-11-04_markdown_navigation/\n?? \"docs/development/reports/D1_\\345\\274\\200\\345\\217\\221\\345\\211\\215\\346\\243\\200\\346\\237\\245\\344\\270\\216\\347\\216\\257\\345\\242\\203\\345\\207\\206\\345\\244\\207.md\"\n?? \"docs/development/reports/D1_\\346\\225\\260\\346\\215\\256\\345\\272\\223\\345\\221\\275\\345\\220\\215\\345\\217\\230\\346\\233\\264\\345\\256\\241\\346\\237\\245\\344\\270\\216\\345\\210\\233\\345\\273\\272\\346\\216\\210\\346\\235\\203\\346\\226\\271\\346\\241\\210.md\"\n?? note.assets/\n",
+  "protected_hashes": {
+    "materials/01_参赛说明.docx": "d49eb9fe53e0d41e200381275751c05f324f3d00d369e7a386b3d0ef9bf01fb0",
+    "materials/02_示例数据.xlsx": "edb13b2a52d2f875033258836e8fc23c3e1353c46d101184048bac289e52ed0f",
+    "materials/03_业务规则.docx": "93b580f83b94fca4b795ec8e1336e22d799f5a91d581895f0562d29be1b84aa0",
+    "docs/requirements/00_项目需求速览与决策清单.md": "c008b85a6888caf2f893112a22b2cffa72dad5a621dcd4c46e138a14c689bc13",
+    "docs/requirements/01_赛题要求提取.md": "49e9b8b0e149407f0fcba4dced774d787465bf68da2c4838b4ff522ddf3fe67e",
+    "docs/requirements/02_业务需求分析.md": "4b42ce3408bb48fc4c2ff79b222c0ba26d11960da474443686a083216804753c",
+    "docs/requirements/03_软件需求分析说明书.md": "25b2d1244bd401a4ed654bdcce9b745ccb84649a1609dd436f06705a58cd103f",
+    "docs/requirements/04_需求追踪矩阵.md": "46cbdf3e38348b3aa2e47a10c8469d9f91fcca60f5cee2e33611a4a42e80a64b",
+    "docs/requirements/05_待确认问题与风险.md": "751bb2c341d498ae804bb52c52171dea8474bf487526cfef9805bcd60191cec6",
+    "docs/architecture/contracts/contracts.schema.json": "a519cd8c16f3dda5990ab5dd6dbf71177b0d89dc37fdebe55440775a6028ab2d",
+    "docs/architecture/contracts/http-operations.json": "e5629f1e8e563d3afffb6b8188892d453b433a75369cecdd7424fd48c1825a07",
+    "docs/architecture/contracts/tools.json": "df3e2eb01b0ebd0abc6a87831b175c6af33e06c3ded2c4e4f63bdde8fb73c537"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "probe": "read-only service/listener/WSL retry outside sandbox",
+  "services": [
+    {
+      "Name": "com.docker.service",
+      "Status": "Stopped"
+    },
+    {
+      "Name": "postgresql-x64-18",
+      "Status": "Running"
+    }
+  ],
+  "pg_candidate_listeners": [
+    {
+      "LocalAddress": "::",
+      "LocalPort": 5432,
+      "OwningProcess": 50712
+    },
+    {
+      "LocalAddress": "0.0.0.0",
+      "LocalPort": 5432,
+      "OwningProcess": 50712
+    }
+  ],
+  "wsl_exit_code": 0,
+  "wsl_distributions": [
+    "Ubuntu",
+    "docker-desktop"
+  ],
+  "query_components": [
+    "Get-Service | Where-Object {$_.Name -match 'postgres|docker'} | Select-Object Name,Status",
+    "Get-NetTCPConnection -State Listen | Where-Object {$_.LocalPort -in @(5432,5433,15432)} | Select-Object LocalAddress,LocalPort,OwningProcess",
+    "wsl --list --quiet"
+  ],
+  "shell_exit_code": 0
+}

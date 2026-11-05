@@ -64,6 +64,9 @@ def test_TC061_http_contract(monkeypatch):
         assert response.status_code == 404
         validate("ErrorEnvelope", response.json())
         operations = json.loads((ROOT / "docs/architecture/contracts/http-operations.json").read_text(encoding="utf-8"))["operations"]
-        expected = {op["path"] for op in operations if "/health/" in op["path"]}
+        expected = {op["path"] for op in operations if "/health/" in op["path"] or op['path'] in {
+            '/api/v1/me','/api/v1/invoices/search','/api/v1/companies/{company_id}/invoices/{invoice_id}',
+            '/api/v1/companies/{company_id}/bank-transactions','/api/v1/companies/{company_id}/totals',
+            '/api/v1/companies/{company_id}/purpose-check','/api/v1/companies/{company_id}/rules'}}
         assert set((await client.get("/openapi.json")).json()["paths"]) == expected
     asyncio.run(check())

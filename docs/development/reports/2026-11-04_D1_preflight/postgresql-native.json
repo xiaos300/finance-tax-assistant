@@ -1,0 +1,58 @@
+{
+  "service_name": "postgresql-x64-18",
+  "service_state": "Running",
+  "service_binary": "E:\\developmentEnvs\\postgreSQL\\bin\\pg_ctl.exe",
+  "tool_results": [
+    {
+      "tool": "postgres",
+      "path": "E:\\developmentEnvs\\postgreSQL\\bin\\postgres.exe",
+      "command": "postgres --version",
+      "exit_code": 0,
+      "output": "postgres (PostgreSQL) 18.6"
+    },
+    {
+      "tool": "psql",
+      "path": "E:\\developmentEnvs\\postgreSQL\\bin\\psql.exe",
+      "command": "psql --version",
+      "exit_code": 0,
+      "output": "psql (PostgreSQL) 18.6"
+    },
+    {
+      "tool": "pg_isready",
+      "path": "E:\\developmentEnvs\\postgreSQL\\bin\\pg_isready.exe",
+      "command": "pg_isready --version",
+      "exit_code": 0,
+      "output": "pg_isready (PostgreSQL) 18.6"
+    },
+    {
+      "tool": "pg_dump",
+      "path": "E:\\developmentEnvs\\postgreSQL\\bin\\pg_dump.exe",
+      "command": "pg_dump --version",
+      "exit_code": 0,
+      "output": "pg_dump (PostgreSQL) 18.6"
+    },
+    {
+      "tool": "pg_restore",
+      "path": "E:\\developmentEnvs\\postgreSQL\\bin\\pg_restore.exe",
+      "command": "pg_restore --version",
+      "exit_code": 0,
+      "output": "pg_restore (PostgreSQL) 18.6"
+    }
+  ],
+  "port_owner": {
+    "Name": "postgres.exe",
+    "ExecutablePath": null
+  },
+  "readiness": {
+    "command": "pg_isready -h 127.0.0.1 -p 5432 -t 3",
+    "exit_code": 0,
+    "output": "127.0.0.1:5432 - accepting connections",
+    "authenticated_sql_executed": false
+  },
+  "query_components": [
+    "Get-CimInstance Win32_Service -Filter \"Name='postgresql-x64-18'\" (only executable path extracted)",
+    "Get-CimInstance Win32_Process -Filter 'ProcessId=50712' | Select-Object Name,ExecutablePath",
+    "Native executable versions and pg_isready: exact arguments in tool_results/readiness"
+  ],
+  "shell_exit_code": 0
+}

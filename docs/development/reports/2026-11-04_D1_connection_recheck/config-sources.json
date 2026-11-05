@@ -1,0 +1,40 @@
+{
+  "root_env_path": "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\.env",
+  "fields": {
+    "DATABASE_URL": {
+      "file_key_present": true,
+      "file_value_present": true,
+      "process_key_present": false,
+      "process_value_present": false,
+      "effective_value_present": true
+    },
+    "MIGRATION_DATABASE_URL": {
+      "file_key_present": true,
+      "file_value_present": false,
+      "process_key_present": false,
+      "process_value_present": false,
+      "effective_value_present": false
+    },
+    "ADMIN_DATABASE_URL": {
+      "file_key_present": true,
+      "file_value_present": true,
+      "process_key_present": false,
+      "process_value_present": false,
+      "effective_value_present": true
+    },
+    "TEST_DATABASE_URL": {
+      "file_key_present": true,
+      "file_value_present": true,
+      "process_key_present": false,
+      "process_value_present": false,
+      "effective_value_present": true
+    },
+    "TEST_MIGRATION_DATABASE_URL": {
+      "file_key_present": true,
+      "file_value_present": true,
+      "process_key_present": false,
+      "process_value_present": false,
+      "effective_value_present": true
+    }
+  }
+}

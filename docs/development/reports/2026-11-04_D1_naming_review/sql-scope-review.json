@@ -1,0 +1,16 @@
+{
+  "method": "Offline static scope checks and manual PostgreSQL-18 semantics review; NOT a SQL parser or execution",
+  "sql_blocks": 7,
+  "create_database_targets": [
+    "finance_tax_dev",
+    "finance_tax_test"
+  ],
+  "create_role_targets": [
+    "finance_tax_migrator",
+    "finance_tax_app"
+  ],
+  "errors": [],
+  "database_connection_attempted": false,
+  "sql_executed": false,
+  "note": "Manual review corrected terminal END semicolons in five DO blocks before completion; SQL still requires authorized real PostgreSQL validation."
+}

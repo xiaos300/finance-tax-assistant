@@ -1,0 +1,28 @@
+{
+  "command": "PowerShell Language.Parser.ParseInput on report fenced powershell blocks (parse only; no execution)",
+  "blocks": 5,
+  "exit_code": 0,
+  "results": [
+    {
+      "block": 1,
+      "errors": []
+    },
+    {
+      "block": 2,
+      "errors": []
+    },
+    {
+      "block": 3,
+      "errors": []
+    },
+    {
+      "block": 4,
+      "errors": []
+    },
+    {
+      "block": 5,
+      "errors": []
+    }
+  ],
+  "stderr": ""
+}

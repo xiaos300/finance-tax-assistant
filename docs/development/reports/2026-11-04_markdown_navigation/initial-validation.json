@@ -1,0 +1,1720 @@
+{
+  "scope": [
+    "AGENTS.md",
+    "Documentation.md",
+    "Plan.md",
+    "README.md",
+    "docs/development/02_开发实施总计划.md",
+    "docs/development/progress.md",
+    "docs/development/reports/README.md",
+    "docs/development/reports/2026-11-03_D0_baseline.md",
+    "docs/development/reports/2026-11-04_markdown_navigation.md"
+  ],
+  "method": "Static relative-path resolution and GitHub/VS Code compatible heading fragments; fenced blocks and inline-code examples excluded; repeated headings suffixed in document order. No UI rendering or external URL checks claimed.",
+  "links_checked": 251,
+  "anchors_checked": 80,
+  "errors": [
+    {
+      "source": "Documentation.md",
+      "label": "机器验证明细",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation/link-validation.json",
+      "fragment": "",
+      "error": "missing target"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "机器验证明细",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation/link-validation.json",
+      "fragment": "",
+      "error": "missing target"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "机器验证明细",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation/link-validation.json",
+      "fragment": "",
+      "error": "missing target"
+    }
+  ],
+  "links": [
+    {
+      "source": "AGENTS.md",
+      "label": "开发导航",
+      "target": "docs/development/00_开发导航.md",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "Plan.md",
+      "target": "Plan.md",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "Documentation.md",
+      "target": "Documentation.md",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "progress",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "需求说明书",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "追踪矩阵",
+      "target": "docs/requirements/04_需求追踪矩阵.md",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "实施契约",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "JSON Schema",
+      "target": "docs/architecture/contracts/contracts.schema.json",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "Tools 定义",
+      "target": "docs/architecture/contracts/tools.json",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "HTTP 映射",
+      "target": "docs/architecture/contracts/http-operations.json",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "契约入口与优先关系",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "1-契约入口与优先关系",
+      "heading": "1. 契约入口与优先关系"
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "总计划",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "09",
+      "target": "docs/architecture/09_工程目录结构设计.md",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "contracts.py",
+      "target": "backend/app/core/contracts.py",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "契约校验要求",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "1-契约入口与优先关系",
+      "heading": "1. 契约入口与优先关系"
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "JSON Schema",
+      "target": "docs/architecture/contracts/contracts.schema.json",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "tools.json",
+      "target": "docs/architecture/contracts/tools.json",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "test-cases.json",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "README.md",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "任务卡",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": ""
+    },
+    {
+      "source": "AGENTS.md",
+      "label": "报告规范",
+      "target": "docs/development/reports/README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "AGENTS 独立章节",
+      "target": "AGENTS.md",
+      "fragment": "markdown-文档引用锚点与可追溯性规范",
+      "heading": "Markdown 文档引用、锚点与可追溯性规范"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "总计划",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": "6-报告与成果",
+      "heading": "6. 报告与成果"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "报告规范",
+      "target": "docs/development/reports/README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "落实记录",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "fragment": "验证结果与边界",
+      "heading": "验证结果与边界"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "机器验证明细",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation/link-validation.json",
+      "fragment": "",
+      "error": "missing target"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "README",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "AGENTS",
+      "target": "AGENTS.md",
+      "fragment": "统一启动说明与阶段命令",
+      "heading": "统一启动说明与阶段命令"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "导航",
+      "target": "docs/development/00_开发导航.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "Plan",
+      "target": "Plan.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "总计划",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": "6-报告与成果",
+      "heading": "6. 报告与成果"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "D0",
+      "target": "docs/development/tasks/D0_工程与配置基线.md",
+      "fragment": "开发任务",
+      "heading": "开发任务"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "D6",
+      "target": "docs/development/tasks/D6_部署与竞赛交付.md",
+      "fragment": "开发任务",
+      "heading": "开发任务"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "报告规范",
+      "target": "docs/development/reports/README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "D0 机器汇总",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "执行记录",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "TC061/TC051 定义",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "D0报告",
+      "target": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "progress",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "启动说明",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "D0 卡",
+      "target": "docs/development/tasks/D0_工程与配置基线.md",
+      "fragment": "接口任务",
+      "heading": "接口任务"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "契约1.2",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "7-http前端与生命周期的补足",
+      "heading": "7. HTTP、前端与生命周期的补足"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "当期 protected_input_hashes 记录",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "progress",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "需求基线 1.3",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "12-需求基线与后续设计输入",
+      "heading": "12. 需求基线与后续设计输入"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "追踪矩阵",
+      "target": "docs/requirements/04_需求追踪矩阵.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "负责人决策速览",
+      "target": "docs/requirements/00_项目需求速览与决策清单.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "架构交接",
+      "target": "docs/architecture/11_架构评审与开发交接.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "实施契约 1.2",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "1-契约入口与优先关系",
+      "heading": "1. 契约入口与优先关系"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "JSON Schema",
+      "target": "docs/architecture/contracts/contracts.schema.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "Tools 定义",
+      "target": "docs/architecture/contracts/tools.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "HTTP 映射",
+      "target": "docs/architecture/contracts/http-operations.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "progress",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "TC 清单",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "阶段报告",
+      "target": "docs/development/reports/README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "阶段映射",
+      "target": "docs/development/03_模块依赖与阶段划分.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "复审问题清单",
+      "target": "docs/development/01_架构复审问题清单.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "决策速览",
+      "target": "docs/requirements/00_项目需求速览与决策清单.md",
+      "fragment": "5-待确认问题与决策清单",
+      "heading": "5. 待确认问题与决策清单"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "progress 外部条件台账",
+      "target": "docs/development/progress.md",
+      "fragment": "外部条件台账",
+      "heading": "外部条件台账"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "用例清单",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "label": "需求依据",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "11-依据与信息等级",
+      "heading": "1.1 依据与信息等级"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "原文核验限制",
+      "target": "docs/requirements/00_项目需求速览与决策清单.md",
+      "fragment": "原文核验提示",
+      "heading": "原文核验提示"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "Q-007 历史证据政策",
+      "target": "docs/requirements/00_项目需求速览与决策清单.md",
+      "fragment": "5-待确认问题与决策清单",
+      "heading": "5. 待确认问题与决策清单"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "D7 可选增强",
+      "target": "docs/development/tasks/D7_可选增强.md",
+      "fragment": "前置依赖",
+      "heading": "前置依赖"
+    },
+    {
+      "source": "Documentation.md",
+      "label": "README",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Plan.md",
+      "label": "D0—D7 总计划",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": "2-阶段和独立任务卡",
+      "heading": "2. 阶段和独立任务卡"
+    },
+    {
+      "source": "Plan.md",
+      "label": "需求与阶段映射",
+      "target": "docs/development/03_模块依赖与阶段划分.md",
+      "fragment": ""
+    },
+    {
+      "source": "Plan.md",
+      "label": "测试通过规则",
+      "target": "docs/development/04_测试与验收规范.md",
+      "fragment": "4-运行记录与通过条件",
+      "heading": "4. 运行记录与通过条件"
+    },
+    {
+      "source": "Plan.md",
+      "label": "TC 清单",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "Plan.md",
+      "label": "progress",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "Plan.md",
+      "label": "D0 工程与配置",
+      "target": "docs/development/tasks/D0_工程与配置基线.md",
+      "fragment": "必需测试",
+      "heading": "必需测试"
+    },
+    {
+      "source": "Plan.md",
+      "label": "D1 PostgreSQL 与只读业务",
+      "target": "docs/development/tasks/D1_PostgreSQL与只读业务.md",
+      "fragment": "必需测试",
+      "heading": "必需测试"
+    },
+    {
+      "source": "Plan.md",
+      "label": "D2 只读 Harness 与网页",
+      "target": "docs/development/tasks/D2_只读Harness与网页.md",
+      "fragment": "必需测试",
+      "heading": "必需测试"
+    },
+    {
+      "source": "Plan.md",
+      "label": "D3 受控写入闭环",
+      "target": "docs/development/tasks/D3_受控写入闭环.md",
+      "fragment": "必需测试",
+      "heading": "必需测试"
+    },
+    {
+      "source": "Plan.md",
+      "label": "D4 记忆与完整交互",
+      "target": "docs/development/tasks/D4_记忆与完整交互.md",
+      "fragment": "必需测试",
+      "heading": "必需测试"
+    },
+    {
+      "source": "Plan.md",
+      "label": "D5 非功能与全量回归",
+      "target": "docs/development/tasks/D5_非功能与全量回归.md",
+      "fragment": "必需测试",
+      "heading": "必需测试"
+    },
+    {
+      "source": "Plan.md",
+      "label": "D6 部署与竞赛交付",
+      "target": "docs/development/tasks/D6_部署与竞赛交付.md",
+      "fragment": "必需测试",
+      "heading": "必需测试"
+    },
+    {
+      "source": "Plan.md",
+      "label": "D7 可选增强",
+      "target": "docs/development/tasks/D7_可选增强.md",
+      "fragment": "必需测试",
+      "heading": "必需测试"
+    },
+    {
+      "source": "Plan.md",
+      "label": "阶段状态与切换规则",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": "3-阶段状态与切换规则",
+      "heading": "3. 阶段状态与切换规则"
+    },
+    {
+      "source": "Plan.md",
+      "label": "README 开发者统一启动说明",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Plan.md",
+      "label": "功能需求",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "5-详细功能需求",
+      "heading": "5. 详细功能需求"
+    },
+    {
+      "source": "Plan.md",
+      "label": "数据需求",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "62-数据需求登记",
+      "heading": "6.2 数据需求登记"
+    },
+    {
+      "source": "Plan.md",
+      "label": "非功能需求",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "7-非功能需求",
+      "heading": "7. 非功能需求"
+    },
+    {
+      "source": "Plan.md",
+      "label": "接口需求",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "64-外部依赖与接口",
+      "heading": "6.4 外部依赖与接口"
+    },
+    {
+      "source": "Plan.md",
+      "label": "交付要求",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "10-竞赛交付与追踪",
+      "heading": "10. 竞赛交付与追踪"
+    },
+    {
+      "source": "Plan.md",
+      "label": "功能验收",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "83-功能验收",
+      "heading": "8.3 功能验收"
+    },
+    {
+      "source": "Plan.md",
+      "label": "非功能及增强验收",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "84-非功能及增强验收",
+      "heading": "8.4 非功能及增强验收"
+    },
+    {
+      "source": "Plan.md",
+      "label": "Markdown 引用规范",
+      "target": "AGENTS.md",
+      "fragment": "markdown-文档引用锚点与可追溯性规范",
+      "heading": "Markdown 文档引用、锚点与可追溯性规范"
+    },
+    {
+      "source": "README.md",
+      "label": "D0 工具与锁记录",
+      "target": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "fragment": "工具锁与可复现安装",
+      "heading": "工具、锁与可复现安装"
+    },
+    {
+      "source": "README.md",
+      "label": "config.py",
+      "target": "backend/app/core/config.py",
+      "fragment": ""
+    },
+    {
+      "source": "README.md",
+      "label": "build 包装器",
+      "target": "frontend/scripts/build.mjs",
+      "fragment": ""
+    },
+    {
+      "source": "README.md",
+      "label": "D0 失败记录",
+      "target": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "fragment": "失败修复与复验",
+      "heading": "失败、修复与复验"
+    },
+    {
+      "source": "README.md",
+      "label": "规范定义",
+      "target": "docs/architecture/06_API接口设计.md",
+      "fragment": "8-健康接口",
+      "heading": "8. 健康接口"
+    },
+    {
+      "source": "README.md",
+      "label": "D0 实现",
+      "target": "backend/app/api/routers/health.py",
+      "fragment": ""
+    },
+    {
+      "source": "README.md",
+      "label": "实测证据",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/health-http.json",
+      "fragment": ""
+    },
+    {
+      "source": "README.md",
+      "label": "生命周期补足",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "7-http前端与生命周期的补足",
+      "heading": "7. HTTP、前端与生命周期的补足"
+    },
+    {
+      "source": "README.md",
+      "label": "TC051 定义",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "README.md",
+      "label": "D0 实际子项状态",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "README.md",
+      "label": "D0 验收命令与证据",
+      "target": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "fragment": "验收命令与证据",
+      "heading": "验收命令与证据"
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "AGENTS",
+      "target": "AGENTS.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "实施契约1.2",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "D0 工程与配置基线",
+      "target": "docs/development/tasks/D0_工程与配置基线.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "D1 PostgreSQL与只读业务",
+      "target": "docs/development/tasks/D1_PostgreSQL与只读业务.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "D2 只读Harness与网页",
+      "target": "docs/development/tasks/D2_只读Harness与网页.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "D3 受控写入闭环",
+      "target": "docs/development/tasks/D3_受控写入闭环.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "D4 记忆与完整交互",
+      "target": "docs/development/tasks/D4_记忆与完整交互.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "D5 非功能与全量回归",
+      "target": "docs/development/tasks/D5_非功能与全量回归.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "D6 部署与竞赛交付",
+      "target": "docs/development/tasks/D6_部署与竞赛交付.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "D7 可选增强",
+      "target": "docs/development/tasks/D7_可选增强.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "test-cases.json",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "测试规范",
+      "target": "docs/development/04_测试与验收规范.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "README",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "报告目录规范",
+      "target": "docs/development/reports/README.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/02_开发实施总计划.md",
+      "label": "根 Markdown 引用规范",
+      "target": "AGENTS.md",
+      "fragment": "markdown-文档引用锚点与可追溯性规范",
+      "heading": "Markdown 文档引用、锚点与可追溯性规范"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "需求1.3",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "12-需求基线与后续设计输入",
+      "heading": "12. 需求基线与后续设计输入"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "实施契约1.2",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "1-契约入口与优先关系",
+      "heading": "1. 契约入口与优先关系"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "D0报告",
+      "target": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "summary",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "项目需求速览与决策清单",
+      "target": "docs/requirements/00_项目需求速览与决策清单.md",
+      "fragment": "5-待确认问题与决策清单",
+      "heading": "5. 待确认问题与决策清单"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "TC061/TC051 定义",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "实际子项结果",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "AC-036",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "84-非功能及增强验收",
+      "heading": "8.4 非功能及增强验收"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "17项复审问题",
+      "target": "docs/development/01_架构复审问题清单.md",
+      "fragment": "1-实质性问题与修正",
+      "heading": "1. 实质性问题与修正"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "D0实现报告",
+      "target": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "attempt1",
+      "target": "docs/development/reports/2026-11-03_D0_attempt1/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "attempt2",
+      "target": "docs/development/reports/2026-11-03_D0_attempt2/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "attempt3",
+      "target": "docs/development/reports/2026-11-03_D0_attempt3/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "总计划的阶段状态与切换规则",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": "3-阶段状态与切换规则",
+      "heading": "3. 阶段状态与切换规则"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "文档导航验收",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "fragment": "验证结果与边界",
+      "heading": "验证结果与边界"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "label": "根 Markdown 引用规范",
+      "target": "AGENTS.md",
+      "fragment": "markdown-文档引用锚点与可追溯性规范",
+      "heading": "Markdown 文档引用、锚点与可追溯性规范"
+    },
+    {
+      "source": "docs/development/reports/README.md",
+      "label": "D0实现报告",
+      "target": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/README.md",
+      "label": "README 开发者统一启动说明",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/README.md",
+      "label": "Markdown 文档引用、锚点与可追溯性规范",
+      "target": "AGENTS.md",
+      "fragment": "markdown-文档引用锚点与可追溯性规范",
+      "heading": "Markdown 文档引用、锚点与可追溯性规范"
+    },
+    {
+      "source": "docs/development/reports/README.md",
+      "label": "测试规范的运行记录与通过条件",
+      "target": "docs/development/04_测试与验收规范.md",
+      "fragment": "4-运行记录与通过条件",
+      "heading": "4. 运行记录与通过条件"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "需求 1.3",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "12-需求基线与后续设计输入",
+      "heading": "12. 需求基线与后续设计输入"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "实施契约 1.2",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "1-契约入口与优先关系",
+      "heading": "1. 契约入口与优先关系"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "JSON Schema",
+      "target": "docs/architecture/contracts/contracts.schema.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "Tools 定义",
+      "target": "docs/architecture/contracts/tools.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "HTTP 映射",
+      "target": "docs/architecture/contracts/http-operations.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "本轮机器契约哈希复核及历史证据限制",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "fragment": "验证结果与边界",
+      "heading": "验证结果与边界"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "D0 验收汇总",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "机器汇总",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "逐命令与退出码",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "启动说明",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "阶段状态",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "根规则",
+      "target": "AGENTS.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "开发导航",
+      "target": "docs/development/00_开发导航.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "Plan",
+      "target": "Plan.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "Documentation",
+      "target": "Documentation.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "progress",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "D0 任务卡",
+      "target": "docs/development/tasks/D0_工程与配置基线.md",
+      "fragment": "开发任务",
+      "heading": "开发任务"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "需求",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "追踪矩阵",
+      "target": "docs/requirements/04_需求追踪矩阵.md",
+      "fragment": "3-数据非功能和接口反向覆盖",
+      "heading": "3. 数据、非功能和接口反向覆盖"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "架构03",
+      "target": "docs/architecture/03_技术选型与架构决策.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "架构06",
+      "target": "docs/architecture/06_API接口设计.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "架构09",
+      "target": "docs/architecture/09_工程目录结构设计.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "架构10",
+      "target": "docs/architecture/10_部署与运行架构设计.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "测试定义",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "报告规则",
+      "target": "docs/development/reports/README.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "summary.json",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "pyproject.toml",
+      "target": "backend/pyproject.toml",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "uv.lock",
+      "target": "backend/uv.lock",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "config.py",
+      "target": "backend/app/core/config.py",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "cli.py",
+      "target": "backend/app/cli.py",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "engine.py",
+      "target": "backend/app/infrastructure/database/engine.py",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "contracts.py",
+      "target": "backend/app/core/contracts.py",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "strict/extra/format 要求",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "1-契约入口与优先关系",
+      "heading": "1. 契约入口与优先关系"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "D0 Schema 子集回归",
+      "target": "backend/tests/unit/test_contracts.py",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "main.py",
+      "target": "backend/app/main.py",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "errors.py",
+      "target": "backend/app/api/errors.py",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "health.py",
+      "target": "backend/app/api/routers/health.py",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "frontend/App.vue",
+      "target": "frontend/src/App.vue",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "OpenAPI 已取证",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/openapi.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "build.mjs",
+      "target": "frontend/scripts/build.mjs",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "后端锁",
+      "target": "backend/uv.lock",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "前端锁",
+      "target": "frontend/package-lock.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "attempt1/backend-frozen-clean.log",
+      "target": "docs/development/reports/2026-11-03_D0_attempt1/backend-frozen-clean.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "根 README",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "commands.json",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "Python版本",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/version-python.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "Node版本",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/version-node.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "npm版本",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/version-npm.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "uv版本",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/version-uv.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "lock-check.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/lock-check.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "backend-frozen-clean.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/backend-frozen-clean.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "backend-tests.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/backend-tests.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "pytest.xml",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/pytest.xml",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "frontend-frozen.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/frontend-frozen.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "frontend-typecheck.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/frontend-typecheck.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "frontend-vitest.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/frontend-vitest.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "frontend-build.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/frontend-build.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "frontend-audit.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/frontend-audit.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "environment.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/environment.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "maintenance-unimplemented.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/maintenance-unimplemented.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "maintenance-missing-config.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/maintenance-missing-config.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "maintenance-valid-config.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/maintenance-valid-config.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "uvicorn.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/uvicorn.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "health-http.json",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/health-http.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "openapi.json",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/openapi.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "source-scan.json",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/source-scan.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "source-scan.log",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/source-scan.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "健康 HTTP 证据",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/health-http.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "HTTP、前端与生命周期补足",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "7-http前端与生命周期的补足",
+      "heading": "7. HTTP、前端与生命周期的补足"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "verify_baseline.py",
+      "target": "scripts/verify_baseline.py",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "定义与模型模式",
+      "target": "docs/development/04_测试与验收规范.md",
+      "fragment": "1-定义类型与模型模式",
+      "heading": "1. 定义、类型与模型模式"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "TC 清单",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "逐用例/子项汇总",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "后端 JUnit",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/pytest.xml",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "Vitest 日志",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/frontend-vitest.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "配置测试",
+      "target": "backend/tests/unit/test_config.py",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "契约测试",
+      "target": "backend/tests/unit/test_contracts.py",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "TC061 定义",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "AC-036 工程子项",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "84-非功能及增强验收",
+      "heading": "8.4 非功能及增强验收"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "TC051 定义",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "AC-001/004",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "83-功能验收",
+      "heading": "8.3 功能验收"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "AC-036",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "84-非功能及增强验收",
+      "heading": "8.4 非功能及增强验收"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "契约1.2",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "1-契约入口与优先关系",
+      "heading": "1. 契约入口与优先关系"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "NFR-006/009",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "7-非功能需求",
+      "heading": "7. 非功能需求"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "attempt1",
+      "target": "docs/development/reports/2026-11-03_D0_attempt1/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "attempt2",
+      "target": "docs/development/reports/2026-11-03_D0_attempt2/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "attempt3",
+      "target": "docs/development/reports/2026-11-03_D0_attempt3/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "D1 卡",
+      "target": "docs/development/tasks/D1_PostgreSQL与只读业务.md",
+      "fragment": "前置依赖",
+      "heading": "前置依赖"
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "progress",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "Documentation",
+      "target": "Documentation.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "progress",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "label": "导航规范落实记录",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "fragment": "验证结果与边界",
+      "heading": "验证结果与边界"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "根 AGENTS",
+      "target": "AGENTS.md",
+      "fragment": "markdown-文档引用锚点与可追溯性规范",
+      "heading": "Markdown 文档引用、锚点与可追溯性规范"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "progress",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "AGENTS.md",
+      "target": "AGENTS.md",
+      "fragment": "markdown-文档引用锚点与可追溯性规范",
+      "heading": "Markdown 文档引用、锚点与可追溯性规范"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "D0 报告",
+      "target": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "fragment": "范围目录与改动",
+      "heading": "范围、目录与改动"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "Documentation.md",
+      "target": "Documentation.md",
+      "fragment": "markdown-引用与导航规范落实--2026-11-04",
+      "heading": "Markdown 引用与导航规范落实 · 2026-11-04"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "Plan.md",
+      "target": "Plan.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "progress.md",
+      "target": "docs/development/progress.md",
+      "fragment": "测试与问题状态",
+      "heading": "测试与问题状态"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "README.md",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "开发总计划",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": "6-报告与成果",
+      "heading": "6. 报告与成果"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "报告规范",
+      "target": "docs/development/reports/README.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "机器验证明细",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation/link-validation.json",
+      "fragment": "",
+      "error": "missing target"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "需求 1.3 的基线与后续设计输入",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "12-需求基线与后续设计输入",
+      "heading": "12. 需求基线与后续设计输入"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "实施契约的入口与优先关系",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "1-契约入口与优先关系",
+      "heading": "1. 契约入口与优先关系"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "Schema",
+      "target": "docs/architecture/contracts/contracts.schema.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "Tools",
+      "target": "docs/architecture/contracts/tools.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "HTTP 映射",
+      "target": "docs/architecture/contracts/http-operations.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "HTTP、前端与生命周期补足",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "7-http前端与生命周期的补足",
+      "heading": "7. HTTP、前端与生命周期的补足"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "后端执行日志",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/backend-tests.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "JUnit 结果",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/pytest.xml",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "总计划的阶段状态与切换规则",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": "3-阶段状态与切换规则",
+      "heading": "3. 阶段状态与切换规则"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "机器验证明细",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation/link-validation.json",
+      "fragment": "",
+      "error": "missing target"
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "D0 汇总",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "source-scan.json",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/source-scan.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "test-cases.json",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "label": "原文核验限制",
+      "target": "docs/requirements/00_项目需求速览与决策清单.md",
+      "fragment": "原文核验提示",
+      "heading": "原文核验提示"
+    }
+  ],
+  "tracked_files_changed_since_task_start": [
+    "AGENTS.md",
+    "Documentation.md",
+    "Plan.md",
+    "README.md",
+    "docs/development/02_开发实施总计划.md",
+    "docs/development/progress.md",
+    "docs/development/reports/2026-11-03_D0_baseline.md",
+    "docs/development/reports/README.md"
+  ],
+  "unexpected_changes": [],
+  "machine_contracts": [
+    {
+      "path": "docs/architecture/contracts/contracts.schema.json",
+      "sha256": "a519cd8c16f3dda5990ab5dd6dbf71177b0d89dc37fdebe55440775a6028ab2d",
+      "matches_task_start": true,
+      "matches_git_HEAD": true
+    },
+    {
+      "path": "docs/architecture/contracts/tools.json",
+      "sha256": "df3e2eb01b0ebd0abc6a87831b175c6af33e06c3ded2c4e4f63bdde8fb73c537",
+      "matches_task_start": true,
+      "matches_git_HEAD": true
+    },
+    {
+      "path": "docs/architecture/contracts/http-operations.json",
+      "sha256": "e5629f1e8e563d3afffb6b8188892d453b433a75369cecdd7424fd48c1825a07",
+      "matches_task_start": true,
+      "matches_git_HEAD": true
+    }
+  ],
+  "protected_inputs": [
+    {
+      "path": "materials\\01_参赛说明.docx",
+      "matches_D0_record": true
+    },
+    {
+      "path": "materials\\02_示例数据.xlsx",
+      "matches_D0_record": true
+    },
+    {
+      "path": "materials\\03_业务规则.docx",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\00_项目需求速览与决策清单.md",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\01_赛题要求提取.md",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\02_业务需求分析.md",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\03_软件需求分析说明书.md",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\04_需求追踪矩阵.md",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\05_待确认问题与风险.md",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\新建文件夹\\01_赛题要求提取.md",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\新建文件夹\\02_业务需求分析.md",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\新建文件夹\\03_软件需求分析说明书.md",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\新建文件夹\\04_需求追踪矩阵.md",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\新建文件夹\\05_待确认问题与风险.md",
+      "matches_D0_record": true
+    }
+  ],
+  "non_scope_tracked_files_unchanged": 177
+}

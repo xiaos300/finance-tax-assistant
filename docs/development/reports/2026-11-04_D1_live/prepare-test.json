@@ -1,0 +1,15 @@
+{
+  "command": [
+    "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\backend\\.venv\\Scripts\\python.exe",
+    "-m",
+    "app.cli",
+    "prepare-existing-test",
+    "--approval-ref",
+    "Documentation.md#d1-既有项目对象准备恢复--2026-11-04"
+  ],
+  "cwd": "backend",
+  "app_env": "test",
+  "model_mode": "none",
+  "exit_code": 2,
+  "log": "prepare-test.log"
+}

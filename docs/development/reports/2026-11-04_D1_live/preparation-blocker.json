@@ -1,0 +1,9 @@
+{
+  "five_connection_logins": "passed in readonly-results.json",
+  "test_role_passwords_distinct": false,
+  "database_mutations_by_prepare_command": false,
+  "prepare_command_exit_code": 2,
+  "safe_reason": "Independent role credentials on the inspected instance are required",
+  "role_password_changed_by_agent": false,
+  "full_postgresql_acceptance": "not_run"
+}

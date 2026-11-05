@@ -1,0 +1,174 @@
+{
+  "environment": "development",
+  "database": "finance_tax_dev",
+  "role": "finance_tax_app",
+  "transport": "HTTP loopback TCP / uvicorn",
+  "model_mode": "none",
+  "tokens": "ephemeral child environment only; root .env demo tokens still unconfigured",
+  "command": [
+    "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\backend\\.venv\\Scripts\\python.exe",
+    "-m",
+    "uvicorn",
+    "app.main:app",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "50923",
+    "--no-access-log"
+  ],
+  "cwd": "backend",
+  "checks": [
+    {
+      "path": "/health/live",
+      "identity": "public",
+      "expected_status": 200,
+      "actual_status": 200,
+      "request_id_matches": true,
+      "body": {
+        "data": {
+          "status": "alive",
+          "checks": {}
+        },
+        "request_id": "bbacab17-a93d-4f2d-a170-4c663a7d47e5"
+      }
+    },
+    {
+      "path": "/health/ready",
+      "identity": "public",
+      "expected_status": 200,
+      "actual_status": 200,
+      "request_id_matches": true,
+      "body": {
+        "data": {
+          "status": "ready",
+          "checks": {
+            "database_prepared": true
+          }
+        },
+        "request_id": "fef9fc99-9fab-422c-86dd-c7c99b750735"
+      }
+    },
+    {
+      "path": "/me",
+      "identity": "U001",
+      "expected_status": 200,
+      "actual_status": 200,
+      "request_id_matches": true,
+      "body": {
+        "data": {
+          "user_id": "U001",
+          "name": "测试用户一",
+          "companies": [
+            {
+              "company_id": "C001",
+              "name": "甲企业（比赛模拟）",
+              "can_write": true
+            },
+            {
+              "company_id": "C002",
+              "name": "乙企业（比赛模拟）",
+              "can_write": true
+            }
+          ]
+        },
+        "request_id": "a4637922-bf20-4b2d-9cb7-c75f88cbf219"
+      }
+    },
+    {
+      "path": "/companies/C001/totals?business_month=2026-09",
+      "identity": "U001",
+      "expected_status": 200,
+      "actual_status": 200,
+      "request_id_matches": true,
+      "body": {
+        "data": {
+          "company_id": "C001",
+          "business_month": "2026-09",
+          "currency": "CNY",
+          "invoice_total": {
+            "amount": "9622.06",
+            "record_count": 10,
+            "empty": false
+          },
+          "bank_expense": {
+            "amount": "7180.74",
+            "record_count": 8,
+            "empty": false
+          },
+          "bank_income": {
+            "amount": "13000.50",
+            "record_count": 4,
+            "empty": false
+          },
+          "basis_status": "resolved",
+          "rule_refs": [
+            {
+              "rule_id": "R001",
+              "name": "金额统计说明",
+              "version": "1.0",
+              "revision": 1
+            }
+          ]
+        },
+        "request_id": "a04ca4e9-64f3-49c6-aec6-edc96a0ebf2a"
+      }
+    },
+    {
+      "path": "/companies/C002/totals?business_month=2026-09",
+      "identity": "U001",
+      "expected_status": 200,
+      "actual_status": 200,
+      "request_id_matches": true,
+      "body": {
+        "data": {
+          "company_id": "C002",
+          "business_month": "2026-09",
+          "currency": "CNY",
+          "invoice_total": {
+            "amount": "12667.24",
+            "record_count": 10,
+            "empty": false
+          },
+          "bank_expense": {
+            "amount": "8087.24",
+            "record_count": 8,
+            "empty": false
+          },
+          "bank_income": {
+            "amount": "13700.75",
+            "record_count": 4,
+            "empty": false
+          },
+          "basis_status": "resolved",
+          "rule_refs": [
+            {
+              "rule_id": "R001",
+              "name": "金额统计说明",
+              "version": "1.0",
+              "revision": 1
+            }
+          ]
+        },
+        "request_id": "2e33ed87-8e2e-4be9-b2da-287944d5a825"
+      }
+    },
+    {
+      "path": "/companies/C002/totals?business_month=2026-09",
+      "identity": "U002",
+      "expected_status": 403,
+      "actual_status": 403,
+      "request_id_matches": true,
+      "body": {
+        "error": {
+          "code": "FORBIDDEN",
+          "message": "当前身份无权执行此操作",
+          "details": {},
+          "retryable": false,
+          "turn_id": null
+        },
+        "request_id": "476e2a2b-399c-4e9b-a767-05a175f3c042"
+      }
+    }
+  ],
+  "passed": true
+}

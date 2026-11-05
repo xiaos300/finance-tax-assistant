@@ -1,0 +1,25 @@
+[
+  {
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      ".cache/check_d1_docs_ps.ps1"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "log": "powershell-syntax.log"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "log": "git-diff-check.log"
+  }
+]

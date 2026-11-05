@@ -1,0 +1,2459 @@
+{
+  "run_id": "2026-11-04_D1_attempt1",
+  "stage": "D1",
+  "date": "2026-11-04T19:25:37.025750+08:00",
+  "requirements_version": "1.3",
+  "contract_version": "1.2 + approved deployment names 2026-11-04",
+  "model_mode": "none",
+  "model_profile_id": null,
+  "fixture_id": "B0/B1-direct-fixture/B2 (real PG execution blocked if skipped)",
+  "seed_hash": "45d72fa8fda1725be0c56571f2edd819f99b3df50ec50f57b983f2b85484b022",
+  "test_target": "finance_tax_test",
+  "test_counts": {
+    "passed": 104,
+    "failed": 0,
+    "blocked": 47,
+    "not_run": 0
+  },
+  "d1_required_gate": "blocked",
+  "local_status": "blocked",
+  "external_status": "not_applicable",
+  "overall_status": "blocked_external",
+  "development_preparation": "not_run: requires passed real test gate",
+  "source_tree_hash": "002a4dc0da3c0c04dabc8c501e79e14c308d8b9477cf71a3b85b803b983189b5",
+  "runtime_versions": {
+    "sqlalchemy": "2.0.55",
+    "psycopg": "3.3.7",
+    "alembic": "1.20.1",
+    "pydantic": "2.14.2",
+    "fastapi": "0.160.0",
+    "pytest": "9.2.0"
+  },
+  "command": "backend/.venv/Scripts/python.exe scripts/verify_d1.py",
+  "exit_code": 2,
+  "lock_hashes": {
+    "backend\\uv.lock": "0ce87442ff858e9ec47dadfb5e8b66067cbfe6554f40795347a89bf49e7be0d7",
+    "frontend\\package-lock.json": "c043a14f871776f3bb0c6d25a9c47354ce8fe8a6f2755aaa5dd3d58fa688735f"
+  },
+  "locks_unchanged": true,
+  "protected_inputs": [
+    {
+      "path": "materials/01_参赛说明.docx",
+      "sha256": "d49eb9fe53e0d41e200381275751c05f324f3d00d369e7a386b3d0ef9bf01fb0",
+      "unchanged": true
+    },
+    {
+      "path": "materials/02_示例数据.xlsx",
+      "sha256": "edb13b2a52d2f875033258836e8fc23c3e1353c46d101184048bac289e52ed0f",
+      "unchanged": true
+    },
+    {
+      "path": "materials/03_业务规则.docx",
+      "sha256": "93b580f83b94fca4b795ec8e1336e22d799f5a91d581895f0562d29be1b84aa0",
+      "unchanged": true
+    },
+    {
+      "path": "docs/requirements/00_项目需求速览与决策清单.md",
+      "sha256": "c008b85a6888caf2f893112a22b2cffa72dad5a621dcd4c46e138a14c689bc13",
+      "unchanged": true
+    },
+    {
+      "path": "docs/requirements/01_赛题要求提取.md",
+      "sha256": "49e9b8b0e149407f0fcba4dced774d787465bf68da2c4838b4ff522ddf3fe67e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/requirements/02_业务需求分析.md",
+      "sha256": "4b42ce3408bb48fc4c2ff79b222c0ba26d11960da474443686a083216804753c",
+      "unchanged": true
+    },
+    {
+      "path": "docs/requirements/03_软件需求分析说明书.md",
+      "sha256": "25b2d1244bd401a4ed654bdcce9b745ccb84649a1609dd436f06705a58cd103f",
+      "unchanged": true
+    },
+    {
+      "path": "docs/requirements/04_需求追踪矩阵.md",
+      "sha256": "46cbdf3e38348b3aa2e47a10c8469d9f91fcca60f5cee2e33611a4a42e80a64b",
+      "unchanged": true
+    },
+    {
+      "path": "docs/requirements/05_待确认问题与风险.md",
+      "sha256": "751bb2c341d498ae804bb52c52171dea8474bf487526cfef9805bcd60191cec6",
+      "unchanged": true
+    },
+    {
+      "path": "docs/architecture/contracts/contracts.schema.json",
+      "sha256": "a519cd8c16f3dda5990ab5dd6dbf71177b0d89dc37fdebe55440775a6028ab2d",
+      "unchanged": true
+    },
+    {
+      "path": "docs/architecture/contracts/http-operations.json",
+      "sha256": "e5629f1e8e563d3afffb6b8188892d453b433a75369cecdd7424fd48c1825a07",
+      "unchanged": true
+    },
+    {
+      "path": "docs/architecture/contracts/tools.json",
+      "sha256": "df3e2eb01b0ebd0abc6a87831b175c6af33e06c3ded2c4e4f63bdde8fb73c537",
+      "unchanged": true
+    }
+  ],
+  "protected_inputs_against_D0": [
+    {
+      "path": "materials\\01_参赛说明.docx",
+      "sha256": "d49eb9fe53e0d41e200381275751c05f324f3d00d369e7a386b3d0ef9bf01fb0",
+      "matches_D0_record": true
+    },
+    {
+      "path": "materials\\02_示例数据.xlsx",
+      "sha256": "edb13b2a52d2f875033258836e8fc23c3e1353c46d101184048bac289e52ed0f",
+      "matches_D0_record": true
+    },
+    {
+      "path": "materials\\03_业务规则.docx",
+      "sha256": "93b580f83b94fca4b795ec8e1336e22d799f5a91d581895f0562d29be1b84aa0",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\00_项目需求速览与决策清单.md",
+      "sha256": "c008b85a6888caf2f893112a22b2cffa72dad5a621dcd4c46e138a14c689bc13",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\01_赛题要求提取.md",
+      "sha256": "49e9b8b0e149407f0fcba4dced774d787465bf68da2c4838b4ff522ddf3fe67e",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\02_业务需求分析.md",
+      "sha256": "4b42ce3408bb48fc4c2ff79b222c0ba26d11960da474443686a083216804753c",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\03_软件需求分析说明书.md",
+      "sha256": "25b2d1244bd401a4ed654bdcce9b745ccb84649a1609dd436f06705a58cd103f",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\04_需求追踪矩阵.md",
+      "sha256": "46cbdf3e38348b3aa2e47a10c8469d9f91fcca60f5cee2e33611a4a42e80a64b",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\05_待确认问题与风险.md",
+      "sha256": "751bb2c341d498ae804bb52c52171dea8474bf487526cfef9805bcd60191cec6",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\新建文件夹\\01_赛题要求提取.md",
+      "sha256": "49e9b8b0e149407f0fcba4dced774d787465bf68da2c4838b4ff522ddf3fe67e",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\新建文件夹\\02_业务需求分析.md",
+      "sha256": "4b42ce3408bb48fc4c2ff79b222c0ba26d11960da474443686a083216804753c",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\新建文件夹\\03_软件需求分析说明书.md",
+      "sha256": "25b2d1244bd401a4ed654bdcce9b745ccb84649a1609dd436f06705a58cd103f",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\新建文件夹\\04_需求追踪矩阵.md",
+      "sha256": "46cbdf3e38348b3aa2e47a10c8469d9f91fcca60f5cee2e33611a4a42e80a64b",
+      "matches_D0_record": true
+    },
+    {
+      "path": "docs\\requirements\\新建文件夹\\05_待确认问题与风险.md",
+      "sha256": "751bb2c341d498ae804bb52c52171dea8474bf487526cfef9805bcd60191cec6",
+      "matches_D0_record": true
+    }
+  ],
+  "protected_inputs_unchanged": true,
+  "case_results": [
+    {
+      "case_id": "TC001",
+      "ac_refs": [
+        "AC-001"
+      ],
+      "scope": "complete",
+      "status": "blocked",
+      "whole_case_status": "blocked",
+      "subitems": [
+        {
+          "name": "test_TC001_seed_precision_rejection[NaN]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_seed_precision_rejection[Infinity]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_seed_precision_rejection[-1]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_seed_precision_rejection[0.001]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_seed_precision_rejection[bad]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_seed_precision_rejection[92233720368547758.08]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_integer_money",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_schema_counts_types_and_ownership",
+          "file": "tests.integration.test_schema",
+          "status": "blocked",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/me-Principal]",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/invoices/search?limit=3-InvoicePage]",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/companies/C001/invoices/F002-Invoice]",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/companies/C001/bank-transactions?business_month=2026-09&limit=3-BankPage]",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/companies/C001/totals?business_month=2026-09-Totals]",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/companies/C001/totals?business_month=2026-09&metrics=invoice_total-Totals]",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/companies/C001/purpose-check?business_month=2026-09-Check]",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/companies/C001/rules?business_month=2026-09&topic=purpose-RuleResolution]",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC001"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC002",
+      "ac_refs": [
+        "AC-002"
+      ],
+      "scope": "complete",
+      "status": "blocked",
+      "whole_case_status": "blocked",
+      "subitems": [
+        {
+          "name": "test_TC002_committed_fixture_survives_process_restart_and_same_hash_seed",
+          "file": "tests.integration.test_seed",
+          "status": "blocked",
+          "case_ids": [
+            "TC002"
+          ]
+        },
+        {
+          "name": "test_TC002_different_hash_and_partial_database_refused",
+          "file": "tests.integration.test_seed",
+          "status": "blocked",
+          "case_ids": [
+            "TC002"
+          ]
+        },
+        {
+          "name": "test_TC002_guarded_rebuild",
+          "file": "tests.integration.test_seed",
+          "status": "blocked",
+          "case_ids": [
+            "TC002"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC005",
+      "ac_refs": [
+        "AC-005"
+      ],
+      "scope": "complete",
+      "status": "blocked",
+      "whole_case_status": "blocked",
+      "subitems": [
+        {
+          "name": "test_TC005_four_totals_and_purpose_invariance[C001-2026-08-expected0]",
+          "file": "tests.integration.test_totals",
+          "status": "blocked",
+          "case_ids": [
+            "TC005"
+          ]
+        },
+        {
+          "name": "test_TC005_four_totals_and_purpose_invariance[C001-2026-09-expected1]",
+          "file": "tests.integration.test_totals",
+          "status": "blocked",
+          "case_ids": [
+            "TC005"
+          ]
+        },
+        {
+          "name": "test_TC005_four_totals_and_purpose_invariance[C002-2026-08-expected2]",
+          "file": "tests.integration.test_totals",
+          "status": "blocked",
+          "case_ids": [
+            "TC005"
+          ]
+        },
+        {
+          "name": "test_TC005_four_totals_and_purpose_invariance[C002-2026-09-expected3]",
+          "file": "tests.integration.test_totals",
+          "status": "blocked",
+          "case_ids": [
+            "TC005"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC006",
+      "ac_refs": [
+        "AC-006"
+      ],
+      "scope": "complete",
+      "status": "blocked",
+      "whole_case_status": "blocked",
+      "subitems": [
+        {
+          "name": "test_TC006_invalid_month[0000-09]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month[2026-00]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month[2026-13]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month[26-09]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month[2026-9]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month[2026-09-01]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_year_boundary",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_boundaries",
+          "file": "tests.integration.test_totals",
+          "status": "blocked",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month_HTTP[0000-09]",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month_HTTP[2026-00]",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month_HTTP[2026-13]",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC006"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC007",
+      "ac_refs": [
+        "AC-007"
+      ],
+      "scope": "complete",
+      "status": "blocked",
+      "whole_case_status": "blocked",
+      "subitems": [
+        {
+          "name": "test_TC007_zero_records",
+          "file": "tests.integration.test_totals",
+          "status": "blocked",
+          "case_ids": [
+            "TC007"
+          ]
+        },
+        {
+          "name": "test_TC007_empty_forbidden_storage_separate",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC007"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC009",
+      "ac_refs": [
+        "AC-009"
+      ],
+      "scope": "deterministic_D1_only",
+      "status": "blocked",
+      "whole_case_status": "not_run",
+      "subitems": [
+        {
+          "name": "test_TC009_unicode_blank[None]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        },
+        {
+          "name": "test_TC009_unicode_blank[]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        },
+        {
+          "name": "test_TC009_unicode_blank[ ]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        },
+        {
+          "name": "test_TC009_unicode_blank[\\t\\n]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        },
+        {
+          "name": "test_TC009_unicode_blank[\\u3000\\xa0\\u2003]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        },
+        {
+          "name": "test_TC009_note_does_not_affect_blank",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        },
+        {
+          "name": "test_TC009_blank_and_note",
+          "file": "tests.integration.test_rules",
+          "status": "blocked",
+          "case_ids": [
+            "TC009"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC011",
+      "ac_refs": [
+        "AC-011"
+      ],
+      "scope": "deterministic_D1_only",
+      "status": "blocked",
+      "whole_case_status": "not_run",
+      "subitems": [
+        {
+          "name": "test_TC011_threshold[99999]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC011"
+          ]
+        },
+        {
+          "name": "test_TC011_threshold[100000]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC011"
+          ]
+        },
+        {
+          "name": "test_TC011_threshold[100001]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC011"
+          ]
+        },
+        {
+          "name": "test_TC011_september_only_and_company_threshold",
+          "file": "tests.integration.test_rules",
+          "status": "blocked",
+          "case_ids": [
+            "TC011"
+          ]
+        },
+        {
+          "name": "test_TC011_HTTP_unsupported",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC011"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC027",
+      "ac_refs": [
+        "AC-027"
+      ],
+      "scope": "deterministic_D1_only",
+      "status": "blocked",
+      "whole_case_status": "not_run",
+      "subitems": [
+        {
+          "name": "test_TC027_resolution_boundaries_without_SQL",
+          "file": "tests.unit.test_read_contracts",
+          "status": "passed",
+          "case_ids": [
+            "TC027"
+          ]
+        },
+        {
+          "name": "test_TC027_missing_conflict_midmonth",
+          "file": "tests.integration.test_rules",
+          "status": "blocked",
+          "case_ids": [
+            "TC027"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC013",
+      "ac_refs": [
+        "AC-013"
+      ],
+      "scope": "read_permission_only",
+      "status": "blocked",
+      "whole_case_status": "not_run",
+      "subitems": [
+        {
+          "name": "test_TC013_identity_and_company_acl",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC013"
+          ]
+        },
+        {
+          "name": "test_TC013_search_keyset_and_filters",
+          "file": "tests.api.test_read_acl",
+          "status": "blocked",
+          "case_ids": [
+            "TC013"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC052",
+      "ac_refs": [
+        "AC-001",
+        "AC-014",
+        "AC-032",
+        "AC-036"
+      ],
+      "scope": "role_schema_guard_only",
+      "status": "blocked",
+      "whole_case_status": "not_run",
+      "subitems": [
+        {
+          "name": "test_TC052_existing_names_stop_before_mutation",
+          "file": "tests.unit.test_bootstrap",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_development_creation_requires_real_test_acceptance",
+          "file": "tests.unit.test_bootstrap",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_admin_tax_target_rejected_without_connection",
+          "file": "tests.unit.test_bootstrap",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[finance_tax_dev]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[tax_db]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[harness_test_d1]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[finance_tax_test_backup]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[other_test]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[finance_tax_test_gw0]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[%66inance_tax_test]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?service=local]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?hostaddr=127.0.0.1]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?host=localhost]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?dbname=tax_db]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?options=-csearch_path=public]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?port=5433]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?sslmode=disable]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_role[postgres]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_role[finance_tax_migrator]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_role[fixture]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_role[%66inance_tax_app]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_loopback_default_port_canonical[localhost]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_loopback_default_port_canonical[127.0.0.1]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_ambiguous_instance[127.0.0.1,localhost]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_ambiguous_instance[127.1]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_ambiguous_instance[%31%32%37.0.0.1]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_ambiguous_instance[db]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_ambiguous_instance[example.com]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_ambiguous_instance[127.0.0.1:5433]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_environment_or_instance_mismatch[change0]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_environment_or_instance_mismatch[change1]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_environment_or_instance_mismatch[change2]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_environment_or_instance_mismatch[change3]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_environment_or_instance_mismatch[change4]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_safe_pair_and_no_model_dependency",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[0-tax_db]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[1-postgres]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[2-postgres]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[3-170000]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[4-127.0.0.2]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[5-5433]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[6-True]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[7-True]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[8-True]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[9-True]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[10-True]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[11-True]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[12-postgres]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[13-SQL_ASCII]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[CREATE TABLE harness.denied_table(id integer)]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[CREATE SCHEMA denied_schema]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[CREATE DATABASE denied_database]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[CREATE ROLE denied_role]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.invoices SET amount_cents=1 WHERE company_id='C001' AND invoice_id='F002']",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.invoices SET invoice_date='2026-09-01' WHERE company_id='C001' AND invoice_id='F002']",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.invoices SET invoice_id='changed' WHERE company_id='C001' AND invoice_id='F002']",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[DELETE FROM harness.invoices WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[INSERT INTO harness.invoices(company_id,invoice_id) VALUES('C001','ILLEGAL')]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.bank_transactions SET amount_cents=1 WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.user_company_permissions SET can_write=true WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.users SET name='changed' WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.rules SET body='changed' WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.seed_meta SET normalized_hash='changed' WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.alembic_version SET version_num='changed' WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[CREATE TEMP TABLE denied_temp(id integer)]",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_grants_converge_after_table_and_column_overgrant",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_allowed_columns_and_independent_readback",
+          "file": "tests.integration.test_roles",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_unique_foreign_keys_and_shapes",
+          "file": "tests.integration.test_schema",
+          "status": "blocked",
+          "case_ids": [
+            "TC052"
+          ]
+        }
+      ]
+    }
+  ],
+  "subitems": [
+    {
+      "name": "test_TC052_existing_names_stop_before_mutation",
+      "file": "tests.unit.test_bootstrap",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_development_creation_requires_real_test_acceptance",
+      "file": "tests.unit.test_bootstrap",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_admin_tax_target_rejected_without_connection",
+      "file": "tests.unit.test_bootstrap",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC051_database_without_model",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC051"
+      ]
+    },
+    {
+      "name": "test_TC051_maintenance_does_not_import_model",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC051"
+      ]
+    },
+    {
+      "name": "test_TC061_maintenance_never_falls_back",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC051_stub_rejected_outside_test[development]",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC051"
+      ]
+    },
+    {
+      "name": "test_TC051_stub_rejected_outside_test[demo]",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC051"
+      ]
+    },
+    {
+      "name": "test_TC051_stub_only_test",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC051"
+      ]
+    },
+    {
+      "name": "test_TC061_disabled_ignores_blank_live_fields",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC061_live_requires_configuration",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC061_only_psycopg_postgres[sqlite:///local.db]",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC061_only_psycopg_postgres[postgresql://fixture@localhost/test]",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC061_only_psycopg_postgres[invalid]",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC061_only_psycopg_postgres[]",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC061_secret_validation_error_is_redacted",
+      "file": "tests.unit.test_config",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC061_health_states_and_unknown_fields",
+      "file": "tests.unit.test_contracts",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC061_versions[Annotated-1-invalid0]",
+      "file": "tests.unit.test_contracts",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC061_versions[Annotated-0-invalid1]",
+      "file": "tests.unit.test_contracts",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC061_nullable_and_uuid_format",
+      "file": "tests.unit.test_contracts",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC061_http_contract",
+      "file": "tests.unit.test_contracts",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC006_invalid_month[0000-09]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC006"
+      ]
+    },
+    {
+      "name": "test_TC006_invalid_month[2026-00]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC006"
+      ]
+    },
+    {
+      "name": "test_TC006_invalid_month[2026-13]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC006"
+      ]
+    },
+    {
+      "name": "test_TC006_invalid_month[26-09]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC006"
+      ]
+    },
+    {
+      "name": "test_TC006_invalid_month[2026-9]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC006"
+      ]
+    },
+    {
+      "name": "test_TC006_invalid_month[2026-09-01]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC006"
+      ]
+    },
+    {
+      "name": "test_TC006_year_boundary",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC006"
+      ]
+    },
+    {
+      "name": "test_TC009_unicode_blank[None]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC009"
+      ]
+    },
+    {
+      "name": "test_TC009_unicode_blank[]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC009"
+      ]
+    },
+    {
+      "name": "test_TC009_unicode_blank[ ]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC009"
+      ]
+    },
+    {
+      "name": "test_TC009_unicode_blank[\\t\\n]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC009"
+      ]
+    },
+    {
+      "name": "test_TC009_unicode_blank[\\u3000\\xa0\\u2003]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC009"
+      ]
+    },
+    {
+      "name": "test_TC009_note_does_not_affect_blank",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC009"
+      ]
+    },
+    {
+      "name": "test_TC011_threshold[99999]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC011"
+      ]
+    },
+    {
+      "name": "test_TC011_threshold[100000]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC011"
+      ]
+    },
+    {
+      "name": "test_TC011_threshold[100001]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC011"
+      ]
+    },
+    {
+      "name": "test_TC001_seed_precision_rejection[NaN]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_seed_precision_rejection[Infinity]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_seed_precision_rejection[-1]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_seed_precision_rejection[0.001]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_seed_precision_rejection[bad]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_seed_precision_rejection[92233720368547758.08]",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_integer_money",
+      "file": "tests.unit.test_ledger_policies",
+      "status": "passed",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_D1_DTOs_against_unchanged_machine_contract",
+      "file": "tests.unit.test_read_contracts",
+      "status": "passed",
+      "case_ids": []
+    },
+    {
+      "name": "test_D1_rule_DTO_rejects_invalid[changes0]",
+      "file": "tests.unit.test_read_contracts",
+      "status": "passed",
+      "case_ids": []
+    },
+    {
+      "name": "test_D1_rule_DTO_rejects_invalid[changes1]",
+      "file": "tests.unit.test_read_contracts",
+      "status": "passed",
+      "case_ids": []
+    },
+    {
+      "name": "test_D1_rule_DTO_rejects_invalid[changes2]",
+      "file": "tests.unit.test_read_contracts",
+      "status": "passed",
+      "case_ids": []
+    },
+    {
+      "name": "test_D1_rule_DTO_rejects_invalid[changes3]",
+      "file": "tests.unit.test_read_contracts",
+      "status": "passed",
+      "case_ids": []
+    },
+    {
+      "name": "test_D1_rule_DTO_rejects_invalid[changes4]",
+      "file": "tests.unit.test_read_contracts",
+      "status": "passed",
+      "case_ids": []
+    },
+    {
+      "name": "test_D1_rule_DTO_rejects_invalid[changes5]",
+      "file": "tests.unit.test_read_contracts",
+      "status": "passed",
+      "case_ids": []
+    },
+    {
+      "name": "test_D1_rule_DTO_rejects_invalid[changes6]",
+      "file": "tests.unit.test_read_contracts",
+      "status": "passed",
+      "case_ids": []
+    },
+    {
+      "name": "test_TC027_resolution_boundaries_without_SQL",
+      "file": "tests.unit.test_read_contracts",
+      "status": "passed",
+      "case_ids": [
+        "TC027"
+      ]
+    },
+    {
+      "name": "test_D1_cursor_bound_to_identity_resource_and_filters",
+      "file": "tests.unit.test_read_contracts",
+      "status": "passed",
+      "case_ids": []
+    },
+    {
+      "name": "test_TC052_wrong_database_rejected_before_engine[finance_tax_dev]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_wrong_database_rejected_before_engine[tax_db]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_wrong_database_rejected_before_engine[harness_test_d1]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_wrong_database_rejected_before_engine[finance_tax_test_backup]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_wrong_database_rejected_before_engine[other_test]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_wrong_database_rejected_before_engine[]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_wrong_database_rejected_before_engine[finance_tax_test_gw0]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_wrong_database_rejected_before_engine[%66inance_tax_test]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_query_options_rejected[?service=local]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_query_options_rejected[?hostaddr=127.0.0.1]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_query_options_rejected[?host=localhost]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_query_options_rejected[?dbname=tax_db]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_query_options_rejected[?options=-csearch_path=public]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_query_options_rejected[?port=5433]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_query_options_rejected[?sslmode=disable]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_wrong_role[postgres]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_wrong_role[finance_tax_migrator]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_wrong_role[fixture]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_wrong_role[%66inance_tax_app]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_loopback_default_port_canonical[localhost]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_loopback_default_port_canonical[127.0.0.1]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_ambiguous_instance[127.0.0.1,localhost]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_ambiguous_instance[127.1]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_ambiguous_instance[%31%32%37.0.0.1]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_ambiguous_instance[db]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_ambiguous_instance[example.com]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_ambiguous_instance[127.0.0.1:5433]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC061_explicit_connections_no_fallback[test_database_url]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC061_explicit_connections_no_fallback[test_migration_database_url]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC052_environment_or_instance_mismatch[change0]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_environment_or_instance_mismatch[change1]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_environment_or_instance_mismatch[change2]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_environment_or_instance_mismatch[change3]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_environment_or_instance_mismatch[change4]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_safe_pair_and_no_model_dependency",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[0-tax_db]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[1-postgres]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[2-postgres]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[3-170000]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[4-127.0.0.2]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[5-5433]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[6-True]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[7-True]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[8-True]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[9-True]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[10-True]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[11-True]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[12-postgres]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_authenticated_mismatch_stops_before_writes[13-SQL_ASCII]",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC061_no_secret_in_rejection",
+      "file": "tests.unit.test_targets",
+      "status": "passed",
+      "case_ids": [
+        "TC061"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[CREATE TABLE harness.denied_table(id integer)]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[CREATE SCHEMA denied_schema]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[CREATE DATABASE denied_database]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[CREATE ROLE denied_role]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[UPDATE harness.invoices SET amount_cents=1 WHERE company_id='C001' AND invoice_id='F002']",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[UPDATE harness.invoices SET invoice_date='2026-09-01' WHERE company_id='C001' AND invoice_id='F002']",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[UPDATE harness.invoices SET invoice_id='changed' WHERE company_id='C001' AND invoice_id='F002']",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[DELETE FROM harness.invoices WHERE false]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[INSERT INTO harness.invoices(company_id,invoice_id) VALUES('C001','ILLEGAL')]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[UPDATE harness.bank_transactions SET amount_cents=1 WHERE false]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[UPDATE harness.user_company_permissions SET can_write=true WHERE false]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[UPDATE harness.users SET name='changed' WHERE false]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[UPDATE harness.rules SET body='changed' WHERE false]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[UPDATE harness.seed_meta SET normalized_hash='changed' WHERE false]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[UPDATE harness.alembic_version SET version_num='changed' WHERE false]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_native_permission_denials[CREATE TEMP TABLE denied_temp(id integer)]",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_grants_converge_after_table_and_column_overgrant",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC052_allowed_columns_and_independent_readback",
+      "file": "tests.integration.test_roles",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC009_blank_and_note",
+      "file": "tests.integration.test_rules",
+      "status": "blocked",
+      "case_ids": [
+        "TC009"
+      ]
+    },
+    {
+      "name": "test_TC011_september_only_and_company_threshold",
+      "file": "tests.integration.test_rules",
+      "status": "blocked",
+      "case_ids": [
+        "TC011"
+      ]
+    },
+    {
+      "name": "test_TC027_missing_conflict_midmonth",
+      "file": "tests.integration.test_rules",
+      "status": "blocked",
+      "case_ids": [
+        "TC027"
+      ]
+    },
+    {
+      "name": "test_TC001_schema_counts_types_and_ownership",
+      "file": "tests.integration.test_schema",
+      "status": "blocked",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC052_unique_foreign_keys_and_shapes",
+      "file": "tests.integration.test_schema",
+      "status": "blocked",
+      "case_ids": [
+        "TC052"
+      ]
+    },
+    {
+      "name": "test_TC002_committed_fixture_survives_process_restart_and_same_hash_seed",
+      "file": "tests.integration.test_seed",
+      "status": "blocked",
+      "case_ids": [
+        "TC002"
+      ]
+    },
+    {
+      "name": "test_TC002_different_hash_and_partial_database_refused",
+      "file": "tests.integration.test_seed",
+      "status": "blocked",
+      "case_ids": [
+        "TC002"
+      ]
+    },
+    {
+      "name": "test_TC002_guarded_rebuild",
+      "file": "tests.integration.test_seed",
+      "status": "blocked",
+      "case_ids": [
+        "TC002"
+      ]
+    },
+    {
+      "name": "test_TC005_four_totals_and_purpose_invariance[C001-2026-08-expected0]",
+      "file": "tests.integration.test_totals",
+      "status": "blocked",
+      "case_ids": [
+        "TC005"
+      ]
+    },
+    {
+      "name": "test_TC005_four_totals_and_purpose_invariance[C001-2026-09-expected1]",
+      "file": "tests.integration.test_totals",
+      "status": "blocked",
+      "case_ids": [
+        "TC005"
+      ]
+    },
+    {
+      "name": "test_TC005_four_totals_and_purpose_invariance[C002-2026-08-expected2]",
+      "file": "tests.integration.test_totals",
+      "status": "blocked",
+      "case_ids": [
+        "TC005"
+      ]
+    },
+    {
+      "name": "test_TC005_four_totals_and_purpose_invariance[C002-2026-09-expected3]",
+      "file": "tests.integration.test_totals",
+      "status": "blocked",
+      "case_ids": [
+        "TC005"
+      ]
+    },
+    {
+      "name": "test_TC006_boundaries",
+      "file": "tests.integration.test_totals",
+      "status": "blocked",
+      "case_ids": [
+        "TC006"
+      ]
+    },
+    {
+      "name": "test_TC007_zero_records",
+      "file": "tests.integration.test_totals",
+      "status": "blocked",
+      "case_ids": [
+        "TC007"
+      ]
+    },
+    {
+      "name": "test_TC001_D1_HTTP_schema[/me-Principal]",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_D1_HTTP_schema[/invoices/search?limit=3-InvoicePage]",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_D1_HTTP_schema[/companies/C001/invoices/F002-Invoice]",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_D1_HTTP_schema[/companies/C001/bank-transactions?business_month=2026-09&limit=3-BankPage]",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_D1_HTTP_schema[/companies/C001/totals?business_month=2026-09-Totals]",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_D1_HTTP_schema[/companies/C001/totals?business_month=2026-09&metrics=invoice_total-Totals]",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_D1_HTTP_schema[/companies/C001/purpose-check?business_month=2026-09-Check]",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC001_D1_HTTP_schema[/companies/C001/rules?business_month=2026-09&topic=purpose-RuleResolution]",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC001"
+      ]
+    },
+    {
+      "name": "test_TC013_identity_and_company_acl",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC013"
+      ]
+    },
+    {
+      "name": "test_TC007_empty_forbidden_storage_separate",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC007"
+      ]
+    },
+    {
+      "name": "test_TC006_invalid_month_HTTP[0000-09]",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC006"
+      ]
+    },
+    {
+      "name": "test_TC006_invalid_month_HTTP[2026-00]",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC006"
+      ]
+    },
+    {
+      "name": "test_TC006_invalid_month_HTTP[2026-13]",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC006"
+      ]
+    },
+    {
+      "name": "test_TC011_HTTP_unsupported",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC011"
+      ]
+    },
+    {
+      "name": "test_TC013_search_keyset_and_filters",
+      "file": "tests.api.test_read_acl",
+      "status": "blocked",
+      "case_ids": [
+        "TC013"
+      ]
+    }
+  ],
+  "not_run": [
+    "TC052 D6 restore branch",
+    "D2 and later stages",
+    "Development database bootstrap/migration/seed/grant"
+  ],
+  "evidence_paths": [
+    "attempt1/commands.json",
+    "attempt1/pytest.xml",
+    "source-scan.json"
+  ]
+}

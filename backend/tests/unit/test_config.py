@@ -19,20 +19,20 @@ def isolated_environment(monkeypatch):
 
 
 def test_TC051_database_without_model(monkeypatch):
-    monkeypatch.setenv("DATABASE_URL", "postgresql+psycopg://fixture@127.0.0.1/harness_test_d0")
+    monkeypatch.setenv("DATABASE_URL", "postgresql+psycopg://finance_tax_app@127.0.0.1/finance_tax_test")
     settings = database_settings()
-    engine, sessions = connection_factory(settings)
+    engine, sessions = connection_factory(settings,testing=True)
     assert engine.dialect.driver == "psycopg"
     assert sessions.kw["bind"] is engine
     engine.dispose()
-    assert "fixture@" not in repr(settings)
+    assert "finance_tax_app@" not in repr(settings)
 
 
 def test_TC051_maintenance_does_not_import_model(monkeypatch):
-    monkeypatch.setenv("MIGRATION_DATABASE_URL", "postgresql+psycopg://fixture@127.0.0.1/harness_test_d0")
+    monkeypatch.setenv("MIGRATION_DATABASE_URL", "postgresql+psycopg://finance_tax_migrator@127.0.0.1/finance_tax_dev")
     # Deliberately invalid model configuration cannot block a database command.
     monkeypatch.setenv("MODEL_MODE", "invalid")
-    result = subprocess.run([sys.executable, "-m", "app.cli", "inspect-config", "--maintenance"], capture_output=True, text=True)
+    result = subprocess.run([sys.executable, "-m", "app.cli", "inspect-config", "--maintenance"], capture_output=True, text=True,encoding='utf-8')
     assert result.returncode == 0
     assert "model settings not loaded" in result.stdout
 

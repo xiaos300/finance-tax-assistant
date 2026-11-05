@@ -13,7 +13,16 @@ def live(request: Request):
 
 @router.get("/ready", response_model=Envelope[Health], responses={503: {"model": Envelope[Health]}})
 def ready(request: Request):
-    # D0 has no schema/seed/singleton preparation. Never infer readiness from SELECT 1.
-    body = Envelope(data=Health(status="not_ready", checks={"database_prepared": False}),
+    prepared=False
+    try:
+        from app.api.dependencies import ledger_service
+        from app.infrastructure.database.maintenance import inspect_prepared
+        ledger_service(request)
+        with request.app.state.database_engine.connect() as connection:
+            inspect_prepared(connection)
+        prepared=True
+    except Exception:
+        pass
+    body = Envelope(data=Health(status="ready" if prepared else "not_ready", checks={"database_prepared": prepared}),
                     request_id=request.state.request_id)
-    return JSONResponse(body.model_dump(mode="json"), status_code=503)
+    return JSONResponse(body.model_dump(mode="json"), status_code=200 if prepared else 503)

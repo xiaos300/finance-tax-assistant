@@ -1,0 +1,197 @@
+{
+  "d0_non_markdown_file_comparison": [
+    {
+      "path": "backend/app/__init__.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/app/api/__init__.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/app/api/errors.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/app/api/routers/__init__.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/app/api/routers/health.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/app/cli.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/app/core/__init__.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/app/core/config.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/app/core/contracts.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/app/infrastructure/__init__.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/__init__.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/engine.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/app/main.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/pyproject.toml",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/tests/unit/test_config.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/tests/unit/test_contracts.py",
+      "matches_d0": true
+    },
+    {
+      "path": "backend/uv.lock",
+      "matches_d0": true
+    },
+    {
+      "path": "frontend/index.html",
+      "matches_d0": true
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "matches_d0": true
+    },
+    {
+      "path": "frontend/package.json",
+      "matches_d0": true
+    },
+    {
+      "path": "frontend/scripts/build.mjs",
+      "matches_d0": true
+    },
+    {
+      "path": "frontend/src/App.vue",
+      "matches_d0": true
+    },
+    {
+      "path": "frontend/src/main.ts",
+      "matches_d0": true
+    },
+    {
+      "path": "frontend/tests/app.spec.ts",
+      "matches_d0": true
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "matches_d0": true
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "matches_d0": true
+    },
+    {
+      "path": "scripts/check_environment.ps1",
+      "matches_d0": true
+    },
+    {
+      "path": "scripts/manage.ps1",
+      "matches_d0": true
+    },
+    {
+      "path": "scripts/verify_baseline.py",
+      "matches_d0": true
+    },
+    {
+      "path": "scripts/verify_d0.py",
+      "matches_d0": true
+    },
+    {
+      "path": ".dockerignore",
+      "matches_d0": true
+    },
+    {
+      "path": ".env.example",
+      "matches_d0": true
+    },
+    {
+      "path": ".gitignore",
+      "matches_d0": true
+    }
+  ],
+  "protected_inputs": [
+    {
+      "path": "materials/01_参赛说明.docx",
+      "matches_d0": true
+    },
+    {
+      "path": "materials/02_示例数据.xlsx",
+      "matches_d0": true
+    },
+    {
+      "path": "materials/03_业务规则.docx",
+      "matches_d0": true
+    },
+    {
+      "path": "docs/requirements/00_项目需求速览与决策清单.md",
+      "matches_d0": true
+    },
+    {
+      "path": "docs/requirements/01_赛题要求提取.md",
+      "matches_d0": true
+    },
+    {
+      "path": "docs/requirements/02_业务需求分析.md",
+      "matches_d0": true
+    },
+    {
+      "path": "docs/requirements/03_软件需求分析说明书.md",
+      "matches_d0": true
+    },
+    {
+      "path": "docs/requirements/04_需求追踪矩阵.md",
+      "matches_d0": true
+    },
+    {
+      "path": "docs/requirements/05_待确认问题与风险.md",
+      "matches_d0": true
+    },
+    {
+      "path": "docs/requirements/新建文件夹/01_赛题要求提取.md",
+      "matches_d0": true
+    },
+    {
+      "path": "docs/requirements/新建文件夹/02_业务需求分析.md",
+      "matches_d0": true
+    },
+    {
+      "path": "docs/requirements/新建文件夹/03_软件需求分析说明书.md",
+      "matches_d0": true
+    },
+    {
+      "path": "docs/requirements/新建文件夹/04_需求追踪矩阵.md",
+      "matches_d0": true
+    },
+    {
+      "path": "docs/requirements/新建文件夹/05_待确认问题与风险.md",
+      "matches_d0": true
+    }
+  ],
+  "all_d0_non_markdown_files_match": true,
+  "all_protected_inputs_match": true,
+  "note": "D0 Markdown has subsequent authorized navigation edits; compare implementation/configuration/locks separately. This is a file-integrity review, not a rerun of business tests."
+}

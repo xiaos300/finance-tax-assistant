@@ -1,4 +1,5 @@
 from uuid import uuid4
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 
@@ -10,7 +11,11 @@ from app.core.config import AppSettings, configuration, model_settings
 def create_app() -> FastAPI:
     settings = AppSettings(**configuration())
     mode = model_settings()
-    application = FastAPI(title="财税 Harness", version="0.1.0")
+    @asynccontextmanager
+    async def lifespan(application):
+        yield
+        if hasattr(application.state,'database_engine'):application.state.database_engine.dispose()
+    application = FastAPI(title="财税 Harness", version="0.2.0",lifespan=lifespan)
     application.state.app_env = settings.app_env
     application.state.model_mode = mode.model_mode
 
@@ -23,6 +28,10 @@ def create_app() -> FastAPI:
 
     install_error_handlers(application)
     application.include_router(router)
+    from app.api.routers.identity import router as identity
+    from app.api.routers.ledger import router as ledger
+    application.include_router(identity)
+    application.include_router(ledger)
     return application
 
 

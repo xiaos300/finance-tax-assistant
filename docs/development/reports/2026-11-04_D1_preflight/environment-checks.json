@@ -1,0 +1,231 @@
+{
+  "checked_at": "2026-11-04T17:00:04.935897+08:00",
+  "scope": "D1 preflight read-only; no DB connection, installation, daemon start, container/database/volume mutation",
+  "working_directory": "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0",
+  "records": [
+    {
+      "id": "host-inventory",
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "$ErrorActionPreference='Stop'\n$names=@('docker','psql','pg_isready','pg_dump','pg_restore','pwsh','python','node','npm.cmd','uv')\n$toolList=@($names | ForEach-Object { $c=Get-Command $_ -ErrorAction SilentlyContinue; [pscustomobject]@{name=$_; available=[bool]$c; path=if($c){$c.Source}else{$null}} })\n$svc=@(Get-Service | Where-Object {$_.Name -match 'postgres|docker'} | Select-Object Name,Status)\n$proc=@(Get-Process | Where-Object {$_.ProcessName -match 'postgres|docker'} | Select-Object ProcessName,Id)\n$listen=@(Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue | Where-Object {$_.LocalPort -in @(5432,5433,15432)} | Select-Object LocalAddress,LocalPort,OwningProcess)\n$pgPaths=@(); if(Test-Path -LiteralPath 'C:\\Program Files\\PostgreSQL') {$pgPaths=@(Get-ChildItem -LiteralPath 'C:\\Program Files\\PostgreSQL' -Directory | Select-Object -ExpandProperty Name)}\n[pscustomobject]@{powershell=$PSVersionTable.PSVersion.ToString();tools=$toolList;services=$svc;processes=$proc;pg_listeners=$listen;postgres_program_files_versions=$pgPaths;docker_desktop_executable=(Test-Path -LiteralPath 'C:\\Program Files\\Docker\\Docker\\Docker Desktop.exe');root_env_exists=(Test-Path -LiteralPath '.env')} | ConvertTo-Json -Depth 5 -Compress"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Get-Service : Cannot open Service Control Manager on computer '.'. This operation might require other privileges.\nAt line:4 char:8\n+ $svc=@(Get-Service | Where-Object {$_.Name -match 'postgres|docker'}  ...\n+        ~~~~~~~~~~~\n    + CategoryInfo          : NotSpecified: (:) [Get-Service], InvalidOperationException\n    + FullyQualifiedErrorId : System.InvalidOperationException,Microsoft.PowerShell.Commands.GetServiceCommand"
+    },
+    {
+      "id": "docker-cli",
+      "command": [
+        "docker",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "Docker version 29.5.2, build 79eb04c",
+      "stderr": ""
+    },
+    {
+      "id": "compose-cli",
+      "command": [
+        "docker",
+        "compose",
+        "version"
+      ],
+      "exit_code": 0,
+      "stdout": "Docker Compose version v5.1.3",
+      "stderr": ""
+    },
+    {
+      "id": "docker-current-context",
+      "command": [
+        "docker",
+        "context",
+        "show"
+      ],
+      "exit_code": 0,
+      "stdout": "desktop-linux",
+      "stderr": ""
+    },
+    {
+      "id": "docker-context-endpoint",
+      "command": [
+        "docker",
+        "context",
+        "inspect",
+        "desktop-linux",
+        "--format",
+        "{{.Endpoints.docker.Host}}"
+      ],
+      "exit_code": 0,
+      "stdout": "npipe:////./pipe/dockerDesktopLinuxEngine",
+      "stderr": ""
+    },
+    {
+      "id": "docker-query-scope",
+      "context_endpoint_local": true,
+      "docker_host_override_present": false,
+      "note": "Engine inventory only attempted for an explicitly local endpoint; no context changes."
+    },
+    {
+      "id": "docker-engine",
+      "command": [
+        "docker",
+        "version",
+        "--format",
+        "Client={{.Client.Version}} Server={{if .Server}}{{.Server.Version}}{{end}}"
+      ],
+      "exit_code": 1,
+      "stdout": "Client=29.5.2 Server=",
+      "stderr": "failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified."
+    },
+    {
+      "id": "psql-version",
+      "command": [
+        "psql",
+        "--version"
+      ],
+      "exit_code": null,
+      "status": "unavailable",
+      "stdout": "",
+      "stderr": "Executable not found"
+    },
+    {
+      "id": "pg_isready-version",
+      "command": [
+        "pg_isready",
+        "--version"
+      ],
+      "exit_code": null,
+      "status": "unavailable",
+      "stdout": "",
+      "stderr": "Executable not found"
+    },
+    {
+      "id": "pg_dump-version",
+      "command": [
+        "pg_dump",
+        "--version"
+      ],
+      "exit_code": null,
+      "status": "unavailable",
+      "stdout": "",
+      "stderr": "Executable not found"
+    },
+    {
+      "id": "pg_restore-version",
+      "command": [
+        "pg_restore",
+        "--version"
+      ],
+      "exit_code": null,
+      "status": "unavailable",
+      "stdout": "",
+      "stderr": "Executable not found"
+    },
+    {
+      "id": "wsl-inventory",
+      "command": [
+        "wsl",
+        "--list",
+        "--quiet"
+      ],
+      "exit_code": 4294967295,
+      "stdout": "�b�~���\u00020 \u0000\n\u0000\n\u0000\u0019���N\u0001x:\u0000 \u0000W\u0000s\u0000l\u0000/\u0000E\u0000_\u0000A\u0000C\u0000C\u0000E\u0000S\u0000S\u0000D\u0000E\u0000N\u0000I\u0000E\u0000D\u0000\n\u0000\n\u0000",
+      "stderr": ""
+    },
+    {
+      "id": "host-inventory-split",
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "$ErrorActionPreference='Stop'\n$names=@('docker','psql','pg_isready','pg_dump','pg_restore','pwsh','python','node','npm.cmd','uv')\n$toolList=@($names | ForEach-Object { $c=Get-Command $_ -ErrorAction SilentlyContinue; [pscustomobject]@{name=$_;available=[bool]$c;path=if($c){$c.Source}else{$null}} })\n$proc=@(Get-Process | Where-Object {$_.ProcessName -match 'postgres|docker'} | Select-Object ProcessName,Id)\n$pgPaths=@(); if(Test-Path -LiteralPath 'C:\\Program Files\\PostgreSQL') {$pgPaths=@(Get-ChildItem -LiteralPath 'C:\\Program Files\\PostgreSQL' -Directory | Select-Object -ExpandProperty Name)}\n[pscustomobject]@{powershell=$PSVersionTable.PSVersion.ToString();tools=$toolList;processes=$proc;postgres_program_files_versions=$pgPaths;docker_desktop_executable=(Test-Path -LiteralPath 'C:\\Program Files\\Docker\\Docker\\Docker Desktop.exe');root_env_exists=(Test-Path -LiteralPath '.env')} | ConvertTo-Json -Depth 5 -Compress"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"powershell\":\"5.1.26100.9711\",\"tools\":[{\"name\":\"docker\",\"available\":true,\"path\":\"C:\\\\Program Files\\\\Docker\\\\Docker\\\\resources\\\\bin\\\\docker.exe\"},{\"name\":\"psql\",\"available\":false,\"path\":null},{\"name\":\"pg_isready\",\"available\":false,\"path\":null},{\"name\":\"pg_dump\",\"available\":false,\"path\":null},{\"name\":\"pg_restore\",\"available\":false,\"path\":null},{\"name\":\"pwsh\",\"available\":true,\"path\":\"C:\\\\Users\\\\PC-9700X\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\"},{\"name\":\"python\",\"available\":true,\"path\":\"D:\\\\DevelopmentTools\\\\Anaconda\\\\python.exe\"},{\"name\":\"node\",\"available\":true,\"path\":\"D:\\\\DevelopmentTools\\\\nvm\\\\nodejs\\\\node.exe\"},{\"name\":\"npm.cmd\",\"available\":true,\"path\":\"D:\\\\DevelopmentTools\\\\nvm\\\\nodejs\\\\npm.cmd\"},{\"name\":\"uv\",\"available\":false,\"path\":null}],\"processes\":[],\"postgres_program_files_versions\":[],\"docker_desktop_executable\":true,\"root_env_exists\":true}",
+      "stderr": ""
+    },
+    {
+      "id": "pg-listeners",
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "$ErrorActionPreference='Stop'; @(Get-NetTCPConnection -State Listen | Where-Object {$_.LocalPort -in @(5432,5433,15432)} | Select-Object LocalAddress,LocalPort,OwningProcess) | ConvertTo-Json -Compress"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Exception calling \"ProcessRecord\" with \"1\" argument(s): \"无法从客户端中访问 CIM 资源。\"\r\nAt line:193 char:5\r\n+     $__cmdletization_objectModelWrapper.ProcessRecord($__cmdletizatio ...\r\n+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (:) [], ParentContainsErrorRecordException\r\n    + FullyQualifiedErrorId : CimException"
+    },
+    {
+      "id": "wsl-inventory-decoded",
+      "command": [
+        "wsl",
+        "--list",
+        "--quiet"
+      ],
+      "exit_code": 4294967295,
+      "stdout": "拒绝访问。 \r\n错误代码: Wsl/E_ACCESSDENIED",
+      "stderr": ""
+    },
+    {
+      "id": "backend-runtime",
+      "command": [
+        "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\backend\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-c",
+        "import sys,json,importlib.metadata as m; print(json.dumps({'python':sys.version.split()[0],'packages':{p:m.version(p) for p in ['fastapi','pydantic','SQLAlchemy','psycopg','alembic','httpx','openpyxl','pytest']}}))"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"python\": \"3.13.9\", \"packages\": {\"fastapi\": \"0.160.0\", \"pydantic\": \"2.14.2\", \"SQLAlchemy\": \"2.0.55\", \"psycopg\": \"3.3.7\", \"alembic\": \"1.20.1\", \"httpx\": \"0.28.1\", \"openpyxl\": \"3.1.5\", \"pytest\": \"9.2.0\"}}",
+      "stderr": ""
+    },
+    {
+      "id": "database-config-presence",
+      "command": [
+        "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\backend\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-c",
+        "import sys,json; sys.path.insert(0,'backend'); from app.core.config import configuration; from sqlalchemy.engine import make_url\nv=configuration(); keys=['database_url','migration_database_url','test_database_url','test_migration_database_url','test_admin_database_url']; out={}\nfor k in keys:\n value=v.get(k,''); row={'provided':bool(value)}\n if value:\n  try:\n   u=make_url(value); row.update({'postgresql_psycopg':u.drivername=='postgresql+psycopg','explicit_host_database_user':bool(u.host and u.database and u.username),'password_present':bool(u.password),'test_database_prefix':bool(u.database and u.database.startswith('harness_test_'))})\n  except Exception: row['parseable']=False\n out[k]=row\nprint(json.dumps({'root_env_exists':__import__('pathlib').Path('.env').exists(),'config_presence_only':out,'connection_attempted':False}))"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"root_env_exists\": true, \"config_presence_only\": {\"database_url\": {\"provided\": false}, \"migration_database_url\": {\"provided\": false}, \"test_database_url\": {\"provided\": false}, \"test_migration_database_url\": {\"provided\": false}, \"test_admin_database_url\": {\"provided\": false}}, \"connection_attempted\": false}",
+      "stderr": ""
+    },
+    {
+      "id": "project-file-presence",
+      "command": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "@('compose.yaml','compose.yml','compose.dev.yaml','deploy/postgres/init-roles.sh','backend/alembic.ini','backend/migrations','data/seed/business.json','data/seed/rules.json','data/seed/manifest.json','backend/tests/integration','backend/tests/api','frontend/dist','frontend/node_modules') | ForEach-Object { [pscustomobject]@{path=$_;exists=(Test-Path -LiteralPath $_)} } | ConvertTo-Json -Compress"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"path\":\"compose.yaml\",\"exists\":false},{\"path\":\"compose.yml\",\"exists\":false},{\"path\":\"compose.dev.yaml\",\"exists\":false},{\"path\":\"deploy/postgres/init-roles.sh\",\"exists\":false},{\"path\":\"backend/alembic.ini\",\"exists\":false},{\"path\":\"backend/migrations\",\"exists\":false},{\"path\":\"data/seed/business.json\",\"exists\":false},{\"path\":\"data/seed/rules.json\",\"exists\":false},{\"path\":\"data/seed/manifest.json\",\"exists\":false},{\"path\":\"backend/tests/integration\",\"exists\":false},{\"path\":\"backend/tests/api\",\"exists\":false},{\"path\":\"frontend/dist\",\"exists\":true},{\"path\":\"frontend/node_modules\",\"exists\":true}]",
+      "stderr": ""
+    },
+    {
+      "id": "local-uv",
+      "command": [
+        ".tools/bin/uv.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "uv 0.13.7 (316c827e0 2026-11-03 x86_64-pc-windows-msvc)",
+      "stderr": ""
+    },
+    {
+      "id": "available-pwsh",
+      "command": [
+        "pwsh",
+        "-NoProfile",
+        "-Command",
+        "$PSVersionTable.PSVersion.ToString()"
+      ],
+      "exit_code": 0,
+      "stdout": "7.6.5",
+      "stderr": ""
+    }
+  ]
+}

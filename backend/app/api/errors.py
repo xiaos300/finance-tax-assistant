@@ -4,6 +4,10 @@ from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException
 
 from app.core.contracts import ErrorBody, ErrorEnvelope
+from app.core.exceptions import BusinessError
+from app.infrastructure.database.targets import TargetError
+from sqlalchemy.exc import SQLAlchemyError
+from pydantic import ValidationError
 
 
 def error_response(request: Request, status: int, code: str, message: str) -> JSONResponse:
@@ -14,6 +18,15 @@ def error_response(request: Request, status: int, code: str, message: str) -> JS
 
 
 def install_error_handlers(app: FastAPI) -> None:
+    @app.exception_handler(BusinessError)
+    async def business_error(request:Request,exc:BusinessError):
+        return error_response(request,exc.status,exc.code,exc.message)
+
+    async def storage_error(request:Request,exc:Exception):
+        return error_response(request,503,'STORAGE_UNAVAILABLE','当前数据暂时无法读取')
+    for kind in (SQLAlchemyError,TargetError,ValidationError):
+        app.add_exception_handler(kind,storage_error)
+
     @app.exception_handler(HTTPException)
     async def http_error(request: Request, exc: HTTPException):
         return error_response(request, exc.status_code, "RESOURCE_NOT_FOUND" if exc.status_code == 404 else "HTTP_ERROR", "请求无法处理")

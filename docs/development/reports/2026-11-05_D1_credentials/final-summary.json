@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-05",
+  "stage": "D1",
+  "local_status": "passed",
+  "external_status": "not_applicable",
+  "overall_status": "passed",
+  "test_gate_evidence": "summary.json",
+  "test_counts": {
+    "passed": 216,
+    "failed": 0,
+    "blocked": 0,
+    "not_run": 0
+  },
+  "development_preparation": "passed",
+  "development_http": "passed",
+  "handoff_check": "handoff-validation.json",
+  "seed_hash": "45d72fa8fda1725be0c56571f2edd819f99b3df50ec50f57b983f2b85484b022",
+  "requirements_version": "1.3",
+  "contract_version": "1.2 + approved deployment names 2026-11-04",
+  "model_mode": "none",
+  "source_kind": "operator_precreated",
+  "current_instance_targets": [
+    "finance_tax_test",
+    "finance_tax_dev"
+  ],
+  "later_cases_not_run": [
+    "TC009/011/027 full model/interaction scope",
+    "TC013 later write scope",
+    "TC052 D6 restore",
+    "D2 and later stages"
+  ],
+  "daily_demo_tokens": "operator configuration pending; ephemeral HTTP credentials not persisted",
+  "git_commit_push": "not performed",
+  "stop_after": "D1"
+}

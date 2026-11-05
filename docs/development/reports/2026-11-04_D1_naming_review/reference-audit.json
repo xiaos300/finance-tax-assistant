@@ -1,0 +1,157 @@
+{
+  "scope": "Read-only source audit; excludes secrets, caches and historical raw evidence",
+  "patterns": "harness_test_|harness_migrator|harness_app|search_path|version_table_schema|harness schema|schema.*harness|数据库harness",
+  "hits": [
+    {
+      "file": "AGENTS.md",
+      "line": 30,
+      "text": "官方docx/xlsx、五份requirements为保护输入；需要改需求必须记录来源和影响，不为方便实现静默缩范围。正常启动不seed；迁移/seed/grant-runtime需维护角色，常驻app无DDL/超级用户凭证。测试仅harness_test_专属库且不等于演示连接目标，禁止测试夹具回落DATABASE_URL。"
+    },
+    {
+      "file": "backend/app/infrastructure/database/engine.py",
+      "line": 15,
+      "text": "                      \"options\": f\"-c search_path=harness,pg_catalog -c timezone=UTC -c lock_timeout={settings.db_lock_timeout_ms} -c statement_timeout={settings.db_statement_timeout_ms}\"},"
+    },
+    {
+      "file": "backend/tests/unit/test_config.py",
+      "line": 22,
+      "text": "    monkeypatch.setenv(\"DATABASE_URL\", \"postgresql+psycopg://fixture@127.0.0.1/harness_test_d0\")"
+    },
+    {
+      "file": "backend/tests/unit/test_config.py",
+      "line": 32,
+      "text": "    monkeypatch.setenv(\"MIGRATION_DATABASE_URL\", \"postgresql+psycopg://fixture@127.0.0.1/harness_test_d0\")"
+    },
+    {
+      "file": "backend/tests/unit/test_config.py",
+      "line": 41,
+      "text": "    monkeypatch.setenv(\"DATABASE_URL\", \"postgresql+psycopg://fixture@127.0.0.1/harness_test_d0\")"
+    },
+    {
+      "file": "docs/architecture/05_数据库与数据架构设计.md",
+      "line": 69,
+      "text": "users仅允许SELECT和UPDATE(memory_revision)，不授予身份/名称/用户编号的修改权；companies与user_company_permissions仅SELECT。harness schema归harness_migrator所有，harness_app只获USAGE及显式表/列/序列权限。授权逻辑由受控grant-runtime维护命令统一实现，首次迁移及逻辑备份恢复后幂等执行，避免恢复时因--no-acl遗漏应用授权。"
+    },
+    {
+      "file": "docs/architecture/05_数据库与数据架构设计.md",
+      "line": 312,
+      "text": "Alembic通过独立harness_migrator维护账号创建表/约束/部分唯一索引及harness_app所需列级/表级权限；数据库建库/角色初始化由运维bootstrap完成，不由Web执行。数据库使用UTF-8、独立harness schema与固定search_path，REVOKE public schema的公共CREATE权限；不引入尚无需求的RLS框架，企业隔离继续由服务和受限仓储落实。应用启动只验证连接、schema版本与seed完整性，不持有DDL凭证、不自动迁移或seed；维护阶段先显式迁移再seed。迁移前做逻辑备份，升级失败保持不可就绪并提示恢复，不带病启动。DDL迁移在独立测试数据库验证后再用于演示库。"
+    },
+    {
+      "file": "docs/architecture/05_数据库与数据架构设计.md",
+      "line": 316,
+      "text": "测试使用真实PostgreSQL独立测试库，每个测试worker使用专属数据库并按用例隔离事务或重新准备数据；涉及提交后新连接回读的用例不能仅依靠外层事务回滚夹具。重置必须APP_ENV=test、目标数据库名称符合`harness_test_`前缀，并比对解析后的host/port/dbname确认不等于演示目标；不能只检查文件路径，URL中密码不得入日志。原始seed与演示当前逻辑备份分开；交付记录服务器/客户端版本、schema版本、seed hash、模型/依赖标识及演示后的状态说明。由于尚无软件或已有业务库，本次只修订设计，不涉及实际数据搬迁。"
+    },
+    {
+      "file": "docs/architecture/06_API接口设计.md",
+      "line": 231,
+      "text": "命令为下一阶段建议实现，当前未创建可运行CLI。知识CLI由持有维护账号的本机操作者执行，不接受普通聊天触发；连接从受控环境DATABASE_URL读取，维护命令使用harness_migrator，Web使用harness_app。操作者核对脱敏的host/port/dbname，记录actor=operator、来源与差异；不在命令行参数或日志中传明文数据库密码。"
+    },
+    {
+      "file": "docs/architecture/08_非功能架构设计.md",
+      "line": 29,
+      "text": "参数严格schema、枚举与长度校验，SQL参数绑定，搜索字符转义。无业务文件上传端点，原始资料只由受控CLI准备；输入/备份文件路径与数据库目标分别校验，重置要求APP_ENV=test和harness_test_数据库名前缀，并比对解析后的连接目标不得等于演示库。应用账号不持有SUPERUSER/CREATEDB/DDL权限，权限/规则/银行表只读，发票采用列级UPDATE授权；维护账号只在显式迁移/seed/规则维护/恢复命令使用。数据库不默认暴露宿主端口，远程托管连接使用TLS校验；DATABASE_URL、迁移URL与数据库密码和模型密钥同样敏感。普通业务工具不开放文件系统、shell、任意URL请求或SQL工具。"
+    },
+    {
+      "file": "docs/architecture/10_部署与运行架构设计.md",
+      "line": 10,
+      "text": "| 自动/集成测试 | 同主版本PostgreSQL独立测试库、固定seed；Vitest/Playwright；真实模型合同显式启用 | 每worker专属harness_test_库，不连接演示库，不用其他数据库替代集成测试 |"
+    },
+    {
+      "file": "docs/architecture/10_部署与运行架构设计.md",
+      "line": 38,
+      "text": "| DATABASE_URL | `postgresql+psycopg://harness_app:<URL编码密码>@db:5432/harness`为结构示例 | 应用必填敏感值；原生开发host改127.0.0.1；只向app注入应用账号，禁止日志输出完整URL |"
+    },
+    {
+      "file": "docs/architecture/10_部署与运行架构设计.md",
+      "line": 39,
+      "text": "| MIGRATION_DATABASE_URL | 同一目标、harness_migrator账号 | 仅显式维护命令使用，不注入常驻app；迁移/seed/规则维护/恢复前核对脱敏连接目标 |"
+    },
+    {
+      "file": "docs/architecture/10_部署与运行架构设计.md",
+      "line": 75,
+      "text": "3. 启动PostgreSQL并完成空卷bootstrap：创建harness_migrator（无SUPERUSER/CREATEDB，维护项目数据库/schema）与harness_app（无DDL、仅业务所需DML），撤销public schema公共CREATE。持维护账号显式Alembic upgrade head，再seed并授予运行角色必要权限；一次装载事务成功才写seed_meta。同hash重跑只验证，不覆盖用途；不一致/部分库拒绝并说明。初始化脚本只在空PGDATA执行，已有数据库修改账号/权限须受控维护，不靠重启容器生效。"
+    },
+    {
+      "file": "docs/architecture/10_部署与运行架构设计.md",
+      "line": 211,
+      "text": "恢复到新建空的独立数据库，使用pg_restore --exit-on-error --no-owner --no-acl，补运行角色授权后inspect核对schema/seed/数量/当前字段/证据，再显式切换应用连接并启动；原先库与备份保留，不默认覆盖。测试reset只允许APP_ENV=test和harness_test_名前缀，且连接目标不得等于演示库。若从初始状态重新演示，另建数据库显式seed，不删除原有保存证据、不重灌运行库。原始材料不受恢复影响。"
+    },
+    {
+      "file": "docs/architecture/12_开发实施契约补充.md",
+      "line": 109,
+      "text": "bootstrap超级用户只用于空卷初始化；创建harness_migrator与harness_app两个LOGIN角色，均NOSUPERUSER/NOCREATEDB/NOCREATEROLE。项目数据库harness及harness schema归harness_migrator；app仅CONNECT、schema USAGE、必要SELECT/DML与序列USAGE/SELECT。alembic_version和seed_meta只读，users只UPDATE(memory_revision)，invoice只UPDATE四个合法技术/业务列。grant-runtime先REVOKE本项目schema既有过宽权限，再按白名单GRANT，不能只叠加列级权限却遗留表级UPDATE。"
+    },
+    {
+      "file": "docs/architecture/12_开发实施契约补充.md",
+      "line": 114,
+      "text": "GRANT SELECT ON harness.invoices TO harness_app;"
+    },
+    {
+      "file": "docs/architecture/12_开发实施契约补充.md",
+      "line": 116,
+      "text": "ON harness.invoices TO harness_app;"
+    },
+    {
+      "file": "docs/architecture/12_开发实施契约补充.md",
+      "line": 117,
+      "text": "GRANT SELECT ON harness.users TO harness_app;"
+    },
+    {
+      "file": "docs/architecture/12_开发实施契约补充.md",
+      "line": 118,
+      "text": "GRANT UPDATE (memory_revision) ON harness.users TO harness_app;"
+    },
+    {
+      "file": "docs/architecture/12_开发实施契约补充.md",
+      "line": 121,
+      "text": "Alembic设置version_table_schema='harness'，ORM/外键/索引采用一致schema与命名约定；维护连接和应用连接均固定search_path=harness,pg_catalog，不依赖操作者默认schema。seed advisory事务锁固定键(20261101,1)，只锁本目标数据库的首次装载。逻辑备份恢复后按源schema版本检查再grant-runtime，不以“upgrade head无迁移”代替恢复授权。"
+    },
+    {
+      "file": "docs/development/04_测试与验收规范.md",
+      "line": 25,
+      "text": "每个PG测试worker有独立harness_test_数据库，目标与演示库三元组host/port/dbname不得相同。每参数变体恢复fixture，提交/独立回读测试真实COMMIT再新连接查询，不以全局外层回滚或同Session identity map假装独立核验。普通无跨连接测试可用事务回滚加快隔离，但不能混入提交故障验证。"
+    },
+    {
+      "file": "docs/development/04_测试与验收规范.md",
+      "line": 27,
+      "text": "默认先串行使用一个预建harness_test_库，fixture以测试维护账号做schema/数据准备，不假定该NOCREATEDB账号能建库。并行测试须由CI数据库bootstrap或显式TEST_ADMIN_DATABASE_URL预建各worker目标，管理凭证只用于test bootstrap，不进应用/模型/报告；没有该能力则串行运行，不自动借用演示超级用户。实际数据库/角色创建和清理都先验证明确目标，不通过拼接未校验名字执行DDL。"
+    },
+    {
+      "file": "docs/development/tasks/D1_PostgreSQL与只读业务.md",
+      "line": 19,
+      "text": "- 实现bootstrap两角色、harness schema、Alembic初始迁移、全表/部分唯一/复合FK/JSONB/时区/列级权限及grant-runtime。"
+    },
+    {
+      "file": "docs/development/tasks/D1_PostgreSQL与只读业务.md",
+      "line": 38,
+      "text": "首个真实迁移覆盖所有05/12字段含scope_company_ids/last_change_origin_json；固定search_path与alembic表schema，应用账号无DDL/禁写列。"
+    },
+    {
+      "file": "docs/development/tasks/D2_只读Harness与网页.md",
+      "line": 27,
+      "text": "- backend/app/modules/conversation/{service,state,repository,schemas}.py；harness/{runner,scope,tools,result_guard,schemas}.py；context/{builder,budget}.py"
+    },
+    {
+      "file": "docs/development/tasks/D4_记忆与完整交互.md",
+      "line": 26,
+      "text": "- backend/app/modules/memory/{service,repository,schemas}.py；context/builder.py；conversation/state.py；harness/{tools,scope,authorization}.py"
+    },
+    {
+      "file": "docs/development/test-cases.json",
+      "line": 1639,
+      "text": "      \"initial_data\": \"新建独立harness_test_库，bootstrap角色与schema，未有业务表\","
+    },
+    {
+      "file": "scripts/verify_d0.py",
+      "line": 54,
+      "text": "    fixture_env = {**ENV, \"MIGRATION_DATABASE_URL\": \"postgresql+psycopg://fixture@127.0.0.1/harness_test_d0\"}"
+    }
+  ],
+  "requirement_name_or_schema_hits": [],
+  "database_connection_attempted": false,
+  "notes": [
+    "D0 generic DatabaseSettings validates driver/host/database/user but does not implement the D1 reset guard.",
+    "harness is also a module/product term; it is not a global rename target."
+  ]
+}

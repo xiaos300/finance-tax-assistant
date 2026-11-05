@@ -1,0 +1,42 @@
+{
+  "dataset_id": "official-1.1.0",
+  "schema_revision": "0001",
+  "normalized_hash": "45d72fa8fda1725be0c56571f2edd819f99b3df50ec50f57b983f2b85484b022",
+  "source_hashes": {
+    "materials/02_示例数据.xlsx": "edb13b2a52d2f875033258836e8fc23c3e1353c46d101184048bac289e52ed0f",
+    "materials/03_业务规则.docx": "93b580f83b94fca4b795ec8e1336e22d799f5a91d581895f0562d29be1b84aa0"
+  },
+  "lineage": "Per-row source_ref in business.json; exact heading and body in rules.json; explanation sheet excluded.",
+  "validation": {
+    "counts": {
+      "companies": 2,
+      "users": 2,
+      "permissions": 4,
+      "invoices": 40,
+      "bank_transactions": 48,
+      "rules": 5
+    },
+    "totals_cents": {
+      "C001/2026-08": [
+        904635,
+        572099,
+        1485075
+      ],
+      "C001/2026-09": [
+        962206,
+        718074,
+        1300050
+      ],
+      "C002/2026-08": [
+        1366705,
+        934110,
+        1880025
+      ],
+      "C002/2026-09": [
+        1266724,
+        808724,
+        1370075
+      ]
+    }
+  }
+}

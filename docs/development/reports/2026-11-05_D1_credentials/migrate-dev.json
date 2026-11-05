@@ -1,0 +1,13 @@
+{
+  "command": [
+    "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\backend\\.venv\\Scripts\\python.exe",
+    "-m",
+    "app.cli",
+    "migrate"
+  ],
+  "cwd": "backend",
+  "app_env": "development",
+  "model_mode": "none",
+  "exit_code": 0,
+  "log": "migrate-dev.log"
+}

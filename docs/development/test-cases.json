@@ -1636,8 +1636,10 @@
         "对应模块已实现；独立PostgreSQL测试库；故障开关仅test",
         "按步骤用屏障控制交错，不靠随机sleep"
       ],
-      "initial_data": "新建独立harness_test_库，bootstrap角色与schema，未有业务表",
+      "initial_data": "新建独立 finance_tax_test（精确允许名单、APP_ENV=test、首轮串行），显式测试 app/维护连接、实例/目标/角色及认证后核验，无回落；bootstrap角色与 harness schema，未有业务表",
       "steps": [
+        "建 engine 前核验精确 finance_tax_test、APP_ENV=test、串行、显式双测试连接、同实例/目标和 app/维护角色；覆盖编码、回环别名、默认端口、query/service/hostaddr/多主机与无回落；拒绝路径不连接 tax_db",
+        "认证后、任何 fixture 写入前核验 PostgreSQL 18、实例地址端口、current_database/session_user/current_user、数据库 owner/编码和无超级权限/角色继承",
         "维护账号迁移/seed/grant-runtime",
         "app逐表读及按列写",
         "先制造过宽UPDATE再重授权",
@@ -1647,14 +1649,17 @@
         "app无DDL/建库/改金额/银行/权限",
         "memory_revision可更新",
         "schema/alembic/序列可用",
-        "过宽权限被撤销"
+        "过宽权限被撤销",
+        "开发库、tax_db、旧名前缀、近似名、worker 后缀及缺失测试配置在连接前拒绝；认证后错误目标在写入前拒绝",
+        "grant-runtime 同时清除表级与历史列级过宽权限，核验有效权限，保存原生 42501；恢复副本分支仅 D6 验收"
       ],
       "test_type": "postgresql",
       "model": "none",
       "evidence": [
         "角色/权限SQL",
         "拒绝SQLSTATE",
-        "迁移/恢复/列级测试"
+        "迁移/恢复/列级测试",
+        "目标保护参数化测试；串行实际目标及模型 none；tax_db 零连接的配置拒绝证据"
       ],
       "status": "not_run"
     },

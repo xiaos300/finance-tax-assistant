@@ -1,0 +1,14 @@
+{
+  "command": [
+    "E:\\Desktop\\赛题二：财税Harness初赛材料包-v1.1.0\\backend\\.venv\\Scripts\\python.exe",
+    "-m",
+    "app.cli",
+    "grant-runtime",
+    "--test"
+  ],
+  "cwd": "backend",
+  "app_env": "test",
+  "model_mode": "none",
+  "exit_code": 0,
+  "log": "grant-test-retry.log"
+}

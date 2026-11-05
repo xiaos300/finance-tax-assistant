@@ -1,6 +1,6 @@
 # API接口设计
 
-版本：1.2｜日期：2026-11-01｜契约依据：[模块](04_模块与分层架构设计.md)、[PostgreSQL数据模型](05_数据库与数据架构设计.md)。接口尚未实现；示例ID和文本只表达结构。HTTP DTO与逐工具完整参数/返回以[实施补充](12_开发实施契约补充.md)及其contracts目录为编码依据；下文保留业务说明和示例。
+版本：1.2｜日期：2026-11-01｜契约依据：[模块](04_模块与分层架构设计.md)、[PostgreSQL数据模型](05_数据库与数据架构设计.md)。D1 确定性只读接口已有代码，真实 PostgreSQL 运行仍待验收，见[D1 报告](../development/reports/2026-11-04_D1.md)；其他接口仍为后续阶段设计。示例ID和文本只表达结构。HTTP DTO与逐工具完整参数/返回以[实施补充](12_开发实施契约补充.md)及其contracts目录为编码依据；下文保留业务说明和示例。
 
 ## 1. HTTP通用契约
 
@@ -228,7 +228,7 @@ intent_handle只用于本进程本轮关联，不是安全凭证；可在实际�
 
 ## 7. 本机CLI能力契约
 
-命令为下一阶段建议实现，当前未创建可运行CLI。知识CLI由持有维护账号的本机操作者执行，不接受普通聊天触发；连接从受控环境DATABASE_URL读取，维护命令使用harness_migrator，Web使用harness_app。操作者核对脱敏的host/port/dbname，记录actor=operator、来源与差异；不在命令行参数或日志中传明文数据库密码。
+命令为下一阶段建议实现，当前未创建可运行CLI。知识CLI由持有维护账号的本机操作者执行，不接受普通聊天触发；连接从受控环境 MIGRATION_DATABASE_URL 读取，维护命令使用finance_tax_migrator，Web使用finance_tax_app。操作者核对脱敏的host/port/dbname，记录actor=operator、来源与差异；不在命令行参数或日志中传明文数据库密码。
 
 ```text
 python -m app.cli seed --business data/seed/business.json --rules data/seed/rules.json
@@ -251,3 +251,5 @@ grant-runtime仅限维护账号，按05固定白名单幂等设置运行角色�
 ## 8. 健康接口
 
 GET `/health/live`公开返回`data.status="alive"`，只反映进程；GET `/health/ready`检查数据库可读、schema与seed标记、静态包和配置，成功200/失败503，均采用通用响应封装。只给安全检查项名称及布尔值，不返回数据库绝对路径、用户/权限或凭证。模型可达性由显式CLI probe处理，health不付费调用模型。模块为基础设施/Router，关联NFR-006/009，无业务写入。
+
+2026-11-04 D1 部署命名与测试保护补充已获批准，完整边界见[本轮批准记录](../../Documentation.md#d1-正式实施批准--2026-11-04)。本节名称调整不变更正式业务需求或机器接口。

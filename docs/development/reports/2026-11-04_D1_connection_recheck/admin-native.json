@@ -1,0 +1,32 @@
+{
+  "configured": true,
+  "target": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "database": "postgres",
+    "role": "postgres",
+    "driver": "postgresql+psycopg"
+  },
+  "authenticated": false,
+  "command": [
+    "E:\\developmentEnvs\\postgreSQL\\bin\\psql.exe",
+    "-X",
+    "-w",
+    "-h",
+    "127.0.0.1",
+    "-p",
+    "5432",
+    "-U",
+    "postgres",
+    "-d",
+    "postgres",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-c",
+    "SELECT current_database(),session_user,current_user,inet_server_addr(),inet_server_port();"
+  ],
+  "exit_code": 2,
+  "output_decoding": "gb18030",
+  "category": "authentication_rejected",
+  "redacted_detail": "psql: error: connection to server at \"127.0.0.1\", port 5432 failed: 致命错误:  用户 \"postgres\" Password 认证失败\r\n"
+}
