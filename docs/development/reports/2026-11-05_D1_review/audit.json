@@ -1,0 +1,2234 @@
+{
+  "date": "2026-11-05",
+  "method": "Read-only evidence audit; no database, model or business tests rerun",
+  "source_fingerprints": [
+    {
+      "path": "backend/alembic.ini",
+      "matches": true
+    },
+    {
+      "path": "backend/app/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/api/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/api/dependencies.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/api/errors.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/api/routers/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/api/routers/health.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/api/routers/identity.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/api/routers/ledger.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/cli.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/core/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/core/config.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/core/contracts.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/core/exceptions.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/core/identity.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/core/pagination.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/infrastructure/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/__init__.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/bootstrap.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/engine.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/grant_runtime.sql",
+      "matches": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/maintenance.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/models.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/permissions.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/preparation.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/seed.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/targets.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/infrastructure/database/unit_of_work.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/main.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/modules/knowledge/policies.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/modules/knowledge/repository.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/modules/ledger/policies.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/modules/ledger/repository.py",
+      "matches": true
+    },
+    {
+      "path": "backend/app/modules/ledger/service.py",
+      "matches": true
+    },
+    {
+      "path": "backend/migrations/env.py",
+      "matches": true
+    },
+    {
+      "path": "backend/migrations/versions/0001_initial.py",
+      "matches": true
+    },
+    {
+      "path": "backend/migrations/versions/0001_initial.sql",
+      "matches": true
+    },
+    {
+      "path": "backend/pyproject.toml",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/api/test_read_acl.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/conftest.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/integration/test_roles.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/integration/test_rules.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/integration/test_schema.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/integration/test_seed.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/integration/test_totals.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/unit/conftest.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/unit/test_bootstrap.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/unit/test_config.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/unit/test_contracts.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/unit/test_database_ip_identity.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/unit/test_ledger_policies.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/unit/test_precreated_preparation.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/unit/test_read_contracts.py",
+      "matches": true
+    },
+    {
+      "path": "backend/tests/unit/test_targets.py",
+      "matches": true
+    },
+    {
+      "path": "backend/uv.lock",
+      "matches": true
+    },
+    {
+      "path": "frontend/index.html",
+      "matches": true
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "matches": true
+    },
+    {
+      "path": "frontend/package.json",
+      "matches": true
+    },
+    {
+      "path": "frontend/scripts/build.mjs",
+      "matches": true
+    },
+    {
+      "path": "frontend/src/App.vue",
+      "matches": true
+    },
+    {
+      "path": "frontend/src/main.ts",
+      "matches": true
+    },
+    {
+      "path": "frontend/tests/app.spec.ts",
+      "matches": true
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "matches": true
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "matches": true
+    },
+    {
+      "path": "scripts/check_environment.ps1",
+      "matches": true
+    },
+    {
+      "path": "scripts/manage.ps1",
+      "matches": true
+    },
+    {
+      "path": "scripts/prepare_seed.py",
+      "matches": true
+    },
+    {
+      "path": "scripts/reset_test_data.py",
+      "matches": true
+    },
+    {
+      "path": "scripts/verify_baseline.py",
+      "matches": true
+    },
+    {
+      "path": "scripts/verify_d0.py",
+      "matches": true
+    },
+    {
+      "path": "scripts/verify_d1.py",
+      "matches": true
+    },
+    {
+      "path": "scripts/verify_d1_handoff.py",
+      "matches": true
+    },
+    {
+      "path": "data/seed/business.json",
+      "matches": true
+    },
+    {
+      "path": "data/seed/manifest.json",
+      "matches": true
+    },
+    {
+      "path": "data/seed/rules.json",
+      "matches": true
+    }
+  ],
+  "protected_inputs": [
+    {
+      "path": "materials/01_参赛说明.docx",
+      "matches": true
+    },
+    {
+      "path": "materials/02_示例数据.xlsx",
+      "matches": true
+    },
+    {
+      "path": "materials/03_业务规则.docx",
+      "matches": true
+    },
+    {
+      "path": "docs/requirements/00_项目需求速览与决策清单.md",
+      "matches": true
+    },
+    {
+      "path": "docs/requirements/01_赛题要求提取.md",
+      "matches": true
+    },
+    {
+      "path": "docs/requirements/02_业务需求分析.md",
+      "matches": true
+    },
+    {
+      "path": "docs/requirements/03_软件需求分析说明书.md",
+      "matches": true
+    },
+    {
+      "path": "docs/requirements/04_需求追踪矩阵.md",
+      "matches": true
+    },
+    {
+      "path": "docs/requirements/05_待确认问题与风险.md",
+      "matches": true
+    },
+    {
+      "path": "docs/architecture/contracts/contracts.schema.json",
+      "matches": true
+    },
+    {
+      "path": "docs/architecture/contracts/http-operations.json",
+      "matches": true
+    },
+    {
+      "path": "docs/architecture/contracts/tools.json",
+      "matches": true
+    }
+  ],
+  "junit": {
+    "total": 216,
+    "failed": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "label": "frozen-install",
+      "exit_code": 0,
+      "expected": true,
+      "log_exists": true
+    },
+    {
+      "label": "backend-tests",
+      "exit_code": 0,
+      "expected": true,
+      "log_exists": true
+    },
+    {
+      "label": "admin-preflight",
+      "exit_code": 0,
+      "expected": true,
+      "log_exists": true
+    },
+    {
+      "label": "test-maintenance-config",
+      "exit_code": 0,
+      "expected": true,
+      "log_exists": true
+    },
+    {
+      "label": "test-maintenance-init",
+      "exit_code": 0,
+      "expected": true,
+      "log_exists": true
+    },
+    {
+      "label": "source-scan",
+      "exit_code": 0,
+      "expected": true,
+      "log_exists": true
+    }
+  ],
+  "http_checks": 6,
+  "http_passed": true,
+  "secret_pattern_findings": [],
+  "manually_reviewed_password_placeholders": [
+    {
+      "path": "docs/architecture/10_部署与运行架构设计.md",
+      "line": 38,
+      "rule": "credential_url"
+    },
+    {
+      "path": "docs/development/reports/2026-11-04_D1_naming_review/reference-audit.json",
+      "line": 63,
+      "rule": "credential_url"
+    }
+  ],
+  "excluded": [
+    "note.assets/ (pre-existing unrelated image)"
+  ],
+  "candidate_files": [
+    ".env.example",
+    "AGENTS.md",
+    "Documentation.md",
+    "Plan.md",
+    "README.md",
+    "backend/alembic.ini",
+    "backend/app/api/dependencies.py",
+    "backend/app/api/errors.py",
+    "backend/app/api/routers/health.py",
+    "backend/app/api/routers/identity.py",
+    "backend/app/api/routers/ledger.py",
+    "backend/app/cli.py",
+    "backend/app/core/contracts.py",
+    "backend/app/core/exceptions.py",
+    "backend/app/core/identity.py",
+    "backend/app/core/pagination.py",
+    "backend/app/infrastructure/database/bootstrap.py",
+    "backend/app/infrastructure/database/engine.py",
+    "backend/app/infrastructure/database/grant_runtime.sql",
+    "backend/app/infrastructure/database/maintenance.py",
+    "backend/app/infrastructure/database/models.py",
+    "backend/app/infrastructure/database/permissions.py",
+    "backend/app/infrastructure/database/preparation.py",
+    "backend/app/infrastructure/database/seed.py",
+    "backend/app/infrastructure/database/targets.py",
+    "backend/app/infrastructure/database/unit_of_work.py",
+    "backend/app/main.py",
+    "backend/app/modules/knowledge/policies.py",
+    "backend/app/modules/knowledge/repository.py",
+    "backend/app/modules/ledger/policies.py",
+    "backend/app/modules/ledger/repository.py",
+    "backend/app/modules/ledger/service.py",
+    "backend/migrations/env.py",
+    "backend/migrations/versions/0001_initial.py",
+    "backend/migrations/versions/0001_initial.sql",
+    "backend/tests/api/test_read_acl.py",
+    "backend/tests/conftest.py",
+    "backend/tests/integration/test_roles.py",
+    "backend/tests/integration/test_rules.py",
+    "backend/tests/integration/test_schema.py",
+    "backend/tests/integration/test_seed.py",
+    "backend/tests/integration/test_totals.py",
+    "backend/tests/unit/conftest.py",
+    "backend/tests/unit/test_bootstrap.py",
+    "backend/tests/unit/test_config.py",
+    "backend/tests/unit/test_contracts.py",
+    "backend/tests/unit/test_database_ip_identity.py",
+    "backend/tests/unit/test_ledger_policies.py",
+    "backend/tests/unit/test_precreated_preparation.py",
+    "backend/tests/unit/test_read_contracts.py",
+    "backend/tests/unit/test_targets.py",
+    "data/seed/business.json",
+    "data/seed/manifest.json",
+    "data/seed/rules.json",
+    "docs/architecture/05_数据库与数据架构设计.md",
+    "docs/architecture/06_API接口设计.md",
+    "docs/architecture/08_非功能架构设计.md",
+    "docs/architecture/09_工程目录结构设计.md",
+    "docs/architecture/10_部署与运行架构设计.md",
+    "docs/architecture/12_开发实施契约补充.md",
+    "docs/development/00_开发导航.md",
+    "docs/development/02_开发实施总计划.md",
+    "docs/development/04_测试与验收规范.md",
+    "docs/development/progress.md",
+    "docs/development/reports/2026-11-03_D0_baseline.md",
+    "docs/development/reports/2026-11-04_D1.md",
+    "docs/development/reports/2026-11-04_D1/attempt1/admin-preflight.log",
+    "docs/development/reports/2026-11-04_D1/attempt1/backend-tests.log",
+    "docs/development/reports/2026-11-04_D1/attempt1/commands.json",
+    "docs/development/reports/2026-11-04_D1/attempt1/frozen-install.log",
+    "docs/development/reports/2026-11-04_D1/attempt1/pytest.xml",
+    "docs/development/reports/2026-11-04_D1/attempt1/source-scan.log",
+    "docs/development/reports/2026-11-04_D1/attempt1/summary.json",
+    "docs/development/reports/2026-11-04_D1/attempt1/test-maintenance-config.log",
+    "docs/development/reports/2026-11-04_D1/attempt1/test-maintenance-init.log",
+    "docs/development/reports/2026-11-04_D1/attempt2/admin-preflight.log",
+    "docs/development/reports/2026-11-04_D1/attempt2/backend-tests.log",
+    "docs/development/reports/2026-11-04_D1/attempt2/commands.json",
+    "docs/development/reports/2026-11-04_D1/attempt2/frozen-install.log",
+    "docs/development/reports/2026-11-04_D1/attempt2/pytest.xml",
+    "docs/development/reports/2026-11-04_D1/attempt2/source-scan.log",
+    "docs/development/reports/2026-11-04_D1/attempt2/summary.json",
+    "docs/development/reports/2026-11-04_D1/attempt2/test-maintenance-config.log",
+    "docs/development/reports/2026-11-04_D1/attempt2/test-maintenance-init.log",
+    "docs/development/reports/2026-11-04_D1/before.json",
+    "docs/development/reports/2026-11-04_D1/compile-python.log",
+    "docs/development/reports/2026-11-04_D1/git-diff-check-failed.log",
+    "docs/development/reports/2026-11-04_D1/git-diff-check.log",
+    "docs/development/reports/2026-11-04_D1/git-final-status.json",
+    "docs/development/reports/2026-11-04_D1/handoff-validation-attempt1.json",
+    "docs/development/reports/2026-11-04_D1/handoff-validation-attempt2.json",
+    "docs/development/reports/2026-11-04_D1/handoff-validation.json",
+    "docs/development/reports/2026-11-04_D1/manual-attempts.json",
+    "docs/development/reports/2026-11-04_D1/post-check-guards.log",
+    "docs/development/reports/2026-11-04_D1/post-check-guards.xml",
+    "docs/development/reports/2026-11-04_D1/source-scan.json",
+    "docs/development/reports/2026-11-04_D1/summary.json",
+    "docs/development/reports/2026-11-04_D1_IP地址校验修复.md",
+    "docs/development/reports/2026-11-04_D1_connection_recheck/admin-native.json",
+    "docs/development/reports/2026-11-04_D1_connection_recheck/config-sources.json",
+    "docs/development/reports/2026-11-04_D1_connection_recheck/git-diff-check.log",
+    "docs/development/reports/2026-11-04_D1_connection_recheck/handoff-check.json",
+    "docs/development/reports/2026-11-04_D1_connection_recheck/readonly-results.json",
+    "docs/development/reports/2026-11-04_D1_docs/before.json",
+    "docs/development/reports/2026-11-04_D1_docs/commands.json",
+    "docs/development/reports/2026-11-04_D1_docs/git-diff-check.log",
+    "docs/development/reports/2026-11-04_D1_docs/powershell-syntax.json",
+    "docs/development/reports/2026-11-04_D1_docs/powershell-syntax.log",
+    "docs/development/reports/2026-11-04_D1_docs/validation.json",
+    "docs/development/reports/2026-11-04_D1_ip_guard/before.json",
+    "docs/development/reports/2026-11-04_D1_ip_guard/commands.json",
+    "docs/development/reports/2026-11-04_D1_ip_guard/compile-python.log",
+    "docs/development/reports/2026-11-04_D1_ip_guard/configuration-metadata.json",
+    "docs/development/reports/2026-11-04_D1_ip_guard/git-diff-check.log",
+    "docs/development/reports/2026-11-04_D1_ip_guard/guard-tests.xml",
+    "docs/development/reports/2026-11-04_D1_ip_guard/handoff-validation.json",
+    "docs/development/reports/2026-11-04_D1_ip_guard/readonly-preflight.json",
+    "docs/development/reports/2026-11-04_D1_ip_guard/source-scan.json",
+    "docs/development/reports/2026-11-04_D1_ip_guard/source-scan.log",
+    "docs/development/reports/2026-11-04_D1_ip_guard/unit-command.json",
+    "docs/development/reports/2026-11-04_D1_ip_guard/unit-tests.log",
+    "docs/development/reports/2026-11-04_D1_ip_guard/unit-tests.xml",
+    "docs/development/reports/2026-11-04_D1_live/before.json",
+    "docs/development/reports/2026-11-04_D1_live/commands.json",
+    "docs/development/reports/2026-11-04_D1_live/compile-python.log",
+    "docs/development/reports/2026-11-04_D1_live/git-diff-check.log",
+    "docs/development/reports/2026-11-04_D1_live/handoff-validation.json",
+    "docs/development/reports/2026-11-04_D1_live/preparation-blocker.json",
+    "docs/development/reports/2026-11-04_D1_live/preparation-unit.xml",
+    "docs/development/reports/2026-11-04_D1_live/prepare-test.json",
+    "docs/development/reports/2026-11-04_D1_live/prepare-test.log",
+    "docs/development/reports/2026-11-04_D1_live/readonly-results.json",
+    "docs/development/reports/2026-11-04_D1_live/source-scan.json",
+    "docs/development/reports/2026-11-04_D1_live/source-scan.log",
+    "docs/development/reports/2026-11-04_D1_live/unit-tests.xml",
+    "docs/development/reports/2026-11-04_D1_naming_review/reference-audit.json",
+    "docs/development/reports/2026-11-04_D1_naming_review/review-validation.json",
+    "docs/development/reports/2026-11-04_D1_naming_review/sql-scope-review.json",
+    "docs/development/reports/2026-11-04_D1_preflight/baseline-integrity.json",
+    "docs/development/reports/2026-11-04_D1_preflight/command-template-syntax.json",
+    "docs/development/reports/2026-11-04_D1_preflight/environment-checks.json",
+    "docs/development/reports/2026-11-04_D1_preflight/host-readonly-retry.json",
+    "docs/development/reports/2026-11-04_D1_preflight/postgresql-native.json",
+    "docs/development/reports/2026-11-04_D1_preflight/review-validation.json",
+    "docs/development/reports/2026-11-04_D1_文档可读性整改.md",
+    "docs/development/reports/2026-11-04_D1_真实验收恢复.md",
+    "docs/development/reports/2026-11-04_D1_连接配置复核.md",
+    "docs/development/reports/2026-11-04_PG_readonly_diagnostic.json",
+    "docs/development/reports/2026-11-04_markdown_navigation.md",
+    "docs/development/reports/2026-11-04_markdown_navigation/initial-validation.json",
+    "docs/development/reports/2026-11-04_markdown_navigation/link-validation.json",
+    "docs/development/reports/2026-11-05_D1.md",
+    "docs/development/reports/2026-11-05_D1_credentials/attempt1/admin-preflight.log",
+    "docs/development/reports/2026-11-05_D1_credentials/attempt1/backend-tests.log",
+    "docs/development/reports/2026-11-05_D1_credentials/attempt1/commands.json",
+    "docs/development/reports/2026-11-05_D1_credentials/attempt1/frozen-install.log",
+    "docs/development/reports/2026-11-05_D1_credentials/attempt1/pytest.xml",
+    "docs/development/reports/2026-11-05_D1_credentials/attempt1/source-scan.log",
+    "docs/development/reports/2026-11-05_D1_credentials/attempt1/summary.json",
+    "docs/development/reports/2026-11-05_D1_credentials/attempt1/test-maintenance-config.log",
+    "docs/development/reports/2026-11-05_D1_credentials/attempt1/test-maintenance-init.log",
+    "docs/development/reports/2026-11-05_D1_credentials/compile-python-final.log",
+    "docs/development/reports/2026-11-05_D1_credentials/development-http.json",
+    "docs/development/reports/2026-11-05_D1_credentials/final-summary.json",
+    "docs/development/reports/2026-11-05_D1_credentials/git-diff-check-final.log",
+    "docs/development/reports/2026-11-05_D1_credentials/grant-dev.json",
+    "docs/development/reports/2026-11-05_D1_credentials/grant-dev.log",
+    "docs/development/reports/2026-11-05_D1_credentials/grant-diagnostic.log",
+    "docs/development/reports/2026-11-05_D1_credentials/grant-test-retry.json",
+    "docs/development/reports/2026-11-05_D1_credentials/grant-test-retry.log",
+    "docs/development/reports/2026-11-05_D1_credentials/grant-test.json",
+    "docs/development/reports/2026-11-05_D1_credentials/grant-test.log",
+    "docs/development/reports/2026-11-05_D1_credentials/handoff-validation.json",
+    "docs/development/reports/2026-11-05_D1_credentials/inspect-dev.json",
+    "docs/development/reports/2026-11-05_D1_credentials/inspect-dev.log",
+    "docs/development/reports/2026-11-05_D1_credentials/inspect-test.json",
+    "docs/development/reports/2026-11-05_D1_credentials/inspect-test.log",
+    "docs/development/reports/2026-11-05_D1_credentials/migrate-dev.json",
+    "docs/development/reports/2026-11-05_D1_credentials/migrate-dev.log",
+    "docs/development/reports/2026-11-05_D1_credentials/migrate-test-retry.json",
+    "docs/development/reports/2026-11-05_D1_credentials/migrate-test-retry.log",
+    "docs/development/reports/2026-11-05_D1_credentials/migrate-test.json",
+    "docs/development/reports/2026-11-05_D1_credentials/migrate-test.log",
+    "docs/development/reports/2026-11-05_D1_credentials/migration-diagnostic.log",
+    "docs/development/reports/2026-11-05_D1_credentials/prepare-dev.json",
+    "docs/development/reports/2026-11-05_D1_credentials/prepare-dev.log",
+    "docs/development/reports/2026-11-05_D1_credentials/prepare-test.json",
+    "docs/development/reports/2026-11-05_D1_credentials/prepare-test.log",
+    "docs/development/reports/2026-11-05_D1_credentials/readonly-results.json",
+    "docs/development/reports/2026-11-05_D1_credentials/seed-dev.json",
+    "docs/development/reports/2026-11-05_D1_credentials/seed-dev.log",
+    "docs/development/reports/2026-11-05_D1_credentials/seed-test.json",
+    "docs/development/reports/2026-11-05_D1_credentials/seed-test.log",
+    "docs/development/reports/2026-11-05_D1_credentials/source-scan-final.log",
+    "docs/development/reports/2026-11-05_D1_credentials/source-scan.json",
+    "docs/development/reports/2026-11-05_D1_credentials/summary.json",
+    "docs/development/reports/D1_开发前检查与环境准备.md",
+    "docs/development/reports/D1_数据库命名变更审查与创建授权方案.md",
+    "docs/development/reports/README.md",
+    "docs/development/tasks/D0_工程与配置基线.md",
+    "docs/development/tasks/D1_PostgreSQL与只读业务.md",
+    "docs/development/tasks/D6_部署与竞赛交付.md",
+    "docs/development/test-cases.json",
+    "docs/开发者指南.md",
+    "scripts/manage.ps1",
+    "scripts/prepare_seed.py",
+    "scripts/reset_test_data.py",
+    "scripts/verify_baseline.py",
+    "scripts/verify_d1.py",
+    "scripts/verify_d1_handoff.py"
+  ],
+  "case_gates": [
+    {
+      "case_id": "TC001",
+      "ac_refs": [
+        "AC-001"
+      ],
+      "scope": "complete",
+      "status": "passed",
+      "whole_case_status": "passed",
+      "subitems": [
+        {
+          "name": "test_TC001_seed_precision_rejection[NaN]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_seed_precision_rejection[Infinity]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_seed_precision_rejection[-1]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_seed_precision_rejection[0.001]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_seed_precision_rejection[bad]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_seed_precision_rejection[92233720368547758.08]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_integer_money",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_schema_counts_types_and_ownership",
+          "file": "tests.integration.test_schema",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/me-Principal]",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/invoices/search?limit=3-InvoicePage]",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/companies/C001/invoices/F002-Invoice]",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/companies/C001/bank-transactions?business_month=2026-09&limit=3-BankPage]",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/companies/C001/totals?business_month=2026-09-Totals]",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/companies/C001/totals?business_month=2026-09&metrics=invoice_total-Totals]",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/companies/C001/purpose-check?business_month=2026-09-Check]",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        },
+        {
+          "name": "test_TC001_D1_HTTP_schema[/companies/C001/rules?business_month=2026-09&topic=purpose-RuleResolution]",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC001"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC002",
+      "ac_refs": [
+        "AC-002"
+      ],
+      "scope": "complete",
+      "status": "passed",
+      "whole_case_status": "passed",
+      "subitems": [
+        {
+          "name": "test_TC002_committed_fixture_survives_process_restart_and_same_hash_seed",
+          "file": "tests.integration.test_seed",
+          "status": "passed",
+          "case_ids": [
+            "TC002"
+          ]
+        },
+        {
+          "name": "test_TC002_different_hash_and_partial_database_refused",
+          "file": "tests.integration.test_seed",
+          "status": "passed",
+          "case_ids": [
+            "TC002"
+          ]
+        },
+        {
+          "name": "test_TC002_guarded_rebuild",
+          "file": "tests.integration.test_seed",
+          "status": "passed",
+          "case_ids": [
+            "TC002"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC005",
+      "ac_refs": [
+        "AC-005"
+      ],
+      "scope": "complete",
+      "status": "passed",
+      "whole_case_status": "passed",
+      "subitems": [
+        {
+          "name": "test_TC005_four_totals_and_purpose_invariance[C001-2026-08-expected0]",
+          "file": "tests.integration.test_totals",
+          "status": "passed",
+          "case_ids": [
+            "TC005"
+          ]
+        },
+        {
+          "name": "test_TC005_four_totals_and_purpose_invariance[C001-2026-09-expected1]",
+          "file": "tests.integration.test_totals",
+          "status": "passed",
+          "case_ids": [
+            "TC005"
+          ]
+        },
+        {
+          "name": "test_TC005_four_totals_and_purpose_invariance[C002-2026-08-expected2]",
+          "file": "tests.integration.test_totals",
+          "status": "passed",
+          "case_ids": [
+            "TC005"
+          ]
+        },
+        {
+          "name": "test_TC005_four_totals_and_purpose_invariance[C002-2026-09-expected3]",
+          "file": "tests.integration.test_totals",
+          "status": "passed",
+          "case_ids": [
+            "TC005"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC006",
+      "ac_refs": [
+        "AC-006"
+      ],
+      "scope": "complete",
+      "status": "passed",
+      "whole_case_status": "passed",
+      "subitems": [
+        {
+          "name": "test_TC006_invalid_month[0000-09]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month[2026-00]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month[2026-13]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month[26-09]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month[2026-9]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month[2026-09-01]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_year_boundary",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_boundaries",
+          "file": "tests.integration.test_totals",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month_HTTP[0000-09]",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month_HTTP[2026-00]",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        },
+        {
+          "name": "test_TC006_invalid_month_HTTP[2026-13]",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC006"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC007",
+      "ac_refs": [
+        "AC-007"
+      ],
+      "scope": "complete",
+      "status": "passed",
+      "whole_case_status": "passed",
+      "subitems": [
+        {
+          "name": "test_TC007_zero_records",
+          "file": "tests.integration.test_totals",
+          "status": "passed",
+          "case_ids": [
+            "TC007"
+          ]
+        },
+        {
+          "name": "test_TC007_empty_forbidden_storage_separate",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC007"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC009",
+      "ac_refs": [
+        "AC-009"
+      ],
+      "scope": "deterministic_D1_only",
+      "status": "passed",
+      "whole_case_status": "not_run",
+      "subitems": [
+        {
+          "name": "test_TC009_unicode_blank[None]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        },
+        {
+          "name": "test_TC009_unicode_blank[]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        },
+        {
+          "name": "test_TC009_unicode_blank[ ]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        },
+        {
+          "name": "test_TC009_unicode_blank[\\t\\n]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        },
+        {
+          "name": "test_TC009_unicode_blank[\\u3000\\xa0\\u2003]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        },
+        {
+          "name": "test_TC009_note_does_not_affect_blank",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        },
+        {
+          "name": "test_TC009_blank_and_note",
+          "file": "tests.integration.test_rules",
+          "status": "passed",
+          "case_ids": [
+            "TC009"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC011",
+      "ac_refs": [
+        "AC-011"
+      ],
+      "scope": "deterministic_D1_only",
+      "status": "passed",
+      "whole_case_status": "not_run",
+      "subitems": [
+        {
+          "name": "test_TC011_threshold[99999]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC011"
+          ]
+        },
+        {
+          "name": "test_TC011_threshold[100000]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC011"
+          ]
+        },
+        {
+          "name": "test_TC011_threshold[100001]",
+          "file": "tests.unit.test_ledger_policies",
+          "status": "passed",
+          "case_ids": [
+            "TC011"
+          ]
+        },
+        {
+          "name": "test_TC011_september_only_and_company_threshold",
+          "file": "tests.integration.test_rules",
+          "status": "passed",
+          "case_ids": [
+            "TC011"
+          ]
+        },
+        {
+          "name": "test_TC011_HTTP_unsupported",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC011"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC027",
+      "ac_refs": [
+        "AC-027"
+      ],
+      "scope": "deterministic_D1_only",
+      "status": "passed",
+      "whole_case_status": "not_run",
+      "subitems": [
+        {
+          "name": "test_TC027_resolution_boundaries_without_SQL",
+          "file": "tests.unit.test_read_contracts",
+          "status": "passed",
+          "case_ids": [
+            "TC027"
+          ]
+        },
+        {
+          "name": "test_TC027_missing_conflict_midmonth",
+          "file": "tests.integration.test_rules",
+          "status": "passed",
+          "case_ids": [
+            "TC027"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC013",
+      "ac_refs": [
+        "AC-013"
+      ],
+      "scope": "read_permission_only",
+      "status": "passed",
+      "whole_case_status": "not_run",
+      "subitems": [
+        {
+          "name": "test_TC013_identity_and_company_acl",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC013"
+          ]
+        },
+        {
+          "name": "test_TC013_search_keyset_and_filters",
+          "file": "tests.api.test_read_acl",
+          "status": "passed",
+          "case_ids": [
+            "TC013"
+          ]
+        }
+      ]
+    },
+    {
+      "case_id": "TC052",
+      "ac_refs": [
+        "AC-001",
+        "AC-014",
+        "AC-032",
+        "AC-036"
+      ],
+      "scope": "role_schema_guard_only",
+      "status": "passed",
+      "whole_case_status": "not_run",
+      "subitems": [
+        {
+          "name": "test_TC052_existing_names_stop_before_mutation",
+          "file": "tests.unit.test_bootstrap",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_development_creation_requires_real_test_acceptance",
+          "file": "tests.unit.test_bootstrap",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_admin_tax_target_rejected_without_connection",
+          "file": "tests.unit.test_bootstrap",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_admin_internal_override_cannot_target_unapproved_database[tax_db]",
+          "file": "tests.unit.test_bootstrap",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_admin_internal_override_cannot_target_unapproved_database[other_database]",
+          "file": "tests.unit.test_bootstrap",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_admin_internal_override_cannot_target_unapproved_database[finance_tax_test_backup]",
+          "file": "tests.unit.test_bootstrap",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_accepts_equivalent_notations[127.0.0.1/32-127.0.0.1]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_accepts_equivalent_notations[127.0.0.1-127.0.0.1]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_accepts_equivalent_notations[::1/128-::1]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_accepts_equivalent_notations[0:0:0:0:0:0:0:1/128-::1]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_accepts_equivalent_notations[0:0:0:0:0:0:0:1-::1]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_rejects_invalid_or_network_targets[None]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_rejects_invalid_or_network_targets[]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_rejects_invalid_or_network_targets[localhost]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_rejects_invalid_or_network_targets[127.1]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_rejects_invalid_or_network_targets[127.0.0.1/24]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_rejects_invalid_or_network_targets[127.0.0.1/0]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_rejects_invalid_or_network_targets[127.0.0.1/255.255.255.0]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_rejects_invalid_or_network_targets[::1/64]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_rejects_invalid_or_network_targets[::1%lo]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_host_identity_rejects_invalid_or_network_targets[127.0.0.1,127.0.0.2]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_normalization_does_not_expand_instance_authority[127.0.0.2/32-5432-127.0.0.1-5432]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_normalization_does_not_expand_instance_authority[::1/128-5432-127.0.0.1-5432]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_normalization_does_not_expand_instance_authority[::ffff:127.0.0.1/128-5432-127.0.0.1-5432]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_normalization_does_not_expand_instance_authority[127.0.0.1/32-5433-127.0.0.1-5432]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_normalization_does_not_expand_instance_authority[127.0.0.1/32-True-127.0.0.1-5432]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_normalization_does_not_expand_instance_authority[127.0.0.1/32-5432-127.0.0.1-5432]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mask_format_preserves_all_other_guards[None-127.0.0.1/32]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mask_format_preserves_all_other_guards[None-0:0:0:0:0:0:0:1/128]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mask_format_preserves_all_other_guards[database-127.0.0.1/32]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mask_format_preserves_all_other_guards[database-0:0:0:0:0:0:0:1/128]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mask_format_preserves_all_other_guards[role-127.0.0.1/32]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mask_format_preserves_all_other_guards[role-0:0:0:0:0:0:0:1/128]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mask_format_preserves_all_other_guards[superuser-127.0.0.1/32]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mask_format_preserves_all_other_guards[superuser-0:0:0:0:0:0:0:1/128]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mask_format_preserves_all_other_guards[schema_owner-127.0.0.1/32]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mask_format_preserves_all_other_guards[schema_owner-0:0:0:0:0:0:0:1/128]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_configured_ipv6_is_canonical_without_enabling_hostaddr_query",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_admin_inspection_uses_exact_normalized_address[127.0.0.1/32-5432-True-True]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_admin_inspection_uses_exact_normalized_address[127.0.0.2/32-5432-True-False]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_admin_inspection_uses_exact_normalized_address[127.0.0.1/24-5432-True-False]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_admin_inspection_uses_exact_normalized_address[127.0.0.1/32-5433-True-False]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_admin_inspection_uses_exact_normalized_address[127.0.0.1/32-5432-False-False]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_creation_provenance_keeps_instance_binding[127.0.0.1-127.0.0.1/32-5432-True]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_creation_provenance_keeps_instance_binding[127.0.0.1/32-127.0.0.1-5432-True]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_creation_provenance_keeps_instance_binding[::1-0:0:0:0:0:0:0:1/128-5432-True]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_creation_provenance_keeps_instance_binding[127.0.0.1/32-127.0.0.2/32-5432-False]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_creation_provenance_keeps_instance_binding[127.0.0.1/24-127.0.0.1/32-5432-False]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_creation_provenance_keeps_instance_binding[127.0.0.1/32-127.0.0.1/32-5433-False]",
+          "file": "tests.unit.test_database_ip_identity",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_precreated_matching_owned_objects",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_precreated_mismatch_stops[owner]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_precreated_mismatch_stops[encoding]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_precreated_mismatch_stops[superuser]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_precreated_mismatch_stops[no_login]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_precreated_mismatch_stops[membership]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_precreated_mismatch_stops[missing_database]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_precreated_mismatch_stops[missing_role]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_precreated_mismatch_stops[unknown_database]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_precreated_requires_explicit_recorded_reference",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_precreated_no_implicit_adoption",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_precreated_same_role_password_stops_before_mutation",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_development_requires_actual_test_gate[blocked]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_development_requires_actual_test_gate[failed]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_development_requires_actual_test_gate[empty]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_development_requires_actual_test_gate[wrong_target]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_development_requires_actual_test_gate[wrong_hash]",
+          "file": "tests.unit.test_precreated_preparation",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[finance_tax_dev]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[tax_db]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[harness_test_d1]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[finance_tax_test_backup]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[other_test]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[finance_tax_test_gw0]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_database_rejected_before_engine[%66inance_tax_test]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?service=local]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?hostaddr=127.0.0.1]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?host=localhost]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?dbname=tax_db]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?options=-csearch_path=public]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?port=5433]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_query_options_rejected[?sslmode=disable]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_role[postgres]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_role[finance_tax_migrator]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_role[fixture]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_wrong_role[%66inance_tax_app]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_loopback_default_port_canonical[localhost]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_loopback_default_port_canonical[127.0.0.1]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_ambiguous_instance[127.0.0.1,localhost]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_ambiguous_instance[127.1]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_ambiguous_instance[%31%32%37.0.0.1]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_ambiguous_instance[db]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_ambiguous_instance[example.com]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_ambiguous_instance[127.0.0.1:5433]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_environment_or_instance_mismatch[change0]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_environment_or_instance_mismatch[change1]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_environment_or_instance_mismatch[change2]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_environment_or_instance_mismatch[change3]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_environment_or_instance_mismatch[change4]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_safe_pair_and_no_model_dependency",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[None-None]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[0-tax_db]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[1-postgres]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[2-postgres]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[3-170000]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[4-127.0.0.2]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[5-5433]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[6-True]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[7-True]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[8-True]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[9-True]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[10-True]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[11-True]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[12-postgres]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[13-SQL_ASCII]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_authenticated_mismatch_stops_before_writes[14-other_owner]",
+          "file": "tests.unit.test_targets",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[CREATE TABLE harness.denied_table(id integer)]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[CREATE SCHEMA denied_schema]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[CREATE DATABASE denied_database]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[CREATE ROLE denied_role]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.invoices SET amount_cents=1 WHERE company_id='C001' AND invoice_id='F002']",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.invoices SET invoice_date='2026-09-01' WHERE company_id='C001' AND invoice_id='F002']",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.invoices SET invoice_id='changed' WHERE company_id='C001' AND invoice_id='F002']",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[DELETE FROM harness.invoices WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[INSERT INTO harness.invoices(company_id,invoice_id) VALUES('C001','ILLEGAL')]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.bank_transactions SET amount_cents=1 WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.user_company_permissions SET can_write=true WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.users SET name='changed' WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.rules SET body='changed' WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.seed_meta SET normalized_hash='changed' WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[UPDATE harness.alembic_version SET version_num='changed' WHERE false]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_native_permission_denials[CREATE TEMP TABLE denied_temp(id integer)]",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_grants_converge_after_table_and_column_overgrant",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_allowed_columns_and_independent_readback",
+          "file": "tests.integration.test_roles",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        },
+        {
+          "name": "test_TC052_unique_foreign_keys_and_shapes",
+          "file": "tests.integration.test_schema",
+          "status": "passed",
+          "case_ids": [
+            "TC052"
+          ]
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "committed_baseline": "964b729"
+}

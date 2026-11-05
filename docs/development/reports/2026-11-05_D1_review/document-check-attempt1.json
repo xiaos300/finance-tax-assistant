@@ -1,0 +1,852 @@
+{
+  "date": "2026-11-05",
+  "scope": [
+    "Documentation.md",
+    "docs/development/progress.md",
+    "docs/development/reports/2026-11-05_D1_review.md"
+  ],
+  "command": "backend/.venv/Scripts/python.exe docs/development/reports/2026-11-05_D1_review/check_documents.py",
+  "cwd": ".",
+  "links_checked": 161,
+  "anchors_checked": 57,
+  "links": [
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-05_D1_review.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "AGENTS.md",
+      "fragment": "自动提交代码"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/开发者指南.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1.md",
+      "fragment": "非技术读者快速了解-d1"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_文档可读性整改.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_docs/validation.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/D1_数据库命名变更审查与创建授权方案.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/tasks/D1_PostgreSQL与只读业务.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "README.md",
+      "fragment": "本机凭证与首次数据库准备"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/D1_数据库命名变更审查与创建授权方案.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "63-运行角色与bootstrap"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/architecture/05_数据库与数据架构设计.md",
+      "fragment": "10-初始化迁移与备份"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/04_测试与验收规范.md",
+      "fragment": "2-可复现fixture"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "AGENTS.md",
+      "fragment": "代码与数据边界"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/D1_数据库命名变更审查与创建授权方案.md",
+      "fragment": "名称变更的逐项影响"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/D1_数据库命名变更审查与创建授权方案.md",
+      "fragment": "批准后同步清单与本轮验证"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_naming_review/review-validation.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/D1_开发前检查与环境准备.md",
+      "fragment": "当前环境检查的实际结果"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_preflight/environment-checks.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_preflight/host-readonly-retry.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_preflight/postgresql-native.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_preflight/baseline-integrity.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_preflight/review-validation.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/D1_开发前检查与环境准备.md",
+      "fragment": "风险需用户确认及正式启动条件"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "AGENTS.md",
+      "fragment": "markdown-文档引用锚点与可追溯性规范"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": "6-报告与成果"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "fragment": "验证结果与边界"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation/link-validation.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "AGENTS.md",
+      "fragment": "统一启动说明与阶段命令"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/00_开发导航.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "Plan.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": "6-报告与成果"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/tasks/D0_工程与配置基线.md",
+      "fragment": "开发任务"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/tasks/D6_部署与竞赛交付.md",
+      "fragment": "开发任务"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/tasks/D0_工程与配置基线.md",
+      "fragment": "接口任务"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "7-http前端与生命周期的补足"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "12-需求基线与后续设计输入"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/requirements/04_需求追踪矩阵.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/requirements/00_项目需求速览与决策清单.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/architecture/11_架构评审与开发交接.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "1-契约入口与优先关系"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/architecture/contracts/contracts.schema.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/architecture/contracts/tools.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/architecture/contracts/http-operations.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/03_模块依赖与阶段划分.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/01_架构复审问题清单.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/requirements/00_项目需求速览与决策清单.md",
+      "fragment": "5-待确认问题与决策清单"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/progress.md",
+      "fragment": "外部条件台账"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "11-依据与信息等级"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/requirements/00_项目需求速览与决策清单.md",
+      "fragment": "原文核验提示"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/D1_数据库命名变更审查与创建授权方案.md",
+      "fragment": "批准后同步清单与本轮验证"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "Documentation.md",
+      "fragment": "d1-正式实施批准--2026-11-04"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/requirements/00_项目需求速览与决策清单.md",
+      "fragment": "5-待确认问题与决策清单"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/tasks/D7_可选增强.md",
+      "fragment": "前置依赖"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_PG_readonly_diagnostic.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_ip_guard/before.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_ip_guard/configuration-metadata.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_IP地址校验修复.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/progress.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_IP地址校验修复.md",
+      "fragment": "既有项目对象的差异与后续方案"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_连接配置复核.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_connection_recheck/readonly-results.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_live/readonly-results.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_真实验收恢复.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_live/preparation-blocker.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_live/handoff-validation.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-04_D1_真实验收恢复.md",
+      "fragment": "可恢复下一动作"
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/readonly-results.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-05_D1.md",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/final-summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "Documentation.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/handoff-validation.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "12-需求基线与后续设计输入"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "1-契约入口与优先关系"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "Documentation.md",
+      "fragment": "d1-正式实施批准--2026-11-04"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-04_D1.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-04_D1/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "Documentation.md",
+      "fragment": "d1-操作者选择暂缓凭证调整--2026-11-04"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-05_D1.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-05_D1.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-05_D1_review.md",
+      "fragment": "复核结论"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-05_D1.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/requirements/00_项目需求速览与决策清单.md",
+      "fragment": "5-待确认问题与决策清单"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/test-cases.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-03_D0_baseline/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "84-非功能及增强验收"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/01_架构复审问题清单.md",
+      "fragment": "1-实质性问题与修正"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-03_D0_baseline.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-03_D0_attempt1/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-03_D0_attempt2/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-03_D0_attempt3/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-04_D1_preflight/baseline-integrity.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": "3-阶段状态与切换规则"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-04_markdown_navigation.md",
+      "fragment": "验证结果与边界"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "AGENTS.md",
+      "fragment": "markdown-文档引用锚点与可追溯性规范"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/D1_开发前检查与环境准备.md",
+      "fragment": "收尾验证与下一动作"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-04_D1_preflight/review-validation.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/D1_数据库命名变更审查与创建授权方案.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-04_D1_naming_review/review-validation.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-04_D1/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "Documentation.md",
+      "fragment": "d1-正式实施批准--2026-11-04"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "Documentation.md",
+      "fragment": "d1-实施交接--2026-11-04"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/开发者指南.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-04_D1.md",
+      "fragment": "非技术读者快速了解-d1"
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-04_D1_文档可读性整改.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-04_D1_IP地址校验修复.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "docs/development/reports/2026-11-04_D1_连接配置复核.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/progress.md",
+      "target": "Documentation.md",
+      "fragment": "d1-既有项目对象准备恢复--2026-11-04"
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/tasks/D1_PostgreSQL与只读业务.md",
+      "fragment": "本地验收标准"
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/tasks/D2_只读Harness与网页.md",
+      "fragment": "前置依赖"
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/02_开发实施总计划.md",
+      "fragment": "3-阶段状态与切换规则"
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/requirements/03_软件需求分析说明书.md",
+      "fragment": "5-详细功能需求"
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/requirements/04_需求追踪矩阵.md",
+      "fragment": "3-数据非功能和接口反向覆盖"
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/architecture/12_开发实施契约补充.md",
+      "fragment": "1-契约入口与优先关系"
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/attempt1/commands.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1.md",
+      "fragment": "实际命令退出码与证据"
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/inspect-dev.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/inspect-test.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/attempt1/pytest.xml",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/tasks/D1_PostgreSQL与只读业务.md",
+      "fragment": "必需测试"
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_review/audit.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/attempt1/pytest.xml",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/attempt1/backend-tests.log",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/development-http.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/source-scan.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_review/audit.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_review/audit.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_credentials/final-summary.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_review/verify_evidence.py",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_review/audit.json",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_review/document-check.json",
+      "fragment": "",
+      "error": "missing file"
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "README.md",
+      "fragment": ""
+    },
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1.md",
+      "fragment": "交接与停止"
+    }
+  ],
+  "errors": [
+    {
+      "source": "docs/development/reports/2026-11-05_D1_review.md",
+      "target": "docs/development/reports/2026-11-05_D1_review/document-check.json",
+      "fragment": "",
+      "error": "missing file"
+    }
+  ],
+  "diff_check": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0
+  },
+  "manual_trace": {
+    "status": "reviewed",
+    "items": [
+      "D1 task card gate vs case_results and JUnit",
+      "Current code vs recorded source fingerprints",
+      "D2 prerequisite and separate live gate",
+      "Historical acceptance is not a new test run",
+      "D2 not started and next-round authorization prompt"
+    ]
+  },
+  "limitations": [
+    "No external links or browser rendering checked",
+    "Static links do not prove business acceptance",
+    "Historical SQL/log whitespace exceptions recorded separately"
+  ],
+  "exit_code": 1
+}
